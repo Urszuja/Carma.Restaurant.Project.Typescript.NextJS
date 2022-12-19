@@ -6,6 +6,7 @@ const testAddress : Address = ['Jandy', 21, 37, 12345, 'Biala Podlaska'];
 const testClient = new Client('Krystyna','Janda','krystyna@janda.pl',1011700, [], testAddress)
 
 export const testOrder = new Order(testClient,[testOrderItem],'pending');
+testOrder.totalPrice = 10;
 
 describe("order tests", () => {
 

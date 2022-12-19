@@ -17,7 +17,6 @@ export default class Order implements IOrder {
     public totalPrice : number;
     constructor(public client: Client, public orderItems: OrderItem[], public status: Status){
         this.id = uuidv4(); 
-        //fixed price for now
-        this.totalPrice = 10;
+        this.totalPrice = 0;
     }
 }
