@@ -1,13 +1,19 @@
-import { typeImplementation } from "@testing-library/user-event/dist/type/typeImplementation";
+import Client, { Address } from "./Client";
 import Order from "./Order"
+import {testOrderItem} from './OrderItem.test';
+
+const testAddress : Address = ['Jandy', 21, 37, 12345, 'Biala Podlaska'];
+const testClient = new Client('Krystyna','Janda','krystyna@janda.pl',1011700, [], testAddress)
+
+export const testOrder = new Order(testClient,[testOrderItem],'pending');
 
 describe("order tests", () => {
 
-    const testOrder = new Order('Pizza Lover',['pizza'],'pending')
+    
     test('new order created',()=>{
-        expect(testOrder.client).toBe('Pizza Lover');
+        expect(typeof testOrder.id).toBe("string");
+        expect(testOrder.client).toEqual(testClient);
         expect(testOrder.orderItems.length).toBe(1);
         expect(testOrder.status).toBe('pending');
-        expect(typeof testOrder.id).toBe("string");
-
+        expect(testOrder.totalPrice).toBeGreaterThan(0);
     })})
