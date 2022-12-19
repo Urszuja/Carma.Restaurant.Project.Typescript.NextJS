@@ -1,6 +1,4 @@
-import { type } from "os";
-
-type MenuItem = {
+export interface IMenuItem {
     id: number,
     name: string,
     prices: number[],

@@ -1,5 +1,5 @@
 {
-    "menuItems": [
+    "menu": [
         {
             "id": 1,
             "name": "margharita",
@@ -81,5 +81,8 @@
             "isVegan": true,
             "isSpicy": true
         }
-    ]
+    ],
+    "order": [{
+        "name": "Ula"
+    }]
 }
