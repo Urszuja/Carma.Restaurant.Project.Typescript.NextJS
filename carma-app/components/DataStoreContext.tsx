@@ -14,7 +14,9 @@ interface DataStoreContextInterface {
 
 type DataStoreProviderProps = { children: React.ReactNode };
 
-const DataStoreContext = createContext<DataStoreContextInterface | null>(null);
+export const DataStoreContext = createContext<DataStoreContextInterface>({} as DataStoreContextInterface);
+
+DataStoreContext.displayName = 'DataStoreContext';
 
 export const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
   const [clientsData, setClientsData] = useState<Client[] | null>(mockClientsDataBase);
@@ -32,10 +34,9 @@ export const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
   );
 
   return 
-    <DataStoreContext.Provider></DataStoreContext.Provider>
+  
+  (<DataStoreContext.Provider value={storeDataWithMemo}>{children}</DataStoreContext.Provider>)
+    
 };
 
 export default DataStoreContext;
-
-// <DataStoreContext.Provider value={storeDataWithMemo}>
-// {children}</DataStoreContext.Provider>;
