@@ -1,13 +1,10 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { DataStoreContext } from "../../components/DataStoreContext";
 
-function CartPage(){
-
-  
-  return (
-    <div>CartPage
-        
-    </div>
-  )
+function CartPage() {
+  const { clientsData } = useContext(DataStoreContext);
+  console.log(clientsData);
+  return <div>CartPage</div>;
 }
 
-export default CartPage
+export default CartPage;

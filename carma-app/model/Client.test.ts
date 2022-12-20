@@ -1,11 +1,9 @@
-import Client, { Address } from "./Client";
-import {testOrder} from "./Order.test";
-
-const testAddress : Address = ['Jandy', 21, 37, 12345, 'Biala Podlaska'];
-
-const testClient = new Client('Krystyna','Janda','krystyna@janda.pl',1011700, [testOrder], testAddress)
+import { testClient, testAddress, testOrder } from "../mockData";
 
 describe("client tests", () => {
+
+    testClient.orderList.push(testOrder);
+    
     test('new order created',()=>{
         expect(typeof testClient.id).toBe("string");
         expect(testClient.firstName).toBe('Krystyna');

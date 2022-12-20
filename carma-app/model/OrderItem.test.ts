@@ -1,6 +1,4 @@
-import OrderItem from "./OrderItem";
-
-export const testOrderItem = new OrderItem('margharita',2,10,2)
+import { testOrderItem } from "../mockData";
 
 describe("order item tests", () => {
 
