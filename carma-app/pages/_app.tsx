@@ -1,8 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import DataStoreProvider from "../components/DataStoreContext";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <div id="carma">
-    <Component {...pageProps} />
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <DataStoreProvider>
+      <div id="carma">
+        <Component {...pageProps} />
+      </div>
+    </DataStoreProvider>
+  );
+};
 
-    </div>}
+export default App;

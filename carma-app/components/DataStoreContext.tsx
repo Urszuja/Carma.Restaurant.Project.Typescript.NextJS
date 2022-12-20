@@ -18,7 +18,9 @@ export const DataStoreContext = createContext<DataStoreContextInterface>({} as D
 
 DataStoreContext.displayName = 'DataStoreContext';
 
-export const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
+const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
+
+
   const [clientsData, setClientsData] = useState<Client[] | null>(mockClientsDataBase);
   const [cart, setCart] = useState<Order | null>(null);
 
@@ -33,10 +35,8 @@ export const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
     [clientsData, cart, setClientsData, setCart],
   );
 
-  return 
-  
-  (<DataStoreContext.Provider value={storeDataWithMemo}>{children}</DataStoreContext.Provider>)
+  return (<DataStoreContext.Provider value={storeDataWithMemo}>{children}</DataStoreContext.Provider>);
     
 };
 
-export default DataStoreContext;
+export default DataStoreProvider;
