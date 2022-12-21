@@ -5,5 +5,8 @@
             "next/babel"    
                     ]    
             }  
-        }
+        },
+"compiler": {
+    "styledComponents": true
+  },
     }
