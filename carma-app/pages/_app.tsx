@@ -2,7 +2,7 @@
 import { ThemeProvider } from "styled-components";
 import type { AppProps } from "next/app";
 import DataStoreProvider from "../components/DataStoreContext";
-import theme from "../styles/theme";
+import { theme } from "../styles/theme";
 import Head from "next/head";
 import Header from "../components/Header";
 import GlobalStyles from "../styles/GlobalStyles";
