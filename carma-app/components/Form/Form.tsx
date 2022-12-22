@@ -1,76 +1,90 @@
 import React from "react";
 import StyledForm from "./Form.styled";
-import type Client from "../../model/Client";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { ErrorMessage } from "@hookform/error-message";
+import { SubmitHandler, useForm } from "react-hook-form";
+import FormInput from "./FormInput";
 
-//to be replaced by client
-// order for client comes from
-type Inputs = {
+interface IFormInputs {
   firstName: string;
-  lastName: string;
   phoneNumber: number;
-};
+}
 
-function Form() {
+export default function Form() {
   const {
     register,
-    handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-    },
+    handleSubmit,
+  } = useForm<IFormInputs>({
+    criteriaMode: "all",
   });
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     console.log(data);
+    alert(JSON.stringify(data));
     //POST CLIENT DATA WITH ORDER
     window.localStorage.clear();
   };
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      {/* First name input*/}
-      <label>Your first name:</label>
-      {errors.firstName && <span>Name is required</span>}
+      <FormInput />
+      {/* first name input */}
+      <label>Your name</label>
       <input
         {...register("firstName", {
-          required: true,
-          pattern: /^[A-Za-z]+$/i,
-          minLength: 2,
-          maxLength: 20,
+          required: "This input is required.",
+          pattern: {
+            value: /^[A-Za-z]+$/i,
+            message: "This input is for name only.",
+          },
+          maxLength: {
+            value: 10,
+            message: "This input exceed maxLength.",
+          },
         })}
+      />
+      <ErrorMessage
+        errors={errors}
+        name="firstName"
+        render={({ messages }) => {
+          console.log("messages", messages);
+          return messages
+            ? Object.entries(messages).map(([type, message]) => (
+                <p key={type}>{message}</p>
+              ))
+            : null;
+        }}
       />
 
-      {/* Last name input */}
-      <label>Your last name:</label>
-      {errors.lastName && <span>Last name is required</span>}
+      {/* first name input */}
+      <label>Your phone number</label>
       <input
-        {...register("lastName", {
-          required: true,
-          pattern: /^[A-Za-z]+$/i,
-          minLength: 2,
-          maxLength: 50,
-        })}
-      />
-      {/* Phone number input */}
-      {/* <label>Your phone:</label>
-      {errors.phoneNumber && <span>Phone number is required</span>}
-      <input
-        defaultValue="phone number"
         {...register("phoneNumber", {
-          required: true,
-          pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+          required: "This input is required.",
+          pattern: {
+            value: /\d+/,
+            message: "This input is number only.",
+          },
+          maxLength: {
+            value: 10,
+            message: "This input exceed maxLength.",
+          },
         })}
-      /> */}
+      />
+      <ErrorMessage
+        errors={errors}
+        name="phoneNumber"
+        render={({ messages }) => {
+          console.log("messages", messages);
+          return messages
+            ? Object.entries(messages).map(([type, message]) => (
+                <p key={type}>{message}</p>
+              ))
+            : null;
+        }}
+      />
 
-      {/* Submit button  */}
-
-      <input id="submitButton" type="submit" />
+      <input type="submit" />
     </StyledForm>
   );
 }
-
-export default Form;
