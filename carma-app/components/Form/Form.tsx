@@ -2,7 +2,7 @@ import React from "react";
 import StyledForm from "./Form.styled";
 import { ErrorMessage } from "@hookform/error-message";
 import { SubmitHandler, useForm } from "react-hook-form";
-import FormInput from "./FormInput";
+import FormInput from "../commons/input/FormInput";
 
 interface IFormInputs {
   firstName: string;
