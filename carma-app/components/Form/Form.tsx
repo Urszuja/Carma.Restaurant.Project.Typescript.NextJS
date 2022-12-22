@@ -27,7 +27,7 @@ export default function Form() {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <FormInput />
+      <FormInput type="string" />
       {/* first name input */}
       <label>Your name</label>
       <input

@@ -1,7 +1,7 @@
 import React from "react";
 
-function FormInput() {
-  return <div>FormInput</div>;
+function FormInput({ type }) {
+  return <div>{type}</div>;
 }
 
 export default FormInput;
