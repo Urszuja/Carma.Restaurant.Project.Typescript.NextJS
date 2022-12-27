@@ -5,7 +5,7 @@ export const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 10px;
   color: ${(props) => props.theme.text};
 
   .linkContainer {
@@ -14,7 +14,9 @@ export const StyledHeader = styled.div`
     padding: 20px 20px;
     gap: 10px;
   }
-
+  #restaurantName {
+    letter-spacing: 5px;
+  }
   .link,
   .logo {
     &:hover {
