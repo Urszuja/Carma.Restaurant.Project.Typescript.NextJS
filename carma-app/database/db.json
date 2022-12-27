@@ -4,7 +4,7 @@
             "id": 1,
             "name": "margharita",
             "prices": [5,10,15],
-            "image": "../public/images/margharita.svg",
+            "image": "/images/margharita.svg",
             "description": "Pizza for poor people. If you're broke or the paycheck is near but not there yet, you may order this one to get a mediocre excuse for a pizza. Delish.",
             "isVegan": true,
             "isSpicy": false
@@ -13,7 +13,7 @@
             "id": 2,
             "name": "salame",
             "prices": [7,12,19],
-            "image": "../public/images/salame.svg",
+            "image": "/images/salame.svg",
             "description": "If you're a carnivore, you might consider this pizza. No vegan BS, just meat for reasonable price.",
             "isVegan": false,
             "isSpicy": true
@@ -22,7 +22,7 @@
             "id": 3,
             "name": "funghi",
             "prices": [6,11,17],
-            "image": "../public/images/funghi.svg",
+            "image": "/images/funghi.svg",
             "description": "If you don't like any particular flavor and crave for pizza as dull as your life, it's an excellent choice. You will regret it, but at least you saved some money.",
             "isVegan": true,
             "isSpicy": false
@@ -31,7 +31,7 @@
             "id": 4,
             "name": "dellaPologna",
             "prices": [3,6,9],
-            "image": "../public/images/dellaPologna.svg",
+            "image": "/images/dellaPologna.svg",
             "description": "This is a pizza, that we recommend for our friends from Poland. Large amounts of onion will make you cry, recalling the homeland of Onion People",
             "isVegan": true,
             "isSpicy": false
@@ -40,7 +40,7 @@
             "id": 5,
             "name": "turco",
             "prices": [10,20,30],
-            "image": "../public/images/turco.svg",
+            "image": "/images/turco.svg",
             "description": "Looks like someone put cat food on it, but is actually quite tasty. Contains meat of unknown origin",
             "isVegan": false,
             "isSpicy": true
@@ -49,7 +49,7 @@
             "id": 6,
             "name": "vegetariana",
             "prices": [6,9,12],
-            "image": "../public/images/vegetariana.svg",
+            "image": "/images/vegetariana.svg",
             "description": "We put it so far in our menu, 'cause we are not entirely proud of it. Our boss made us prepare a pizza for vegans and here it is. ",
             "isVegan": true,
             "isSpicy": false
@@ -58,7 +58,7 @@
             "id": 7,
             "name": "broccoli",
             "prices": [9,12,15],
-            "image": "../public/images/broccoli.svg",
+            "image": "/images/broccoli.svg",
             "description": "Another vegan option containing little magic trees. It is still an unsolved mystery, why would you choose this one, but this is a free country, I guess.",
             "isVegan": true,
             "isSpicy": false
@@ -67,7 +67,7 @@
             "id": 8,
             "name": "spinachi",
             "prices": [20,30,40],
-            "image": "../public/images/spinachi.svg",
+            "image": "/images/spinachi.svg",
             "description": "Only for masochists. We made it expensive, so you wouldn't pick it and had a nice day instead.",
             "isVegan": true,
             "isSpicy": false
@@ -76,7 +76,7 @@
             "id": 9,
             "name": "strano",
             "prices": [3,4,5],
-            "image": "../public/images/strano.svg",
+            "image": "/images/strano.svg",
             "description": "Pizza that our chef prepares out of trash and leftovers, so it's eco. Also cheap, because it's way past its expiration date",
             "isVegan": true,
             "isSpicy": true

@@ -1,12 +1,25 @@
 import React, { useContext } from "react";
 import Link from "next/link";
+import { IMenuItem } from "../../model/MenuItem";
+import MenuItem from "../../components/MenuItem/MenuItem";
 
 function MenuPage({ menuItems }: any) {
   console.log(menuItems);
 
   return (
     <div>
-      <h4>Menu Page</h4>
+      <h4>Order now!</h4>
+      {menuItems.map((menuItem: IMenuItem) => (
+        <MenuItem
+          name={menuItem.name}
+          id={menuItem.id}
+          prices={menuItem.prices}
+          image={menuItem.image}
+          description={menuItem.description}
+          isSpicy={menuItem.isSpicy}
+          isVegan={menuItem.isVegan}
+        />
+      ))}
       <div>
         <p>Go to:</p>
         <ol>
