@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IMenuItem } from "../../model/MenuItem";
 import MenuItem from "../../components/MenuItem/MenuItem";
 import AddToBasketItem from "../../components/AddToBasketItem/AddToBasketItem";
+import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
 
 function MenuPage({ menuItems }: any) {
   console.log(menuItems);
@@ -13,7 +14,7 @@ function MenuPage({ menuItems }: any) {
       {menuItems.map((menuItem: IMenuItem) => {
         return (
           <div>
-            <MenuItem
+            {/* <MenuItem
               name={menuItem.name}
               id={menuItem.id}
               prices={menuItem.prices}
@@ -23,6 +24,15 @@ function MenuPage({ menuItems }: any) {
               isVegan={menuItem.isVegan}
             />
             <AddToBasketItem
+              name={menuItem.name}
+              id={menuItem.id}
+              prices={menuItem.prices}
+              image={menuItem.image}
+              description={menuItem.description}
+              isSpicy={menuItem.isSpicy}
+              isVegan={menuItem.isVegan}
+            /> */}
+            <MiniMenuItem
               name={menuItem.name}
               id={menuItem.id}
               prices={menuItem.prices}

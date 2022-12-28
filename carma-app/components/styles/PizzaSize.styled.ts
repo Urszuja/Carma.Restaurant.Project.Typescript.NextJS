@@ -6,6 +6,7 @@ export const StyledPizzaSize = styled.li`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 5px;
+  gap: 30px;
   .size {
     display: flex;
     align-items: center;
