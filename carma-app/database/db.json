@@ -2,7 +2,7 @@
     "menu": [
         {
             "id": 1,
-            "name": "margharita",
+            "name": "Margharita",
             "prices": [5,10,15],
             "image": "/images/margharita.svg",
             "description": "Pizza for poor people. If you're broke or the paycheck is near but not there yet, you may order this one to get a mediocre excuse for a pizza. Delish.",
@@ -11,7 +11,7 @@
         },
         {
             "id": 2,
-            "name": "salame",
+            "name": "Salame",
             "prices": [7,12,19],
             "image": "/images/salame.svg",
             "description": "If you're a carnivore, you might consider this pizza. No vegan BS, just meat for reasonable price.",
@@ -20,7 +20,7 @@
         },
         {
             "id": 3,
-            "name": "funghi",
+            "name": "Funghi",
             "prices": [6,11,17],
             "image": "/images/funghi.svg",
             "description": "If you don't like any particular flavor and crave for pizza as dull as your life, it's an excellent choice. You will regret it, but at least you saved some money.",
@@ -29,16 +29,16 @@
         },
         {
             "id": 4,
-            "name": "dellaPologna",
+            "name": "della Pologna",
             "prices": [3,6,9],
             "image": "/images/dellaPologna.svg",
             "description": "This is a pizza, that we recommend for our friends from Poland. Large amounts of onion will make you cry, recalling the homeland of Onion People",
-            "isVegan": true,
+            "isVegan": false,
             "isSpicy": false
         },
         {
             "id": 5,
-            "name": "turco",
+            "name": "Turco",
             "prices": [10,20,30],
             "image": "/images/turco.svg",
             "description": "Looks like someone put cat food on it, but is actually quite tasty. Contains meat of unknown origin",
@@ -47,7 +47,7 @@
         },
         {
             "id": 6,
-            "name": "vegetariana",
+            "name": "Vegetariana",
             "prices": [6,9,12],
             "image": "/images/vegetariana.svg",
             "description": "We put it so far in our menu, 'cause we are not entirely proud of it. Our boss made us prepare a pizza for vegans and here it is. ",
@@ -56,7 +56,7 @@
         },
         {
             "id": 7,
-            "name": "broccoli",
+            "name": "Broccoli",
             "prices": [9,12,15],
             "image": "/images/broccoli.svg",
             "description": "Another vegan option containing little magic trees. It is still an unsolved mystery, why would you choose this one, but this is a free country, I guess.",
@@ -65,7 +65,7 @@
         },
         {
             "id": 8,
-            "name": "spinachi",
+            "name": "Spinachi",
             "prices": [20,30,40],
             "image": "/images/spinachi.svg",
             "description": "Only for masochists. We made it expensive, so you wouldn't pick it and had a nice day instead.",
@@ -74,11 +74,11 @@
         },
         {
             "id": 9,
-            "name": "strano",
+            "name": "Strano",
             "prices": [3,4,5],
             "image": "/images/strano.svg",
             "description": "Pizza that our chef prepares out of trash and leftovers, so it's eco. Also cheap, because it's way past its expiration date",
-            "isVegan": true,
+            "isVegan": false,
             "isSpicy": true
         }
     ],
