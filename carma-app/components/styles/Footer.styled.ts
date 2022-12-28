@@ -8,6 +8,15 @@ export const StyledFooter = styled.div`
   padding: 10px 10px;
   color: ${(props) => props.theme.text};
 
+  p,
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+  h4 {
+    margin-bottom: 10px;
+  }
+
   .column {
     display: flex;
     flex-direction: column;
@@ -20,7 +29,7 @@ export const StyledFooter = styled.div`
       display: flex;
       gap: 10px;
       align-items: center;
-      margin: 0;
+      margin-bottom: 10px;
     }
   }
 
