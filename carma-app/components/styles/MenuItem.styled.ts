@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledMenuItem = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 400px;
   height: 250px;
   border: 2px solid ${(props) => props.theme.main};
   border-radius: 5px;
@@ -25,5 +25,11 @@ export const StyledMenuItem = styled.div`
 
   .description {
     font-size: 70%;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
   }
 `;

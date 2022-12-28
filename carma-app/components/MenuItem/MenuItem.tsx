@@ -36,9 +36,9 @@ function MenuItem({
       <div className="sizes">
         <Image src={image} alt={name} width={100} height={100} />
         <ul>
-          <li>S: ${prices[0]} $ </li>
-          <li>M: ${prices[0]} $ </li>
-          <li>L: ${prices[0]} $ </li>
+          <li>small (32cm): {prices[0]} $ </li>
+          <li>medium (40cm): {prices[1]} $ </li>
+          <li>large (50cm): {prices[2]} $ </li>
         </ul>
       </div>
       <div className="description">
