@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { IMenuItem } from "../../model/MenuItem";
 import MenuItem from "../../components/MenuItem/MenuItem";
+import AddToBasketItem from "../../components/AddToBasketItem/AddToBasketItem";
 
 function MenuPage({ menuItems }: any) {
   console.log(menuItems);
@@ -9,17 +10,30 @@ function MenuPage({ menuItems }: any) {
   return (
     <div>
       <h4>Order now!</h4>
-      {menuItems.map((menuItem: IMenuItem) => (
-        <MenuItem
-          name={menuItem.name}
-          id={menuItem.id}
-          prices={menuItem.prices}
-          image={menuItem.image}
-          description={menuItem.description}
-          isSpicy={menuItem.isSpicy}
-          isVegan={menuItem.isVegan}
-        />
-      ))}
+      {menuItems.map((menuItem: IMenuItem) => {
+        return (
+          <div>
+            <MenuItem
+              name={menuItem.name}
+              id={menuItem.id}
+              prices={menuItem.prices}
+              image={menuItem.image}
+              description={menuItem.description}
+              isSpicy={menuItem.isSpicy}
+              isVegan={menuItem.isVegan}
+            />
+            <AddToBasketItem
+              name={menuItem.name}
+              id={menuItem.id}
+              prices={menuItem.prices}
+              image={menuItem.image}
+              description={menuItem.description}
+              isSpicy={menuItem.isSpicy}
+              isVegan={menuItem.isVegan}
+            />
+          </div>
+        );
+      })}
       <div>
         <p>Go to:</p>
         <ol>

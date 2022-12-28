@@ -15,7 +15,7 @@ function PizzaSize({ hasCheckbox, size, price }: IPizzaSize) {
   return (
     <StyledPizzaSize>
       <div className="size">
-        {hasCheckbox && <input type="checkbox" />}
+        {hasCheckbox && <input type="radio" />}
         <Image
           src="/FontAwesomeIcons/pizza-slice.svg"
           alt={size}

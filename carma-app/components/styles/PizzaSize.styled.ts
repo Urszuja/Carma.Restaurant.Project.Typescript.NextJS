@@ -17,4 +17,8 @@ export const StyledPizzaSize = styled.li`
     margin: 0;
     padding: 3px;
   }
+
+  input {
+    background-color: ${(props) => props.theme.background};
+  }
 `;
