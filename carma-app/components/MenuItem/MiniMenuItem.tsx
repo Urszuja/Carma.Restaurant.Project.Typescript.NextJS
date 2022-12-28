@@ -2,7 +2,6 @@ import React from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledMiniMenuItem } from "../styles/MiniMenuItem.styled";
-import PizzaSize from "./PizzaSize";
 
 function MiniMenuItem({
   id,
