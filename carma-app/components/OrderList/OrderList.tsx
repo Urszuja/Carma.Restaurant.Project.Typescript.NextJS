@@ -28,7 +28,11 @@ function OrderList() {
         {orders &&
           orders.map((o) => (
             <li className="order">
-              {o.name} - {o.size} - {o.quantity} - {o.quantity * o.price}
+              <p>{o.name}</p>
+              <p>
+                {o.size} x{o.quantity}
+              </p>
+              <p>{o.quantity * o.price}$</p>
             </li>
           ))}
       </ul>

@@ -20,11 +20,17 @@ export const StyledOrderList = styled.div`
     li {
       margin: 0;
       padding: 0;
+      display: flex;
+      justify-content: space-between;
     }
   }
   .total {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  hr {
+    border-top: 3px solid #bbb;
   }
 `;
