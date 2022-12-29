@@ -1,5 +1,5 @@
 import React from "react";
-import StyledForm from "./Form.styled";
+import StyledForm from "../styles/Form.styled";
 import { ErrorMessage } from "@hookform/error-message";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
@@ -23,39 +23,13 @@ export default function Form() {
     alert(JSON.stringify(data));
     //POST CLIENT DATA WITH ORDER
     window.localStorage.clear();
+
+    console.log(typeof errors);
+    console.log(typeof register);
   };
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      <FormInput type="string" />
-      {/* first name input */}
-      <label>Your name</label>
-      <input
-        {...register("firstName", {
-          required: "This input is required.",
-          pattern: {
-            value: /^[A-Za-z]+$/i,
-            message: "This input is for name only.",
-          },
-          maxLength: {
-            value: 10,
-            message: "This input exceed maxLength.",
-          },
-        })}
-      />
-      <ErrorMessage
-        errors={errors}
-        name="firstName"
-        render={({ messages }) => {
-          console.log("messages", messages);
-          return messages
-            ? Object.entries(messages).map(([type, message]) => (
-                <p key={type}>{message}</p>
-              ))
-            : null;
-        }}
-      />
-
       {/* first name input */}
       <label>Your phone number</label>
       <input
