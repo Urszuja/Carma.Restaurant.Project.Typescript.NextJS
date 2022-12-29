@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 
+export type Sizes = "S" | "M" | "L";
 export interface IOrderItem {
   id: string;
   name: string;
-  size: number;
+  size: Sizes;
   price: number;
   quantity: number;
 }
@@ -13,7 +14,7 @@ export default class OrderItem implements IOrderItem {
 
   constructor(
     public name: string,
-    public size: number,
+    public size: Sizes,
     public price: number,
     public quantity: number
   ) {
