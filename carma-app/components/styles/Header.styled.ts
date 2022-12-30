@@ -13,6 +13,7 @@ export const StyledHeader = styled.div`
     justify-content: space-around;
     padding: 20px 20px;
     gap: 10px;
+    width: 200px;
   }
 
   .link,
@@ -20,5 +21,9 @@ export const StyledHeader = styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .logo {
+    width: 200px;
   }
 `;

@@ -31,6 +31,9 @@ export const StyledOrderList = styled.div`
   }
 
   hr {
-    border-top: 3px solid #bbb;
+    background-color: ${(props) => props.theme.text};
+    size: 10px;
+    width: 80%;
+    border: 1px solid ${(props) => props.theme.text};
   }
 `;

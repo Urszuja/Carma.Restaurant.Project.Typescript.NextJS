@@ -15,31 +15,37 @@ function OrderList() {
 
   return (
     <StyledOrderList>
-      <div className="title">
-        <Image
-          src="/FontAwesomeIcons/shopping-cart.svg"
-          alt="cart"
-          width={25}
-          height={25}
-        />
-        <h4>Your Order:</h4>
-      </div>
-      <ul className="orders">
-        {orders &&
-          orders.map((o) => (
-            <li className="order">
-              <p>{o.name}</p>
-              <p>
-                {o.size} x{o.quantity}
-              </p>
-              <p>{o.quantity * o.price}$</p>
-            </li>
-          ))}
-      </ul>
-      <hr />
-      <div className="total">
-        <p>Total:</p>
-        <p>{totalPrice} $</p>
+      <div>
+        <div className="title">
+          <Image
+            src="/FontAwesomeIcons/shopping-cart.svg"
+            alt="cart"
+            width={25}
+            height={25}
+          />
+          <h4>Your Order:</h4>
+        </div>
+        <ul className="orders">
+          {orders &&
+            orders.map((o) => (
+              <li className="order">
+                <p>{o.name}</p>
+                <p>
+                  {o.size} x{o.quantity}
+                </p>
+                <p>{o.quantity * o.price}$</p>
+              </li>
+            ))}
+        </ul>
+        <div className="delivery">
+          <p>Delivery</p>
+          <p>{deliveryCost} $</p>
+        </div>
+        <hr />
+        <div className="total">
+          <p>Total:</p>
+          <p>{totalPrice} $</p>
+        </div>
       </div>
     </StyledOrderList>
   );
