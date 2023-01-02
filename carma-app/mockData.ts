@@ -19,6 +19,8 @@ export const testOrder = new Order(
   [testOrderItem, testOrderItem2],
   "pending"
 );
-export const mockOrders = [testOrder];
+export const testOrder2 = new Order(testClient, [testOrderItem], "delivered");
+
+export const mockOrders = [testOrder, testOrder2];
 export const mockClientsDataBase = [testClient];
 export const deliveryCost = 9;

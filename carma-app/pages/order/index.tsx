@@ -1,21 +1,27 @@
 import React, { useContext } from "react";
 import { DataStoreContext } from "../../components/DataStoreContext";
 import OrderItem from "../../components/OrderItem/OrderItem";
+import OrderList from "../../components/Order/Order";
 import { testOrder } from "../../mockData";
 
 function CartPage({ menuItems }: any) {
   const { clientsData } = useContext(DataStoreContext);
   return (
     <div>
-      {testOrder.orderItems.map((item) => (
-        <OrderItem
-          id={item.id}
-          name={item.name}
-          price={item.price}
-          size={item.size}
-          quantity={item.quantity}
-        />
-      ))}
+      <div>
+        {testOrder.orderItems.map((item) => (
+          <OrderItem
+            id={item.id}
+            name={item.name}
+            price={item.price}
+            size={item.size}
+            quantity={item.quantity}
+          />
+        ))}
+      </div>
+      <div>
+        <OrderList />
+      </div>
     </div>
   );
 }
