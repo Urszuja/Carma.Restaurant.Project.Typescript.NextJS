@@ -34,7 +34,7 @@ function FormInput({ name, control, rules, errors, label }: IFormInput) {
 
       <ErrorMessage
         errors={errors}
-        name="firstName"
+        name={name}
         render={({ messages }) => {
           console.log("messages", messages);
           return messages
