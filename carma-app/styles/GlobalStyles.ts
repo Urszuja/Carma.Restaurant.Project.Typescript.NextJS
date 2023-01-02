@@ -4,8 +4,13 @@ const GlobalStyles = createGlobalStyle`html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  height: 100vh;
+  font-family: 'Jockey One', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -16,6 +21,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   html {
