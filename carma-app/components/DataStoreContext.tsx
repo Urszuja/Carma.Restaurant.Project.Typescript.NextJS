@@ -1,9 +1,8 @@
-import { createContext, useMemo, useState } from 'react';
-import { mockClientsDataBase } from '../mockData';
+import { createContext, useMemo, useState } from "react";
+import { mockClientsDataBase } from "../mockData";
 
-import type Client from '../model/Client';
-import type Order from '../model/Order';
-
+import type Client from "../model/Client";
+import type Order from "../model/Order";
 
 interface DataStoreContextInterface {
   clientsData: Client[] | null;
@@ -14,14 +13,18 @@ interface DataStoreContextInterface {
 
 type DataStoreProviderProps = { children: React.ReactNode };
 
-export const DataStoreContext = createContext<DataStoreContextInterface>({} as DataStoreContextInterface);
+export const DataStoreContext = createContext<DataStoreContextInterface>(
+  {} as DataStoreContextInterface
+);
 
-DataStoreContext.displayName = 'DataStoreContext';
+DataStoreContext.displayName = "DataStoreContext";
 
 const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
+  //check local storage
 
-
-  const [clientsData, setClientsData] = useState<Client[] | null>(mockClientsDataBase);
+  const [clientsData, setClientsData] = useState<Client[] | null>(
+    mockClientsDataBase
+  );
   const [cart, setCart] = useState<Order | null>(null);
 
   const storeDataWithMemo = useMemo(
@@ -29,14 +32,16 @@ const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
       clientsData,
       cart,
       setClientsData,
-      setCart
-
+      setCart,
     }),
-    [clientsData, cart, setClientsData, setCart],
+    [clientsData, cart, setClientsData, setCart]
   );
 
-  return (<DataStoreContext.Provider value={storeDataWithMemo}>{children}</DataStoreContext.Provider>);
-    
+  return (
+    <DataStoreContext.Provider value={storeDataWithMemo}>
+      {children}
+    </DataStoreContext.Provider>
+  );
 };
 
 export default DataStoreProvider;

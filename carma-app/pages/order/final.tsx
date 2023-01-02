@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Form from "../../components/Form/Form";
 
 function PlaceOrderPage() {
   return (
-    <div>Place Your Order</div>
-  )
+    <div>
+      <Form />
+    </div>
+  );
 }
 
-export default PlaceOrderPage
+export default PlaceOrderPage;
