@@ -4,13 +4,15 @@ const GlobalStyles = createGlobalStyle`html,
 body {
   padding: 0;
   margin: 0;
-  height: 100vh;
   font-family: 'Jockey One', sans-serif;
+  position: relative;
+  min-height: 100vh;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  
 }
 
 a {

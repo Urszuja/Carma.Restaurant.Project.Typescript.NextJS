@@ -14,7 +14,7 @@ function MenuPage({ menuItems }: any) {
       {menuItems.map((menuItem: IMenuItem) => {
         return (
           <div>
-            {/* <MenuItem
+            <MenuItem
               name={menuItem.name}
               id={menuItem.id}
               prices={menuItem.prices}
@@ -31,7 +31,7 @@ function MenuPage({ menuItems }: any) {
               description={menuItem.description}
               isSpicy={menuItem.isSpicy}
               isVegan={menuItem.isVegan}
-            /> */}
+            />
             <MiniMenuItem
               name={menuItem.name}
               id={menuItem.id}
