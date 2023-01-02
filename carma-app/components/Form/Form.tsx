@@ -14,6 +14,7 @@ export default function Form() {
     register,
     formState: { errors },
     handleSubmit,
+    control,
   } = useForm<IFormInputs>({
     criteriaMode: "all",
   });
@@ -30,35 +31,24 @@ export default function Form() {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
-      {/* first name input */}
-      <label>Your phone number</label>
-      <input
-        {...register("phoneNumber", {
+      <FormInput
+        control={control}
+        name="firstName"
+        label="first name"
+        errors={errors}
+        rules={{
           required: "This input is required.",
           pattern: {
-            value: /\d+/,
-            message: "This input is number only.",
+            value: /^[A-Za-z]+$/i,
+            message: "This input is for name only.",
           },
           maxLength: {
             value: 10,
             message: "This input exceed maxLength.",
           },
-        })}
-      />
-      <ErrorMessage
-        errors={errors}
-        name="phoneNumber"
-        render={({ messages }) => {
-          console.log("messages", messages);
-          return messages
-            ? Object.entries(messages).map(([type, message]) => (
-                <p key={type}>{message}</p>
-              ))
-            : null;
         }}
       />
-
-      <input type="submit" />
+      <button type="submit">Submit</button>
     </StyledForm>
   );
 }

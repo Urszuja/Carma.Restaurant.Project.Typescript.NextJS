@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledFormInput = styled.input`
+const StyledFormInput = styled.div`
   background-color: lightcoral;
 `;
 

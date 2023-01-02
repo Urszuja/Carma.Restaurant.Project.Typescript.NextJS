@@ -1,34 +1,37 @@
 import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import StyledFormInput from "../../styles/FormInput.styled";
+import { Controller } from "react-hook-form";
 
 export interface IFormInput {
   name: string;
-  register: any;
+  control: any;
   errors: any;
+  label: string;
+  rules?: {};
 }
 
-function FormInput({ name, register, errors }: IFormInput) {
+function FormInput({ name, control, rules, errors, label }: IFormInput) {
   let pattern: RegExp;
 
   return (
-    <div>
-      <StyledFormInput type="text" />
+    <StyledFormInput>
       {/* first name input */}
-      <label>Your {name}</label>
-      <input
-        {...register("firstName", {
-          required: "This input is required.",
-          pattern: {
-            value: /^[A-Za-z]+$/i,
-            message: "This input is for name only.",
-          },
-          maxLength: {
-            value: 10,
-            message: "This input exceed maxLength.",
-          },
-        })}
+
+      <label>Your {label}</label>
+      <Controller
+        control={control}
+        name={name}
+        rules={rules ?? {}}
+        render={({ field }) => (
+          <input
+            value={field.value}
+            onChange={field.onChange}
+            onBlur={field.onBlur}
+          />
+        )}
       />
+
       <ErrorMessage
         errors={errors}
         name="firstName"
@@ -41,7 +44,7 @@ function FormInput({ name, register, errors }: IFormInput) {
             : null;
         }}
       />
-    </div>
+    </StyledFormInput>
   );
 }
 
