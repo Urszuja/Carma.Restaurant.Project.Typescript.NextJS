@@ -52,7 +52,7 @@ function Footer() {
           src="/LogoWithName.svg"
           alt="Carma Logo"
           width={120}
-          height={60}
+          height={30}
         />
         <div className="linkContainer">
           <div className="link">
