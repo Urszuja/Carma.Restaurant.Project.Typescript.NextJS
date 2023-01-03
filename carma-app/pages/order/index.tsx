@@ -3,6 +3,7 @@ import { DataStoreContext } from "../../components/DataStoreContext";
 import OrderItem from "../../components/OrderItem/OrderItem";
 import Order from "../../components/Order/Order";
 import { testOrder } from "../../mockData";
+import Button from "../../components/commons/button/Button";
 
 function CartPage({ menuItems }: any) {
   const { clientsData } = useContext(DataStoreContext);
@@ -19,8 +20,9 @@ function CartPage({ menuItems }: any) {
           />
         ))}
       </div>
-      <div>
+      <div className="order-display">
         <Order />
+        <Button type="button" text="Confirm" />
       </div>
     </div>
   );

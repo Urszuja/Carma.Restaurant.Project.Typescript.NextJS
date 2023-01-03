@@ -35,6 +35,16 @@ a {
     justify-content: flex-start;
     gap: 5px;
   }
+
+  .order-display {
+     display: flex;
+    width: 40%;
+    margin: 0 5%;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 50px;
+    align-items: center;
+  }
 }
 
 
