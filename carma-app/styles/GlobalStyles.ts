@@ -51,6 +51,46 @@ a {
   }
 }
 
+.home-page {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  img {
+    filter: invert(100%);
+  }
+  h4 {
+    letter-spacing: 2px;
+  } 
+
+ 
+}
+
+.menu-page, .profile-page {
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .filters {
+    align-self: base-line;
+  }
+  .menu {
+    display: flex;
+    flex-flow: wrap;
+    width: 50%; 
+  }
+}
+
+ .restaurant-description {
+    text-align: center;
+    width: 50%;
+    min-width: 200px;
+    margin: 10px 0;
+  }
 
 @media (prefers-color-scheme: dark) {
   html {

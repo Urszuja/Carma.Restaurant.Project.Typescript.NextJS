@@ -6,7 +6,8 @@ export const StyledMiniMenuItem = styled.div`
   width: 210px;
   border: 2px solid ${(props) => props.theme.main};
   border-radius: 5px;
-  padding: 10px 10px;
+  padding: 10px;
+  margin: 5px;
 
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
