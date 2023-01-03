@@ -8,6 +8,8 @@ export const StyledHeader = styled.div`
   padding: 0 10px;
   color: ${(props) => props.theme.text};
   width: 100%;
+  top: 0;
+  position: fixed;
 
   .linkContainer {
     display: flex;

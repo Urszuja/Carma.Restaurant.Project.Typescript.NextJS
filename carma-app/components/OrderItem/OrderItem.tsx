@@ -4,17 +4,15 @@ import Image from "next/image";
 import { StyledOrderItem } from "../styles/OrderItem.styled";
 import { IOrderItem } from "../../model/OrderItem";
 
-function OrderItem({ id, name, size, price, quantity }: IOrderItem) {
-  const sizeString = size === 0 ? "S" : size === 1 ? "M" : "L";
+function OrderItem({ id, name, size, price, quantity, menu }: IOrderItem) {
+  const altSrc = "/FontAwesomeIcons/pizza-slice.svg";
+  const imageSrc =
+    menu?.find((item) => item.name.toLowerCase() === name)?.image ?? altSrc;
+
   return (
-    <StyledOrderItem>
+    <StyledOrderItem id={id}>
       <div className="upper">
-        <Image
-          src="/FontAwesomeIcons/pizza-slice.svg"
-          alt={name}
-          width={150}
-          height={150}
-        />
+        <Image src={imageSrc} alt={name} width={150} height={150} />
         <div className="middle">
           <Image
             src="/FontAwesomeIcons/trash-alt.svg"
@@ -42,7 +40,7 @@ function OrderItem({ id, name, size, price, quantity }: IOrderItem) {
       <div className="lower">
         <div className="name">
           <h4>{name}</h4>
-          <h4>{sizeString}</h4>
+          <h4>{size}</h4>
         </div>
         <p>{price * quantity} $</p>
       </div>

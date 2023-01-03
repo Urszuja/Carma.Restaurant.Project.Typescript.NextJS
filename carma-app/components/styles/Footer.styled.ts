@@ -8,11 +8,7 @@ export const StyledFooter = styled.div`
   padding: 10px 10px;
   color: ${(props) => props.theme.text};
   width: 100%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
   height: 200px;
-
   p,
   h4 {
     margin: 0;

@@ -7,6 +7,10 @@ body {
   font-family: 'Jockey One', sans-serif;
   position: relative;
   min-height: 100vh;
+
+  .content {
+    padding-top: 90px;
+  }
 }
 
 body {

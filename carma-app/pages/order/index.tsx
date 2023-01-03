@@ -17,6 +17,7 @@ function CartPage({ menuItems }: any) {
             price={item.price}
             size={item.size}
             quantity={item.quantity}
+            menu={menuItems}
           />
         ))}
       </div>
