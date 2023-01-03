@@ -24,6 +24,11 @@ a {
   box-sizing: border-box;
 }
 
+.cart-page {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+}
 
 
 @media (prefers-color-scheme: dark) {

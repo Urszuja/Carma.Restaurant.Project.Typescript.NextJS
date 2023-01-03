@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
+  margin: 20px 0;
 
   .inputs {
     display: flex;
@@ -26,7 +27,8 @@ const StyledForm = styled.form`
     width: 40%;
     margin: 0 5%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 50px;
     align-items: center;
 
     button {

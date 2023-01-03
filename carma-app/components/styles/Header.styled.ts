@@ -7,6 +7,7 @@ export const StyledHeader = styled.div`
   align-items: center;
   padding: 0 10px;
   color: ${(props) => props.theme.text};
+  width: 100%;
 
   .linkContainer {
     display: flex;

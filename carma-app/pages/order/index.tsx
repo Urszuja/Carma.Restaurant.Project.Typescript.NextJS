@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { DataStoreContext } from "../../components/DataStoreContext";
 import OrderItem from "../../components/OrderItem/OrderItem";
-import OrderList from "../../components/Order/Order";
+import Order from "../../components/Order/Order";
 import { testOrder } from "../../mockData";
 
 function CartPage({ menuItems }: any) {
   const { clientsData } = useContext(DataStoreContext);
   return (
-    <div>
+    <div className="cart-page">
       <div>
         {testOrder.orderItems.map((item) => (
           <OrderItem
@@ -20,7 +20,7 @@ function CartPage({ menuItems }: any) {
         ))}
       </div>
       <div>
-        <OrderList />
+        <Order />
       </div>
     </div>
   );

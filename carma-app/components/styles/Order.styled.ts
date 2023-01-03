@@ -6,25 +6,37 @@ export const StyledOrder = styled.div`
   width: 20%;
   background-color: ${(props) => props.theme.main};
   color: ${(props) => props.theme.text};
+  min-width: 300px;
+  max-height: 400px;
   padding: 5px;
+
   .title {
     display: flex;
     justify-content: flex-start;
     gap: 10px;
     align-items: center;
-  }
-  ul {
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    li {
+    margin: 5px 0 10px 0;
+
+    h4 {
       margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
     }
   }
-  .total {
+
+  .order-items {
+    display: flex;
+    justify-content: space-between;
+
+    .column div {
+      margin: 10px 0;
+    }
+
+    .size-quantity,
+    .price {
+      text-align: end;
+    }
+  }
+  .total,
+  .delivery {
     display: flex;
     align-items: center;
     justify-content: space-between;

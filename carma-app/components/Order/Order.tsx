@@ -11,7 +11,6 @@ function Order() {
     (acc, order) => acc + order.price * order.quantity,
     deliveryCost
   );
-  console.log(totalPrice);
 
   return (
     <StyledOrder>
@@ -25,18 +24,22 @@ function Order() {
           />
           <h4>Your Order:</h4>
         </div>
-        <ul className="orders">
-          {orders &&
-            orders.map((o) => (
-              <li className="order">
-                <p>{o.name}</p>
-                <p>
-                  {o.size} x{o.quantity}
-                </p>
-                <p>{o.quantity * o.price}$</p>
-              </li>
-            ))}
-        </ul>
+        <div className="order-items">
+          <div className="column order-name">
+            {orders && orders.map((o) => <div>{o.name}</div>)}
+          </div>
+          <div className="column size-quantity">
+            {orders &&
+              orders.map((o) => (
+                <div>
+                  {o.size} x {o.quantity}
+                </div>
+              ))}
+          </div>
+          <div className="column price">
+            {orders && orders.map((o) => <div>{o.price * o.quantity}$</div>)}
+          </div>
+        </div>
         <div className="delivery">
           <p>Delivery</p>
           <p>{deliveryCost} $</p>

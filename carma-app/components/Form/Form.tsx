@@ -1,8 +1,8 @@
 import React from "react";
 import StyledForm from "../styles/Form.styled";
-import { ErrorMessage } from "@hookform/error-message";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
+import Order from "../Order/Order";
 
 interface IFormInputs {
   firstName: string;
@@ -216,7 +216,7 @@ export default function Form() {
         />
       </div>
       <div className="order">
-        <div>Here goes Order List</div>
+        <Order />
         <button type="submit">Submit</button>
       </div>
     </StyledForm>
