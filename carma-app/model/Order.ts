@@ -10,6 +10,7 @@ interface IOrder {
   orderItems: OrderItem[];
   totalPrice: number;
   status: Status;
+  timeStamp: string;
 
   addOrderItem: (orderItem: OrderItem) => void;
 
@@ -19,6 +20,7 @@ interface IOrder {
 export default class Order implements IOrder {
   public id: string;
   public totalPrice: number;
+  public timeStamp: string;
   constructor(
     public client: Client,
     public orderItems: OrderItem[],
@@ -26,6 +28,7 @@ export default class Order implements IOrder {
   ) {
     this.id = uuidv4();
     this.totalPrice = 0;
+    this.timeStamp = new Date().toJSON().slice(0, 10);
   }
 
   addOrderItem(orderItem: OrderItem): void {

@@ -2,19 +2,24 @@ import styled from "styled-components";
 
 export const StyledOrderList = styled.div`
   color: black;
-
-  .order {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  .label {
+    background-color: yellow;
     display: flex;
-    background-color: white;
     justify-content: space-between;
-    &:nth-child(2n) {
-      background-color: yellow;
-    }
+    padding: 0 15px;
+  }
+  .list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
 
-    .order-items {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
+    .time-stamp {
+      div:nth-child(2n) {
+        background-color: gray;
+      }
     }
   }
 `;
