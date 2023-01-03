@@ -7,12 +7,17 @@ export const StyledHeader = styled.div`
   align-items: center;
   padding: 0 10px;
   color: ${(props) => props.theme.text};
+  width: 100%;
+  height: 90px;
+  top: 0;
+  position: fixed;
 
   .linkContainer {
     display: flex;
     justify-content: space-around;
     padding: 20px 20px;
     gap: 10px;
+    width: 200px;
   }
   #restaurantName {
     letter-spacing: 5px;
@@ -22,5 +27,9 @@ export const StyledHeader = styled.div`
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .logo {
+    width: 200px;
   }
 `;

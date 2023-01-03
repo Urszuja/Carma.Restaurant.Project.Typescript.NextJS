@@ -1,5 +1,5 @@
 import { createContext, useMemo, useState } from "react";
-import { mockClientsDataBase } from "../mockData";
+import { mockClientsDataBase, testOrder } from "../mockData";
 
 import type Client from "../model/Client";
 import type Order from "../model/Order";
@@ -20,12 +20,10 @@ export const DataStoreContext = createContext<DataStoreContextInterface>(
 DataStoreContext.displayName = "DataStoreContext";
 
 const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
-  //check local storage
-
   const [clientsData, setClientsData] = useState<Client[] | null>(
     mockClientsDataBase
   );
-  const [cart, setCart] = useState<Order | null>(null);
+  const [cart, setCart] = useState<Order | null>(testOrder);
 
   const storeDataWithMemo = useMemo(
     () => ({

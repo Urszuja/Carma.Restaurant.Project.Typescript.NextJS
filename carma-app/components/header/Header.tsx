@@ -8,7 +8,6 @@ import { RESTAURANT_DETAILS } from "../../constants/texts";
 
 function Header() {
   const theme = useContext(ThemeContext);
-  console.log(theme);
   const restaurantName = RESTAURANT_DETAILS.NAME.toUpperCase();
   return (
     <StyledHeader>

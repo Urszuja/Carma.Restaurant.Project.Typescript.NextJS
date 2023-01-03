@@ -3,6 +3,7 @@ import styled from "styled-components";
 const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
+  margin: 20px 0;
 
   .inputs {
     display: flex;
@@ -26,21 +27,9 @@ const StyledForm = styled.form`
     width: 40%;
     margin: 0 5%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 50px;
     align-items: center;
-
-    button {
-      background-color: ${(props) => props.theme.danger};
-      border: none;
-      padding: 5px;
-      width: 100px;
-      text-align: center;
-    }
-
-    button:hover {
-      transform: scale(1.1);
-      transition: transform 0.2s;
-    }
   }
 `;
 

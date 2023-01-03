@@ -42,61 +42,53 @@ function Footer() {
           className="trip-advisor"
           src="/TravelersChoice.svg"
           alt="Travelers Choice Logo"
-          width={150}
-          height={150}
+          width={130}
+          height={130}
         />
-        <div>{DEVELOPER_INFO}</div>
       </div>
       <div className="column right">
-        <Image
-          src="/LogoWithName.svg"
-          alt="Carma Logo"
-          width={120}
-          height={30}
-        />
-        <div className="linkContainer">
-          <div className="link">
-            <Link href="/about">About</Link>
-          </div>
-          <div className="link">
-            <Link href="/menu">Menu</Link>
-          </div>
-          <div className="link">
-            <Link href="/order">Cart</Link>
-          </div>
-        </div>
-        <div className="social-media">
-          <div className="link">
-            <Link href="https://www.facebook.com">
-              <Image
-                src="/FontAwesomeIcons/facebook.svg"
-                alt="Facebook Logo"
-                width={25}
-                height={25}
-              />
-            </Link>
-          </div>
-          <div className="link">
-            <Link href="https://www.instagram.com">
-              <Image
-                src="/FontAwesomeIcons/instagram.svg"
-                alt="Instagram Logo"
-                width={25}
-                height={25}
-              />
-            </Link>
-          </div>
-          <div className="link">
-            <Link href="https://www.twitter.com">
-              <Image
-                src="/FontAwesomeIcons/twitter.svg"
-                alt="Twitter Logo"
-                width={25}
-                height={25}
-              />
-            </Link>
+        <div className="info">
+          <Image
+            src="/LogoWithName.svg"
+            alt="Carma Logo"
+            width={120}
+            height={30}
+          />
+          <p>In Carma we trust.</p>
+          <div className="social-media">
+            <div className="link">
+              <Link href="https://www.facebook.com">
+                <Image
+                  src="/FontAwesomeIcons/facebook.svg"
+                  alt="Facebook Logo"
+                  width={25}
+                  height={25}
+                />
+              </Link>
+            </div>
+            <div className="link">
+              <Link href="https://www.instagram.com">
+                <Image
+                  src="/FontAwesomeIcons/instagram.svg"
+                  alt="Instagram Logo"
+                  width={25}
+                  height={25}
+                />
+              </Link>
+            </div>
+            <div className="link">
+              <Link href="https://www.twitter.com">
+                <Image
+                  src="/FontAwesomeIcons/twitter.svg"
+                  alt="Twitter Logo"
+                  width={25}
+                  height={25}
+                />
+              </Link>
+            </div>
           </div>
         </div>
+        <div>{DEVELOPER_INFO}</div>
       </div>
     </StyledFooter>
   );

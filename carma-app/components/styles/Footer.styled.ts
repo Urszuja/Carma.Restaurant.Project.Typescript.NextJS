@@ -7,7 +7,9 @@ export const StyledFooter = styled.div`
   align-items: stretch;
   padding: 10px 10px;
   color: ${(props) => props.theme.text};
-
+  width: 100%;
+  height: 150px;
+  bottom: 0;
   p,
   h4 {
     margin: 0;
@@ -46,7 +48,13 @@ export const StyledFooter = styled.div`
   .right {
     align-items: flex-end;
     justify-content: space-between;
+    font-size: small;
 
+    .info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
     .link {
       text-decoration: underline;
     }

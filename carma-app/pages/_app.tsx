@@ -24,7 +24,9 @@ const App = ({ Component, pageProps }: AppProps) => {
             rel="stylesheet"></link>
         </Head>
         <Header />
-        <Component {...pageProps} />
+        <div className="content">
+          <Component {...pageProps} />
+        </div>
         <Footer />
       </ThemeProvider>
     </DataStoreProvider>
