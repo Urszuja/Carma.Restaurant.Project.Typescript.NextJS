@@ -30,19 +30,6 @@ const StyledForm = styled.form`
     justify-content: flex-start;
     gap: 50px;
     align-items: center;
-
-    button {
-      background-color: ${(props) => props.theme.danger};
-      border: none;
-      padding: 5px;
-      width: 100px;
-      text-align: center;
-    }
-
-    button:hover {
-      transform: scale(1.1);
-      transition: transform 0.2s;
-    }
   }
 `;
 

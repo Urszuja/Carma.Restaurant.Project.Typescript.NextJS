@@ -8,7 +8,7 @@ function CartPage({ menuItems }: any) {
   const { clientsData } = useContext(DataStoreContext);
   return (
     <div className="cart-page">
-      <div>
+      <div className="cart-items">
         {testOrder.orderItems.map((item) => (
           <OrderItem
             id={item.id}

@@ -28,6 +28,13 @@ a {
   margin: 20px;
   display: flex;
   justify-content: space-around;
+
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+  }
 }
 
 
