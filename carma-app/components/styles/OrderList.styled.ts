@@ -1,25 +1,28 @@
 import styled from "styled-components";
 
 export const StyledOrderList = styled.div`
-  color: black;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  .label {
-    background-color: yellow;
+  background-color: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.text};
+  margin: 10px auto;
+  width: 50%;
+  .header,
+  .row,
+  .order {
     display: flex;
     justify-content: space-between;
-    padding: 0 15px;
+    gap: 10px;
+    padding: 2px 25px;
   }
-  .list {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 15px;
 
-    .time-stamp {
-      div:nth-child(2n) {
-        background-color: gray;
-      }
-    }
+  .header {
+    background-color: ${(props) => props.theme.main};
+  }
+
+  .orders {
+    display: flex;
+    flex-direction: column;
+  }
+  .row:nth-child(2n) {
+    background-color: lightgray;
   }
 `;
