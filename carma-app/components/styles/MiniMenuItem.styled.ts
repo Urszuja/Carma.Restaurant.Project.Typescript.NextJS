@@ -39,5 +39,9 @@ export const StyledMiniMenuItem = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+
+    img {
+      cursor: pointer;
+    }
   }
 `;

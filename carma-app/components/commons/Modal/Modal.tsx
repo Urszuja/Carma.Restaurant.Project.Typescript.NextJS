@@ -3,10 +3,10 @@ import { StyledModal } from "./Modal.styled";
 
 function Modal({ setModal, children }) {
   return (
-    <StyledModal>
-      <div className="content" onClick={() => setModal(false)}>
-        {children}
+    <StyledModal onClick={() => setModal(false)}>
+      <div className="content">
         <button onClick={() => setModal(false)}>Close modal</button>
+        {children}
       </div>
     </StyledModal>
   );

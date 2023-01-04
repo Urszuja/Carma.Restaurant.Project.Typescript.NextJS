@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledMiniMenuItem } from "../styles/MiniMenuItem.styled";
+import Modal from "../commons/Modal/Modal";
+import MenuItem from "./MenuItem";
 
 function MiniMenuItem({
   id,
@@ -12,6 +14,8 @@ function MiniMenuItem({
   isVegan,
   isSpicy,
 }: IMenuItem) {
+  const [isMenuDetailOpen, setMenuDetail] = useState(false);
+
   return (
     <StyledMiniMenuItem>
       <div className="upper">
@@ -37,7 +41,13 @@ function MiniMenuItem({
         <p>{prices[0]} $</p>
       </div>
       <div className="middle">
-        <Image src={image} alt={name} width={150} height={150} />
+        <Image
+          onClick={() => setMenuDetail(true)}
+          src={image}
+          alt={name}
+          width={150}
+          height={150}
+        />
         <Image
           src="/FontAwesomeIcons/cart-plus.svg"
           alt="add to order"
@@ -45,6 +55,19 @@ function MiniMenuItem({
           height={30}
         />
       </div>
+      {isMenuDetailOpen && (
+        <Modal setModal={setMenuDetail}>
+          <MenuItem
+            name={name}
+            id={id}
+            prices={prices}
+            image={image}
+            description={description}
+            isSpicy={isSpicy}
+            isVegan={isVegan}
+          />
+        </Modal>
+      )}
     </StyledMiniMenuItem>
   );
 }
