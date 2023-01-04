@@ -12,8 +12,7 @@ interface IFormInputs {
 }
 
 export default function Form() {
-  const [isModalOpen, setModal] = useState(true);
-  console.log(isModalOpen);
+  const [isFinalModalOpen, setFinalModal] = useState(true);
   const {
     register,
     formState: { errors },
@@ -24,11 +23,9 @@ export default function Form() {
   });
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    console.log(data);
     //POST CLIENT DATA WITH ORDER
     window.localStorage.clear();
-    console.log(isModalOpen);
-    setModal(true);
+    setFinalModal(true);
   };
 
   return (
@@ -221,7 +218,9 @@ export default function Form() {
         <Order />
         <Button type="submit" text="Place order" />
       </div>
-      {isModalOpen && <Modal setModal={setModal}>Hello from modal</Modal>}
+      {isFinalModalOpen && (
+        <Modal setModal={setFinalModal}>Hello from modal</Modal>
+      )}
     </StyledForm>
   );
 }
