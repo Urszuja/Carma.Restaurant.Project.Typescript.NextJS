@@ -4,6 +4,7 @@ const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+  position: relative;
 
   .inputs {
     display: flex;

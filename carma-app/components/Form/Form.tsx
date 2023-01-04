@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import StyledForm from "../styles/Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
 import Order from "../Order/Order";
 import Button from "../commons/button/Button";
+import Modal from "../Modal/Modal";
 
 interface IFormInputs {
   firstName: string;
@@ -11,6 +12,7 @@ interface IFormInputs {
 }
 
 export default function Form() {
+  const [isModalOpen, setModal] = useState(true);
   const {
     register,
     formState: { errors },
@@ -22,12 +24,9 @@ export default function Form() {
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     console.log(data);
-    alert(JSON.stringify(data));
     //POST CLIENT DATA WITH ORDER
     window.localStorage.clear();
-
-    console.log(typeof errors);
-    console.log(typeof register);
+    setModal(true);
   };
 
   return (
@@ -220,6 +219,7 @@ export default function Form() {
         <Order />
         <Button type="submit" text="Place order" />
       </div>
+      {isModalOpen && <Modal setModal={setModal} />}
     </StyledForm>
   );
 }
