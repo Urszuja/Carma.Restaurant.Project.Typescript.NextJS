@@ -8,6 +8,9 @@ import Header from "../components/header/Header";
 import GlobalStyles from "../styles/GlobalStyles";
 import Footer from "../components/footer/Footer";
 
+// eslint-disable-next-line
+import "swiper/css/bundle";
+
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <DataStoreProvider>
