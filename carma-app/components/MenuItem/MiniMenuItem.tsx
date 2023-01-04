@@ -5,6 +5,8 @@ import { StyledMiniMenuItem } from "../styles/MiniMenuItem.styled";
 import Modal from "../commons/Modal/Modal";
 import MenuItem from "./MenuItem";
 
+import AddToBasketItem from "../AddToBasketItem/AddToBasketItem";
+
 function MiniMenuItem({
   id,
   name,
@@ -15,6 +17,7 @@ function MiniMenuItem({
   isSpicy,
 }: IMenuItem) {
   const [isMenuDetailOpen, setMenuDetail] = useState(false);
+  const [isOrderDetailOpen, setOrderDetail] = useState(false);
 
   return (
     <StyledMiniMenuItem>
@@ -49,6 +52,7 @@ function MiniMenuItem({
           height={150}
         />
         <Image
+          onClick={() => setOrderDetail(true)}
           src="/FontAwesomeIcons/cart-plus.svg"
           alt="add to order"
           width={30}
@@ -58,6 +62,19 @@ function MiniMenuItem({
       {isMenuDetailOpen && (
         <Modal setModal={setMenuDetail}>
           <MenuItem
+            name={name}
+            id={id}
+            prices={prices}
+            image={image}
+            description={description}
+            isSpicy={isSpicy}
+            isVegan={isVegan}
+          />
+        </Modal>
+      )}
+      {isOrderDetailOpen && (
+        <Modal setModal={setOrderDetail}>
+          <AddToBasketItem
             name={name}
             id={id}
             prices={prices}
