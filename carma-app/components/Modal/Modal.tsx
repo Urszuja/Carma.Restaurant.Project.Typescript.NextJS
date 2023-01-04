@@ -5,7 +5,7 @@ function Modal({ setModal }) {
   return (
     <StyledModal>
       <div>hello from modal</div>
-      <button onClick={setModal(false)}>Close modal</button>
+      <button onClick={() => setModal(false)}>Close modal</button>
     </StyledModal>
   );
 }

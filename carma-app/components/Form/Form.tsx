@@ -13,6 +13,7 @@ interface IFormInputs {
 
 export default function Form() {
   const [isModalOpen, setModal] = useState(true);
+  console.log(isModalOpen);
   const {
     register,
     formState: { errors },
@@ -26,6 +27,7 @@ export default function Form() {
     console.log(data);
     //POST CLIENT DATA WITH ORDER
     window.localStorage.clear();
+    console.log(isModalOpen);
     setModal(true);
   };
 
