@@ -11,6 +11,7 @@ export const StyledHeader = styled.div`
   height: 90px;
   top: 0;
   position: fixed;
+  z-index: 2;
 
   .linkContainer {
     display: flex;

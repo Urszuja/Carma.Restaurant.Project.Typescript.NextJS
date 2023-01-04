@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Carousel from "../components/Carousel/Carousel";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         drumstick. Strip steak burgdoggen jowl capicola meatloaf beef ribs jerky
         corned beef fatback filet mignon. Drumstick alcatra pork tail pig.
       </div>
+      <Carousel />
     </div>
   );
 }
