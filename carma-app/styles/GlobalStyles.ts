@@ -51,6 +51,10 @@ a {
   }
 }
 
+.final-page {
+  position: relative
+}
+
 .home-page {
 
   display: flex;

@@ -3,7 +3,7 @@ import Form from "../../components/Form/Form";
 
 function PlaceOrderPage() {
   return (
-    <div>
+    <div className="final-page">
       <Form />
     </div>
   );

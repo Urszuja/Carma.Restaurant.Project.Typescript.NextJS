@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
 import Order from "../Order/Order";
 import Button from "../commons/button/Button";
-import Modal from "../Modal/Modal";
+import Modal from "../commons/Modal/Modal";
 
 interface IFormInputs {
   firstName: string;
@@ -221,7 +221,7 @@ export default function Form() {
         <Order />
         <Button type="submit" text="Place order" />
       </div>
-      {isModalOpen && <Modal setModal={setModal} />}
+      {isModalOpen && <Modal setModal={setModal}>Hello from modal</Modal>}
     </StyledForm>
   );
 }
