@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Carousel from "../components/Carousel/Carousel";
 
-export default function Home() {
+export default function Home({ menuItems }: any) {
   return (
     <div className="home-page">
       <Image src="/LogoWithName.svg" alt="Carma Logo" width={120} height={60} />
@@ -13,7 +13,17 @@ export default function Home() {
         drumstick. Strip steak burgdoggen jowl capicola meatloaf beef ribs jerky
         corned beef fatback filet mignon. Drumstick alcatra pork tail pig.
       </div>
-      <Carousel />
+      <Carousel menu={menuItems} />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch("http://localhost:5000/menu");
+  const menuItems = await res.json();
+  return {
+    props: {
+      menuItems,
+    },
+  };
 }

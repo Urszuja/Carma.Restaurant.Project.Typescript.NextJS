@@ -12,9 +12,6 @@ export const StyledCarousel = styled.div`
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
-    color: pink;
-
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -28,12 +25,5 @@ export const StyledCarousel = styled.div`
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 `;

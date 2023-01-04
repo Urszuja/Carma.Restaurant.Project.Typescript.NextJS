@@ -6,8 +6,6 @@ import AddToBasketItem from "../../components/AddToBasketItem/AddToBasketItem";
 import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
 
 function MenuPage({ menuItems }: any) {
-  console.log(menuItems);
-
   return (
     <div className="menu-page">
       <h4>Order now!</h4>
