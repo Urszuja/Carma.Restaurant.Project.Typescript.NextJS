@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+
 import StyledForm from "../styles/Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
 import Order from "../Order/Order";
 import Button from "../commons/button/Button";
+
 import Modal from "../commons/Modal/Modal";
+import FormModal from "./FormModal";
 
 interface IFormInputs {
   firstName: string;
@@ -13,6 +16,7 @@ interface IFormInputs {
 
 export default function Form() {
   const [isFinalModalOpen, setFinalModal] = useState(true);
+  const [isSuccess, setResult] = useState(false);
   const {
     register,
     formState: { errors },
@@ -25,6 +29,7 @@ export default function Form() {
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     //POST CLIENT DATA WITH ORDER
     window.localStorage.clear();
+    setResult(true);
     setFinalModal(true);
   };
 
@@ -219,7 +224,9 @@ export default function Form() {
         <Button type="submit" text="Place order" />
       </div>
       {isFinalModalOpen && (
-        <Modal setModal={setFinalModal}>Hello from modal</Modal>
+        <Modal setModal={setFinalModal}>
+          <FormModal isSuccess={isSuccess} />
+        </Modal>
       )}
     </StyledForm>
   );

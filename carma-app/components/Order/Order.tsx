@@ -26,7 +26,7 @@ function Order() {
         </div>
         <div className="order-items">
           <div className="column order-name">
-            {orders && orders.map((o) => <div>{o.name}</div>)}
+            {orders && orders.map((o, index) => <div>{o.name}</div>)}
           </div>
           <div className="column size-quantity">
             {orders &&

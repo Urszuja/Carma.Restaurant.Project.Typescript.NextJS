@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Link from "next/link";
 import { DataStoreContext } from "../../components/DataStoreContext";
 import OrderItem from "../../components/OrderItem/OrderItem";
 import Order from "../../components/Order/Order";
@@ -23,7 +24,9 @@ function CartPage({ menuItems }: any) {
       </div>
       <div className="order-display">
         <Order />
-        <Button type="button" text="Confirm" />
+        <Link href="/order/final">
+          <Button type="button" text="Confirm" />
+        </Link>
       </div>
     </div>
   );
