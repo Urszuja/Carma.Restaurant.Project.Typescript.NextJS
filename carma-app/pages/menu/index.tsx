@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
-import Link from "next/link";
+import React, { useContext, useState } from "react";
+
 import { IMenuItem } from "../../model/MenuItem";
 
 import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
-import Dropdown from "../../components/commons/dropdown/Dropdown";
+import Filter from "../../components/Filter/Filter";
 
 function MenuPage({ menuItems }: any) {
-  console.log(menuItems);
-
+  const [menu, setMenu] = useState(menuItems);
   return (
     <div className="menu-page">
       <h4>Order now!</h4>
@@ -20,13 +19,10 @@ function MenuPage({ menuItems }: any) {
       </div>
       <div className="menu-with-filters">
         <div className="filters">
-          <div className="filter">
-            <div>Filter</div>
-            <Dropdown />
-          </div>
+          <Filter name="Filter" menu={menu} setMenu={setMenu} />
         </div>
         <div className="menu">
-          {menuItems.map((menuItem: IMenuItem) => (
+          {menu.map((menuItem: IMenuItem) => (
             <MiniMenuItem
               name={menuItem.name}
               id={menuItem.id}
