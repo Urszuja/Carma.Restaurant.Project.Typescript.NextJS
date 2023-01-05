@@ -24,6 +24,9 @@ export const StyledFilter = styled.div`
     }
     .toggle {
       cursor: pointer;
+
+      transform: ${(props) => props.isOpen && rotate(0.5turn)};
+      transition: transform 0.2s ease-in-out;
     }
   }
 `;
