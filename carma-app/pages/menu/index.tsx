@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { IMenuItem } from "../../model/MenuItem";
 
@@ -9,11 +9,8 @@ import { DataStoreContext } from "../../components/DataStoreContext";
 function MenuPage({ menuItems }: any) {
   const { filteredMenu, setMenu, setFilter } = useContext(DataStoreContext);
 
-  useEffect(() => {
-    setMenu(menuItems);
-    setFilter(menuItems);
-  }, []);
-  console.log(filteredMenu);
+  setMenu(menuItems);
+  setFilter(menuItems);
 
   return (
     <div className="menu-page">

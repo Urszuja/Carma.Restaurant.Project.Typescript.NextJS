@@ -5,24 +5,20 @@ import { StyledDropdownItem } from "./DropdownItem.styled";
 export interface IDropdownItem {
   name: string;
   handleClick: any;
+  isActive: boolean;
 }
-function DropdownItem({ name, handleClick }: IDropdownItem) {
+function DropdownItem({ name, handleClick, isActive }: IDropdownItem) {
   const imgSrc =
     name === "vegan"
       ? "/FontAwesomeIcons/seedling.svg"
       : "/FontAwesomeIcons/pepper-hot.svg";
+
   return (
     <StyledDropdownItem>
-      <div className="filter-type" onClick={handleClick}>
+      <div onClick={handleClick} className={isActive ? "active" : ""}>
         {name}
         <Image src={imgSrc} alt={name} width={15} height={15} />
       </div>
-      <Image
-        src="/FontAwesomeIcons/trash-alt.svg"
-        alt="trash"
-        width={15}
-        height={15}
-      />
     </StyledDropdownItem>
   );
 }

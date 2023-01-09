@@ -1,15 +1,14 @@
 import React, { useState, useContext, useEffect, useMemo } from "react";
 import DropdownItem from "../../commons/dropdownItem/DropdownItem";
 import { DataStoreContext } from "../../DataStoreContext";
+import { StyledDropdown } from "../Dropdown.styled";
 
 function FilterDropdown() {
   const [vegan, setVegan] = useState(false);
   const [spicy, setSpicy] = useState(false);
-
   const { menu, setFilter } = useContext(DataStoreContext);
 
-  // v s, v ns, nv s, nv ns
-  const filtered = useMemo(() => {
+  useMemo(() => {
     setFilter(menu);
     if (vegan === true && spicy === true) {
       setFilter(
@@ -42,10 +41,11 @@ function FilterDropdown() {
   };
 
   return (
-    <div>
-      <DropdownItem name="vegan" handleClick={toggleVegan} />
-      <DropdownItem name="spicy" handleClick={toggleSpicy} />
-    </div>
+    <StyledDropdown>
+      <DropdownItem name="vegan" handleClick={toggleVegan} isActive={vegan} />
+
+      <DropdownItem name="spicy" handleClick={toggleSpicy} isActive={spicy} />
+    </StyledDropdown>
   );
 }
 
