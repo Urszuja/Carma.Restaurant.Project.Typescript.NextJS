@@ -6,13 +6,19 @@ function FilterDropdown() {
   const [vegan, setVegan] = useState(false);
   const [spicy, setSpicy] = useState(false);
 
-  const { menu, filteredMenu, setFilter } = useContext(DataStoreContext);
+  const { menu, setFilter } = useContext(DataStoreContext);
 
   const filtered = useMemo(() => {
     if (vegan === true) {
-      filteredMenu && filteredMenu.filter((item) => item.isVegan === true);
+      setFilter(
+        (filteredMenu) =>
+          filteredMenu && filteredMenu.filter((item) => item.isVegan === true)
+      );
     } else if (spicy === true) {
-      filteredMenu && filteredMenu.filter((item) => item.isSpicy === true);
+      setFilter(
+        (filteredMenu) =>
+          filteredMenu && filteredMenu.filter((item) => item.isSpicy === true)
+      );
     } else {
       setFilter(menu);
     }
@@ -20,12 +26,12 @@ function FilterDropdown() {
 
   const toggleVegan = () => {
     setVegan((v) => !v);
-    setFilter(filtered);
+    console.log(vegan);
   };
 
   const toggleSpicy = () => {
     setSpicy((s) => !s);
-    setFilter(filtered);
+    console.log(spicy);
   };
 
   return (
