@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Dropdown from "../commons/dropdown/Dropdown";
+import FilterDropdown from "./FilterDropdown/FilterDropdown";
 import { StyledFilter } from "./Filter.styled";
 
 interface IFilter {
-  menu: any;
-  setMenu: any;
-  name: string;
+  type: "filter" | "sort";
 }
-function Filter({ name, menu, setMenu }: IFilter) {
+function Filter({ type }: IFilter) {
   const [isOpen, setOpen] = useState(false);
   const toggleDropdown = () => setOpen((isOpen) => !isOpen);
+
   return (
     <StyledFilter>
       <div>
@@ -22,11 +21,10 @@ function Filter({ name, menu, setMenu }: IFilter) {
               width={15}
               height={15}
             />
-            <p>{name}</p>
+            <p>{type}</p>
           </div>
           <Image
             onClick={toggleDropdown}
-            isOpen={isOpen}
             className="toggle"
             src="/FontAwesomeIcons/angle-down.svg"
             alt="arrow-down"
@@ -35,7 +33,11 @@ function Filter({ name, menu, setMenu }: IFilter) {
           />
         </div>
       </div>
-      {isOpen && <Dropdown menu={menu} setMenu={setMenu} />}
+      {isOpen && type === "filter" ? (
+        <FilterDropdown />
+      ) : (
+        <div>here goes sort</div>
+      )}
     </StyledFilter>
   );
 }

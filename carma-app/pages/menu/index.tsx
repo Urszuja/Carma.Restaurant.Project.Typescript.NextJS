@@ -1,12 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { IMenuItem } from "../../model/MenuItem";
 
 import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
-import Filter from "../../components/Filter/Filter";
+import Filter from "../../components/Dropdown/Filter";
+import { DataStoreContext } from "../../components/DataStoreContext";
 
 function MenuPage({ menuItems }: any) {
-  const [menu, setMenu] = useState(menuItems);
+  const { filteredMenu, setMenu, setFilter } = useContext(DataStoreContext);
+  setMenu(menuItems);
+  setFilter(menuItems);
+
   return (
     <div className="menu-page">
       <h4>Order now!</h4>
@@ -19,20 +23,23 @@ function MenuPage({ menuItems }: any) {
       </div>
       <div className="menu-with-filters">
         <div className="filters">
-          <Filter name="Filter" menu={menu} setMenu={setMenu} />
+          <Filter type="filter" />
         </div>
         <div className="menu">
-          {menu.map((menuItem: IMenuItem) => (
-            <MiniMenuItem
-              name={menuItem.name}
-              id={menuItem.id}
-              prices={menuItem.prices}
-              image={menuItem.image}
-              description={menuItem.description}
-              isSpicy={menuItem.isSpicy}
-              isVegan={menuItem.isVegan}
-            />
-          ))}
+          {filteredMenu &&
+            filteredMenu.map((menuItem: IMenuItem) => (
+              <div key={menuItem.id}>
+                <MiniMenuItem
+                  name={menuItem.name}
+                  id={menuItem.id}
+                  prices={menuItem.prices}
+                  image={menuItem.image}
+                  description={menuItem.description}
+                  isSpicy={menuItem.isSpicy}
+                  isVegan={menuItem.isVegan}
+                />
+              </div>
+            ))}
         </div>
       </div>
     </div>
