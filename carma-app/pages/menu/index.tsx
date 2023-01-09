@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { IMenuItem } from "../../model/MenuItem";
 
@@ -8,8 +8,11 @@ import { DataStoreContext } from "../../components/DataStoreContext";
 
 function MenuPage({ menuItems }: any) {
   const { filteredMenu, setMenu, setFilter } = useContext(DataStoreContext);
-  setMenu(menuItems);
-  setFilter(menuItems);
+
+  useEffect(() => {
+    setMenu(menuItems);
+    setFilter(menuItems);
+  }, []);
 
   return (
     <div className="menu-page">
@@ -28,17 +31,16 @@ function MenuPage({ menuItems }: any) {
         <div className="menu">
           {filteredMenu &&
             filteredMenu.map((menuItem: IMenuItem) => (
-              <div key={menuItem.id}>
-                <MiniMenuItem
-                  name={menuItem.name}
-                  id={menuItem.id}
-                  prices={menuItem.prices}
-                  image={menuItem.image}
-                  description={menuItem.description}
-                  isSpicy={menuItem.isSpicy}
-                  isVegan={menuItem.isVegan}
-                />
-              </div>
+              <MiniMenuItem
+                key={menuItem.id}
+                name={menuItem.name}
+                id={menuItem.id}
+                prices={menuItem.prices}
+                image={menuItem.image}
+                description={menuItem.description}
+                isSpicy={menuItem.isSpicy}
+                isVegan={menuItem.isVegan}
+              />
             ))}
         </div>
       </div>
