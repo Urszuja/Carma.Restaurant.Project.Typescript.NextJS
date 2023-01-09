@@ -10,35 +10,35 @@ function FilterDropdown() {
 
   // v s, v ns, nv s, nv ns
   const filtered = useMemo(() => {
-    if (vegan === true) {
+    setFilter(menu);
+    if (vegan === true && spicy === true) {
+      setFilter(
+        (filteredMenu) =>
+          filteredMenu && filteredMenu.filter((item) => item.isSpicy === true)
+      );
       setFilter(
         (filteredMenu) =>
           filteredMenu && filteredMenu.filter((item) => item.isVegan === true)
       );
-      if (spicy === true) {
-        setFilter(
-          (filteredMenu) =>
-            filteredMenu && filteredMenu.filter((item) => item.isSpicy === true)
-        );
-      }
+    } else if (vegan === true) {
+      setFilter(
+        (filteredMenu) =>
+          filteredMenu && filteredMenu.filter((item) => item.isVegan === true)
+      );
     } else if (spicy === true) {
       setFilter(
         (filteredMenu) =>
           filteredMenu && filteredMenu.filter((item) => item.isSpicy === true)
       );
-    } else {
-      setFilter(menu);
     }
   }, [menu, vegan, spicy]);
 
   const toggleVegan = () => {
     setVegan((v) => !v);
-    console.log(vegan);
   };
 
   const toggleSpicy = () => {
     setSpicy((s) => !s);
-    console.log(spicy);
   };
 
   return (

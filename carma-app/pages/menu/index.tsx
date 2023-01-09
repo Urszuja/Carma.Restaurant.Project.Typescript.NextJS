@@ -13,6 +13,7 @@ function MenuPage({ menuItems }: any) {
     setMenu(menuItems);
     setFilter(menuItems);
   }, []);
+  console.log(filteredMenu);
 
   return (
     <div className="menu-page">

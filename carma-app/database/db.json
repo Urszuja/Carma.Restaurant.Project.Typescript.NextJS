@@ -24,7 +24,7 @@
             "prices": [6,11,17],
             "image": "/images/funghi.svg",
             "description": "If you don't like any particular flavor and crave for pizza as dull as your life, it's an excellent choice. You will regret it, but at least you saved some money.",
-            "isVegan": true,
+            "isVegan": false,
             "isSpicy": false
         },
         {
