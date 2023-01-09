@@ -8,12 +8,19 @@ function FilterDropdown() {
 
   const { menu, setFilter } = useContext(DataStoreContext);
 
+  // v s, v ns, nv s, nv ns
   const filtered = useMemo(() => {
     if (vegan === true) {
       setFilter(
         (filteredMenu) =>
           filteredMenu && filteredMenu.filter((item) => item.isVegan === true)
       );
+      if (spicy === true) {
+        setFilter(
+          (filteredMenu) =>
+            filteredMenu && filteredMenu.filter((item) => item.isSpicy === true)
+        );
+      }
     } else if (spicy === true) {
       setFilter(
         (filteredMenu) =>
