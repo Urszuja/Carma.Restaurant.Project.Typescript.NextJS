@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { IMenuItem } from "../../../model/MenuItem";
-import DropdownItem from "../../commons/dropdownItem/DropdownItem";
 import { DataStoreContext } from "../../DataStoreContext";
 import { StyledDropdown } from "../Dropdown.styled";
+import FilterDropdownItem from "./FilterDropdownItem";
 
 function FilterDropdown() {
   const [vegan, setVegan] = useState(false);
@@ -42,17 +42,15 @@ function FilterDropdown() {
 
   return (
     <StyledDropdown>
-      <DropdownItem
+      <FilterDropdownItem
         name="vegan"
         handleClick={toggleVegan}
-        isActive={vegan}
         img="/FontAwesomeIcons/seedling.svg"
       />
 
-      <DropdownItem
+      <FilterDropdownItem
         name="spicy"
         handleClick={toggleSpicy}
-        isActive={spicy}
         img="/FontAwesomeIcons/pepper-hot.svg"
       />
     </StyledDropdown>

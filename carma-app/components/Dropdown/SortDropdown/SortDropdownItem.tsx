@@ -1,18 +1,22 @@
 import React from "react";
 import Image from "next/image";
-import { StyledDropdownItem } from "./DropdownItem.styled";
+import { StyledDropdownItem } from "../DropdownItem.styled";
 
-export interface IDropdownItem {
+export interface ISortDropdownItem {
   name: string;
   handleClick: any;
-  isActive: boolean;
   img: string;
+  isActive: boolean;
 }
-function DropdownItem({ name, handleClick, isActive, img }: IDropdownItem) {
+function SortDropdownItem({
+  name,
+  handleClick,
+  img,
+  isActive,
+}: ISortDropdownItem) {
   return (
     <StyledDropdownItem>
-      <input type="checkbox" onClick={handleClick} />
-      <div>
+      <div onClick={handleClick}>
         <label>{name}</label>
         <Image src={img} alt={name} width={15} height={15} />
       </div>
@@ -20,4 +24,4 @@ function DropdownItem({ name, handleClick, isActive, img }: IDropdownItem) {
   );
 }
 
-export default DropdownItem;
+export default SortDropdownItem;

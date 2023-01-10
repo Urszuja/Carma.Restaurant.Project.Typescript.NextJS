@@ -76,7 +76,9 @@ a {
   align-items: center;
 
   .filters {
-    align-self: base-line;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
   }
   .menu {
     display: flex;

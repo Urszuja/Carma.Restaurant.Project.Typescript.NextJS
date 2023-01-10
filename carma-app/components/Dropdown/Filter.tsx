@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import FilterDropdown from "./FilterDropdown/FilterDropdown";
 import { StyledFilter } from "./Filter.styled";
+import SortDropdown from "./SortDropdown/SortDropdown";
 
 interface IFilter {
   type: "filter" | "sort";
@@ -33,11 +34,8 @@ function Filter({ type }: IFilter) {
           />
         </div>
       </div>
-      {isOpen && type === "filter" ? (
-        <FilterDropdown />
-      ) : (
-        <div>here goes sort</div>
-      )}
+      {isOpen && type === "filter" && <FilterDropdown />}
+      {isOpen && type === "sort" && <SortDropdown />}
     </StyledFilter>
   );
 }

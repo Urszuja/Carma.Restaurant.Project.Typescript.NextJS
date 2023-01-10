@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IStyledDropdownItem {
+  isActive: boolean;
+}
+
 export const StyledDropdownItem = styled.div`
   background-color: white;
   color: black;
@@ -10,4 +14,12 @@ export const StyledDropdownItem = styled.div`
   align-items: center;
   width: 200px;
   gap: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.active {
+    background-color: salmon;
+  }
 `;

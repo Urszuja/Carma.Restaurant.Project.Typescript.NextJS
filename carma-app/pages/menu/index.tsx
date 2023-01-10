@@ -27,6 +27,7 @@ function MenuPage({ menuItems }: any) {
       <div className="menu-with-filters">
         <div className="filters">
           <Filter type="filter" />
+          <Filter type="sort" />
         </div>
         <div className="menu">
           {filteredMenu &&
