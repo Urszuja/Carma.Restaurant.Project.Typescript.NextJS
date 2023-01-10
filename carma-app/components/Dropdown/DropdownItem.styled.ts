@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-interface IStyledDropdownItem {
+type IStyledDropdownItem = {
   isActive: boolean;
-}
+};
 
-export const StyledDropdownItem = styled.div`
-  background-color: white;
+export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
+  background-color: ${(p) => (p.isActive ? "green" : "white")};
+
   color: black;
   height: 2em;
   padding: 0.5em;
@@ -17,9 +18,5 @@ export const StyledDropdownItem = styled.div`
 
   &:hover {
     cursor: pointer;
-  }
-
-  &.active {
-    background-color: salmon;
   }
 `;

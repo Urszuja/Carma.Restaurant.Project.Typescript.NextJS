@@ -46,12 +46,14 @@ function FilterDropdown() {
         name="vegan"
         handleClick={toggleVegan}
         img="/FontAwesomeIcons/seedling.svg"
+        isActive={vegan}
       />
 
       <FilterDropdownItem
         name="spicy"
         handleClick={toggleSpicy}
         img="/FontAwesomeIcons/pepper-hot.svg"
+        isActive={spicy}
       />
     </StyledDropdown>
   );

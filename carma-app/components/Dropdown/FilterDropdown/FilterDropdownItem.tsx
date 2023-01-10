@@ -6,10 +6,16 @@ export interface IFilterDropdownItem {
   name: string;
   handleClick: any;
   img: string;
+  isActive: boolean;
 }
-function FilterDropdownItem({ name, handleClick, img }: IFilterDropdownItem) {
+function FilterDropdownItem({
+  name,
+  handleClick,
+  img,
+  isActive,
+}: IFilterDropdownItem) {
   return (
-    <StyledDropdownItem>
+    <StyledDropdownItem isActive={isActive}>
       <input type="checkbox" onClick={handleClick} />
       <div>
         <label>{name}</label>
