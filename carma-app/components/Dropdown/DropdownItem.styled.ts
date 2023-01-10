@@ -5,9 +5,13 @@ type IStyledDropdownItem = {
 };
 
 export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
-  background-color: ${(p) => (p.isActive ? "green" : "white")};
-
-  color: black;
+  outline: none;
+  background: ${(p) => p.theme.background};
+  color: ${(p) => (p.isActive ? p.theme.main : p.theme.text)};
+  text-decoration: ${(p) => p.isActive && "underline"};
+  box-shadow: inset 0 0 0 2px
+    ${(p) => (p.isActive ? p.theme.main : p.theme.background)};
+  font-weight: ${(p) => p.isActive && "bold"};
   height: 2em;
   padding: 0.5em;
   display: flex;
@@ -15,6 +19,16 @@ export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
   align-items: center;
   width: 200px;
   gap: 5px;
+
+  .label {
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
+    gap: 5px;
+    img {
+      filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+    }
+  }
 
   &:hover {
     cursor: pointer;

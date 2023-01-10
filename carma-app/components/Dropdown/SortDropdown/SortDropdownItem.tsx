@@ -16,7 +16,7 @@ function SortDropdownItem({
 }: ISortDropdownItem) {
   return (
     <StyledDropdownItem isActive={isActive}>
-      <div onClick={handleClick}>
+      <div onClick={handleClick} className="label">
         <label>{name}</label>
         <Image src={img} alt={name} width={15} height={15} />
       </div>

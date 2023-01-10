@@ -17,7 +17,7 @@ function FilterDropdownItem({
   return (
     <StyledDropdownItem isActive={isActive}>
       <input type="checkbox" onClick={handleClick} />
-      <div>
+      <div className="label">
         <label>{name}</label>
         <Image src={img} alt={name} width={15} height={15} />
       </div>
