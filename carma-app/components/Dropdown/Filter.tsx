@@ -25,7 +25,7 @@ function Filter({ type }: IFilter) {
           </div>
           <Image
             onClick={toggleDropdown}
-            className="toggle"
+            className={isOpen ? "toggle" : ""}
             src="/FontAwesomeIcons/angle-down.svg"
             alt="arrow-down"
             width={15}

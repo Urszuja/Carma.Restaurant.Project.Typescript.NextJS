@@ -6,18 +6,15 @@ export interface IDropdownItem {
   name: string;
   handleClick: any;
   isActive: boolean;
+  img: string;
 }
-function DropdownItem({ name, handleClick, isActive }: IDropdownItem) {
-  const imgSrc =
-    name === "vegan"
-      ? "/FontAwesomeIcons/seedling.svg"
-      : "/FontAwesomeIcons/pepper-hot.svg";
-
+function DropdownItem({ name, handleClick, isActive, img }: IDropdownItem) {
   return (
     <StyledDropdownItem>
-      <div onClick={handleClick} className={isActive ? "active" : ""}>
-        {name}
-        <Image src={imgSrc} alt={name} width={15} height={15} />
+      <input type="checkbox" onClick={handleClick} />
+      <div>
+        <label>{name}</label>
+        <Image src={img} alt={name} width={15} height={15} />
       </div>
     </StyledDropdownItem>
   );

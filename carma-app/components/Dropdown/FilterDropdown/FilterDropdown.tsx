@@ -42,9 +42,19 @@ function FilterDropdown() {
 
   return (
     <StyledDropdown>
-      <DropdownItem name="vegan" handleClick={toggleVegan} isActive={vegan} />
+      <DropdownItem
+        name="vegan"
+        handleClick={toggleVegan}
+        isActive={vegan}
+        img="/FontAwesomeIcons/seedling.svg"
+      />
 
-      <DropdownItem name="spicy" handleClick={toggleSpicy} isActive={spicy} />
+      <DropdownItem
+        name="spicy"
+        handleClick={toggleSpicy}
+        isActive={spicy}
+        img="/FontAwesomeIcons/pepper-hot.svg"
+      />
     </StyledDropdown>
   );
 }

@@ -9,6 +9,15 @@ export const StyledFilter = styled.div`
     align-items: center;
     width: 200px;
 
+    > img {
+      cursor: pointer;
+    }
+
+    .toggle {
+      transform: rotate(0.5turn);
+      transition: transform 0.2s ease;
+    }
+
     .filter-label {
       display: flex;
       justify-content: flex-start;
@@ -21,9 +30,6 @@ export const StyledFilter = styled.div`
         margin: 0;
         padding: 0;
       }
-    }
-    .toggle {
-      cursor: pointer;
     }
   }
 `;

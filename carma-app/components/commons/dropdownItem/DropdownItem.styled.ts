@@ -10,10 +10,4 @@ export const StyledDropdownItem = styled.div`
   align-items: center;
   width: 200px;
   gap: 5px;
-
-  .active {
-    color: yellow;
-    box-shadow: 0 0 2px 1px #0ff;
-    width: 100%;
-  }
 `;
