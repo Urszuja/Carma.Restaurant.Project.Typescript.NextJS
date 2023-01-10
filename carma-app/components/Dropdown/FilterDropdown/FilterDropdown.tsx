@@ -1,4 +1,5 @@
-import React, { useState, useContext, useEffect, useMemo } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { IMenuItem } from "../../../model/MenuItem";
 import DropdownItem from "../../commons/dropdownItem/DropdownItem";
 import { DataStoreContext } from "../../DataStoreContext";
 import { StyledDropdown } from "../Dropdown.styled";
@@ -8,28 +9,27 @@ function FilterDropdown() {
   const [spicy, setSpicy] = useState(false);
   const { menu, setFilter } = useContext(DataStoreContext);
 
-  useMemo(() => {
-    setFilter(menu);
-    if (vegan === true && spicy === true) {
-      setFilter(
-        (filteredMenu) =>
-          filteredMenu && filteredMenu.filter((item) => item.isSpicy === true)
-      );
-      setFilter(
-        (filteredMenu) =>
-          filteredMenu && filteredMenu.filter((item) => item.isVegan === true)
-      );
-    } else if (vegan === true) {
-      setFilter(
-        (filteredMenu) =>
-          filteredMenu && filteredMenu.filter((item) => item.isVegan === true)
-      );
-    } else if (spicy === true) {
-      setFilter(
-        (filteredMenu) =>
-          filteredMenu && filteredMenu.filter((item) => item.isSpicy === true)
-      );
+  useEffect(() => {
+    if (vegan || spicy) {
+      const copiedMenu: IMenuItem[] = JSON.parse(JSON.stringify(menu));
+      let veganMenu: IMenuItem[] = [];
+      let spicyMenu: IMenuItem[] = [];
+      if (vegan && spicy) {
+        spicyMenu = copiedMenu
+          .filter((item) => item.isVegan === true)
+          .filter((item) => item.isSpicy === true);
+      } else if (spicy) {
+        spicyMenu = copiedMenu.filter((item) => item.isSpicy === true);
+      } else if (vegan) {
+        veganMenu = copiedMenu.filter((item) => item.isVegan === true);
+      }
+      const filteredMenu = [...veganMenu, ...spicyMenu];
+      setFilter(filteredMenu);
+
+      return;
     }
+
+    setFilter(menu);
   }, [menu, vegan, spicy]);
 
   const toggleVegan = () => {
