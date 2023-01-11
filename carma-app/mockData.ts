@@ -1,11 +1,11 @@
 ``;
 import Client, { Address } from "./model/Client";
-import Order from "./model/Order";
+import OrderInstance from "./model/Order";
 import OrderItem from "./model/OrderItem";
 
 export const testOrderItem = new OrderItem("margharita", "S", 10, 2);
 export const testOrderItem2 = new OrderItem("salame", "M", 15, 1);
-export const testAddress: Address = ["Jandy", 21, 37, 12345, "Biala Podlaska"];
+export const testAddress: Address = ["Jandy", 21, 12345, "Biala Podlaska", 37];
 export const testClient = new Client(
   "Krystyna",
   "Janda",
@@ -14,7 +14,7 @@ export const testClient = new Client(
   [],
   testAddress
 );
-export const testOrder = new Order(
+export const testOrder = new OrderInstance(
   testClient,
   [testOrderItem, testOrderItem2],
   "pending"

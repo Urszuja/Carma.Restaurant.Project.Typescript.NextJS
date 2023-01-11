@@ -82,7 +82,14 @@
             "isSpicy": true
         }
     ],
-    "order": [{
-        "name": "Ula"
+    "clientsData": [{
+        "id": 1,
+        "firstName": "Krystyna",
+        "lastName": "Janda",
+        "email": "krycha@o2.pl",
+        "phoneNumber": 123456789,
+        "orderList": [],
+        "address": ["glowna 9",44444,"Poznan",10]
+        
     }]
 }

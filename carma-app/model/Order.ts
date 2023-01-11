@@ -17,7 +17,7 @@ interface IOrder {
   removeOrderItem: (id: string) => void;
 }
 
-export default class Order implements IOrder {
+export default class OrderInstance implements IOrder {
   public id: string;
   public totalPrice: number;
   public timeStamp: string;

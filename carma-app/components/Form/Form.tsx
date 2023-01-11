@@ -2,12 +2,21 @@ import React from "react";
 import StyledForm from "../styles/Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
-import Order from "../Order/Order";
+import Order from "../../model/Order";
 import Button from "../commons/button/Button";
+import Client, { Address } from "../../model/Client";
+import { testOrder2 } from "../../mockData";
 
 interface IFormInputs {
   firstName: string;
+  lastName: string;
+  email: string;
   phoneNumber: number;
+  address: string;
+  zip: number;
+  city: string;
+  orderList: Order[];
+  address2?: number;
 }
 
 export default function Form() {
@@ -22,12 +31,13 @@ export default function Form() {
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     console.log(data);
-    alert(JSON.stringify(data));
+    const firstName = data.firstName;
+    console.log(firstName);
+    const address: Address = [data.address, data.zip, data.city, data.address2];
+    console.log(address);
+    // const client = new Client(data.firstName,data.lastName,data.email,data.phoneNumber, testOrder2, address)
     //POST CLIENT DATA WITH ORDER
     window.localStorage.clear();
-
-    console.log(typeof errors);
-    console.log(typeof register);
   };
 
   return (
@@ -134,7 +144,7 @@ export default function Form() {
           rules={{
             required: "This input is required.",
             pattern: {
-              value: /^[a-zA-Z0-9 ]*$/,
+              value: /^[a-zA-Z0-9 .]*$/,
               message: "This input is for address only.",
             },
             minLength: {
