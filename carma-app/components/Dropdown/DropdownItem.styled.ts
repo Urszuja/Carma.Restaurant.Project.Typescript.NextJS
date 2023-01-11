@@ -20,14 +20,15 @@ export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
   width: 200px;
   gap: 5px;
 
+  label {
+    width: 50px;
+  }
   .label {
     display: flex;
+
     justify-items: flex-start;
     align-items: center;
     gap: 5px;
-    img {
-      filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
-    }
   }
 
   &:hover {

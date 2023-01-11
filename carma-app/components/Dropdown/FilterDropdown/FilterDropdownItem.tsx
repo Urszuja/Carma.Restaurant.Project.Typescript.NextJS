@@ -14,12 +14,18 @@ function FilterDropdownItem({
   img,
   isActive,
 }: IFilterDropdownItem) {
+  const yellowImg = img.slice(0, -4) + "-yellow.svg";
   return (
     <StyledDropdownItem isActive={isActive}>
       <input type="checkbox" onClick={handleClick} />
       <div className="label">
         <label>{name}</label>
-        <Image src={img} alt={name} width={15} height={15} />
+        <Image
+          src={isActive ? yellowImg : img}
+          alt={name}
+          width={15}
+          height={15}
+        />
       </div>
     </StyledDropdownItem>
   );
