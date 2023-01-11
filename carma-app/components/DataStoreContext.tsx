@@ -1,14 +1,15 @@
 import { createContext, useMemo, useState } from "react";
-import { mockClientsDataBase, testOrder } from "../mockData";
+import { testOrder } from "../mockData";
 
-import type Client from "../model/Client";
-import type Order from "../model/Order";
+import OrderInstance from "../model/Order";
 
 interface DataStoreContextInterface {
-  clientsData: Client[] | null;
-  setClientsData: React.Dispatch<React.SetStateAction<Client[] | null>>;
-  cart: Order | null;
-  setCart: React.Dispatch<React.SetStateAction<Order | null>>;
+  ordersDatabase: OrderInstance[] | null;
+  setOrdersDatabase: React.Dispatch<
+    React.SetStateAction<OrderInstance[] | null>
+  >;
+  cart: OrderInstance | null;
+  setCart: React.Dispatch<React.SetStateAction<OrderInstance | null>>;
 }
 
 type DataStoreProviderProps = { children: React.ReactNode };
@@ -20,19 +21,19 @@ export const DataStoreContext = createContext<DataStoreContextInterface>(
 DataStoreContext.displayName = "DataStoreContext";
 
 const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
-  const [clientsData, setClientsData] = useState<Client[] | null>(
-    mockClientsDataBase
+  const [ordersDatabase, setOrdersDatabase] = useState<OrderInstance[] | null>(
+    []
   );
-  const [cart, setCart] = useState<Order | null>(testOrder);
+  const [cart, setCart] = useState<OrderInstance | null>(testOrder);
 
   const storeDataWithMemo = useMemo(
     () => ({
-      clientsData,
+      ordersDatabase,
       cart,
-      setClientsData,
+      setOrdersDatabase,
       setCart,
     }),
-    [clientsData, cart, setClientsData, setCart]
+    [ordersDatabase, cart, setOrdersDatabase, setCart]
   );
 
   return (

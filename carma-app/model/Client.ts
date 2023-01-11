@@ -13,9 +13,7 @@ export interface IClient {
   lastName: string;
   email: string;
   phoneNumber: number;
-  orderList: Order[];
   address: Address;
-  addOrder: (order: Order) => void;
 }
 
 class Client implements IClient {
@@ -26,15 +24,9 @@ class Client implements IClient {
     public lastName: string,
     public email: string,
     public phoneNumber: number,
-    public orderList: Order[],
     public address: Address
   ) {
     this.id = uuidv4();
-  }
-
-  addOrder(order: Order): void {
-    order.status = "pending";
-    this.orderList.push(order);
   }
 }
 

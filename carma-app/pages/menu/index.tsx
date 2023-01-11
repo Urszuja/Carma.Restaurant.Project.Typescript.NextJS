@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import { IMenuItem } from "../../model/MenuItem";
-import MenuItem from "../../components/MenuItem/MenuItem";
-import AddToBasketItem from "../../components/AddToBasketItem/AddToBasketItem";
+
 import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
 
-function MenuPage({ menuItems }: any) {
-  console.log(menuItems);
+interface IMenuItems {
+  menuItems: IMenuItem[];
+}
 
+function MenuPage({ menuItems }: IMenuItems) {
   return (
     <div className="menu-page">
       <h4>Order now!</h4>
@@ -40,7 +41,7 @@ function MenuPage({ menuItems }: any) {
 
 export async function getStaticProps() {
   const res = await fetch("http://localhost:5000/menu");
-  const menuItems = await res.json();
+  const menuItems = (await res.json()) as IMenuItem[];
   return {
     props: {
       menuItems,
