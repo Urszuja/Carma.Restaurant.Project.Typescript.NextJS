@@ -30,7 +30,7 @@ export default function Form() {
     criteriaMode: "all",
   });
 
-  const { cart } = useContext(DataStoreContext);
+  const { cart, setCart } = useContext(DataStoreContext);
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     const address: Address = [data.address, data.zip, data.city, data.address2];
@@ -42,7 +42,6 @@ export default function Form() {
       address
     );
     const newOrder = cart && new OrderInstance(newClient, cart, "pending");
-    console.log(newOrder);
 
     //POST CLIENT DATA WITH ORDER
     fetch("http://localhost:5000/orderList", {
@@ -55,6 +54,7 @@ export default function Form() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        setCart([]);
       })
       .catch((error) => {
         console.error("Error:", error);

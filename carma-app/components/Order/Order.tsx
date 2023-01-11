@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import { StyledOrder } from "../styles/Order.styled";
 import { DataStoreContext } from "../DataStoreContext";
-import { deliveryCost } from "../../mockData";
+import { standardDeliveryCost } from "../../mockData";
 
 function Order() {
   const { cart } = useContext(DataStoreContext);
 
-  const totalPrice = cart?.reduce(
-    (acc, order) => acc + order.price * order.quantity,
-    deliveryCost
-  );
+  const totalPrice =
+    cart &&
+    cart.reduce(
+      (acc, order) => acc + order.price * order.quantity,
+      standardDeliveryCost
+    );
 
   return (
     <StyledOrder>
@@ -46,7 +48,7 @@ function Order() {
         </div>
         <div className="delivery">
           <p>Delivery</p>
-          <p>{deliveryCost} $</p>
+          <p>{standardDeliveryCost} $</p>
         </div>
         <hr />
         <div className="total">

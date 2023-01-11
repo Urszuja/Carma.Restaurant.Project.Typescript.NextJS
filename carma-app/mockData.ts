@@ -26,4 +26,4 @@ export const testOrder2 = new OrderInstance(
 
 export const mockOrders = [testOrder, testOrder2];
 export const mockClientsDataBase = [testClient];
-export const deliveryCost = 9;
+export const standardDeliveryCost = 9;
