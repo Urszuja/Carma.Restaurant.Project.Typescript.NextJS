@@ -1,10 +1,10 @@
 ``;
 import Client, { Address } from "./model/Client";
 import OrderInstance from "./model/Order";
-import OrderItem from "./model/OrderItem";
+import OrderItemInstance from "./model/OrderItem";
 
-export const testOrderItem = new OrderItem("margharita", "S", 10, 2);
-export const testOrderItem2 = new OrderItem("salame", "M", 15, 1);
+export const testOrderItem = new OrderItemInstance("margharita", "S", 10, 2);
+export const testOrderItem2 = new OrderItemInstance("salame", "M", 15, 1);
 export const testAddress: Address = ["Jandy 21", 12345, "Biala Podlaska", 37];
 export const testClient = new Client(
   "Krystyna",

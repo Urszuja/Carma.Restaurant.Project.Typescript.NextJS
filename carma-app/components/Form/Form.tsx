@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import StyledForm from "../styles/Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
-import Order from "../../model/Order";
+import OrderInstance from "../../model/Order";
 import Button from "../commons/button/Button";
 import Client, { Address } from "../../model/Client";
-import { testOrder2 } from "../../mockData";
+import Order from "../Order/Order";
+import { DataStoreContext } from "../DataStoreContext";
 
 interface IFormInputs {
   firstName: string;
@@ -15,7 +16,7 @@ interface IFormInputs {
   address: string;
   zip: number;
   city: string;
-  orderList: Order[];
+  orderList: OrderInstance[];
   address2?: number;
 }
 
@@ -29,14 +30,35 @@ export default function Form() {
     criteriaMode: "all",
   });
 
+  const { cart } = useContext(DataStoreContext);
+
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    console.log(data);
-    const firstName = data.firstName;
-    console.log(firstName);
     const address: Address = [data.address, data.zip, data.city, data.address2];
-    console.log(address);
-    // const client = new Client(data.firstName,data.lastName,data.email,data.phoneNumber, testOrder2, address)
+    const newClient = new Client(
+      data.firstName,
+      data.lastName,
+      data.email,
+      data.phoneNumber,
+      address
+    );
+    const newOrder = cart && new OrderInstance(newClient, cart, "pending");
+    console.log(newOrder);
+
     //POST CLIENT DATA WITH ORDER
+    fetch("http://localhost:5000/orderList", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
     window.localStorage.clear();
   };
 

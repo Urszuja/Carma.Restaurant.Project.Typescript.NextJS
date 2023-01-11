@@ -14,7 +14,7 @@ function OrderList() {
       </div>
       <div className="orders">
         {ordersDatabase &&
-          ordersDatabase.map((order) => (
+          ordersDatabase.reverse().map((order) => (
             <div key={order.id} className="row">
               <div>{order.timeStamp}</div>
               <div className="order" key={order.id}>
