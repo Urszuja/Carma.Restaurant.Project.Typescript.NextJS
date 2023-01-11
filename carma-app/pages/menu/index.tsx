@@ -1,12 +1,18 @@
-import React, { useContext } from "react";
-import Link from "next/link";
+import React, { useContext, useEffect } from "react";
+
 import { IMenuItem } from "../../model/MenuItem";
-import MenuItem from "../../components/MenuItem/MenuItem";
-import AddToBasketItem from "../../components/AddToBasketItem/AddToBasketItem";
+
 import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
+import Filter from "../../components/Dropdown/Filter";
+import { DataStoreContext } from "../../components/DataStoreContext";
 
 function MenuPage({ menuItems }: any) {
-  console.log(menuItems);
+  const { filteredMenu, setMenu, setFilter } = useContext(DataStoreContext);
+
+  useEffect(() => {
+    setMenu(menuItems);
+    setFilter(menuItems);
+  }, []);
 
   return (
     <div className="menu-page">
@@ -18,21 +24,25 @@ function MenuPage({ menuItems }: any) {
         drumstick. Strip steak burgdoggen jowl capicola meatloaf beef ribs jerky
         corned beef fatback filet mignon. Drumstick alcatra pork tail pig.
       </div>
-      <div className="menu-with-filters">
-        <div className="filters">Here come filters</div>
+
+      <div className="filters">
+        <Filter type="filter" />
+        <Filter type="sort" />
       </div>
       <div className="menu">
-        {menuItems.map((menuItem: IMenuItem) => (
-          <MiniMenuItem
-            name={menuItem.name}
-            id={menuItem.id}
-            prices={menuItem.prices}
-            image={menuItem.image}
-            description={menuItem.description}
-            isSpicy={menuItem.isSpicy}
-            isVegan={menuItem.isVegan}
-          />
-        ))}
+        {filteredMenu &&
+          filteredMenu.map((menuItem: IMenuItem) => (
+            <MiniMenuItem
+              key={menuItem.id}
+              name={menuItem.name}
+              id={menuItem.id}
+              prices={menuItem.prices}
+              image={menuItem.image}
+              description={menuItem.description}
+              isSpicy={menuItem.isSpicy}
+              isVegan={menuItem.isVegan}
+            />
+          ))}
       </div>
     </div>
   );

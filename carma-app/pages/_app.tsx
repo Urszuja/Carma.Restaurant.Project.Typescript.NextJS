@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           <link rel="preconnect" href="https://fonts.gstatic.com"></link>
           <link
             href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap"
-            rel="stylesheet"></link>
+            rel="preconnect"></link>
         </Head>
         <Header />
         <div className="content">
