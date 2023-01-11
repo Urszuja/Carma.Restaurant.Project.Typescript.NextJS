@@ -24,26 +24,25 @@ function MenuPage({ menuItems }: any) {
         drumstick. Strip steak burgdoggen jowl capicola meatloaf beef ribs jerky
         corned beef fatback filet mignon. Drumstick alcatra pork tail pig.
       </div>
-      <div className="menu-with-filters">
-        <div className="filters">
-          <Filter type="filter" />
-          <Filter type="sort" />
-        </div>
-        <div className="menu">
-          {filteredMenu &&
-            filteredMenu.map((menuItem: IMenuItem) => (
-              <MiniMenuItem
-                key={menuItem.id}
-                name={menuItem.name}
-                id={menuItem.id}
-                prices={menuItem.prices}
-                image={menuItem.image}
-                description={menuItem.description}
-                isSpicy={menuItem.isSpicy}
-                isVegan={menuItem.isVegan}
-              />
-            ))}
-        </div>
+
+      <div className="filters">
+        <Filter type="filter" />
+        <Filter type="sort" />
+      </div>
+      <div className="menu">
+        {filteredMenu &&
+          filteredMenu.map((menuItem: IMenuItem) => (
+            <MiniMenuItem
+              key={menuItem.id}
+              name={menuItem.name}
+              id={menuItem.id}
+              prices={menuItem.prices}
+              image={menuItem.image}
+              description={menuItem.description}
+              isSpicy={menuItem.isSpicy}
+              isVegan={menuItem.isVegan}
+            />
+          ))}
       </div>
     </div>
   );

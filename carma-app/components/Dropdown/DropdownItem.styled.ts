@@ -17,8 +17,8 @@ export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 200px;
   gap: 5px;
+  width: 120px;
 
   label {
     width: 50px;

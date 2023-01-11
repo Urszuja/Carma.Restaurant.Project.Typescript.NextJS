@@ -79,6 +79,8 @@ a {
     display: flex;
     justify-content: flex-start;
     gap: 5px;
+    align-self: baseline;
+    margin-left: 25%;
   }
   .menu {
     display: flex;

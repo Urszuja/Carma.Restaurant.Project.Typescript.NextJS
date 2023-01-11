@@ -7,7 +7,7 @@ export const StyledFilter = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 200px;
+    width: 120px;
 
     > img {
       cursor: pointer;
