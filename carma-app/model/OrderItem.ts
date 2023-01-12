@@ -11,7 +11,7 @@ export interface IOrderItem {
   menu?: IMenuItem[];
 }
 
-export default class OrderItem implements IOrderItem {
+export default class OrderItemInstance implements IOrderItem {
   public id: string;
 
   constructor(

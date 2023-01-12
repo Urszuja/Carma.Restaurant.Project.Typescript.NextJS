@@ -1,21 +1,30 @@
-import React, { useState } from "react";
-
+import React, { useContext, useState } from "react";
 import StyledForm from "../styles/Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
-import Order from "../Order/Order";
+import OrderInstance from "../../model/Order";
 import Button from "../commons/button/Button";
+import Client, { Address } from "../../model/Client";
+import Order from "../Order/Order";
+import { DataStoreContext } from "../DataStoreContext";
 
 import Modal from "../commons/Modal/Modal";
 import FormModal from "./FormModal";
 
 interface IFormInputs {
   firstName: string;
+  lastName: string;
+  email: string;
   phoneNumber: number;
+  address: string;
+  zip: number;
+  city: string;
+  orderList: OrderInstance[];
+  address2?: number;
 }
 
 export default function Form() {
-  const [isFinalModalOpen, setFinalModal] = useState(true);
+  const [isFinalModalOpen, setFinalModal] = useState(false);
   const [isSuccess, setResult] = useState(false);
   const {
     register,
@@ -26,10 +35,37 @@ export default function Form() {
     criteriaMode: "all",
   });
 
+  const { cart, setCart } = useContext(DataStoreContext);
+
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+    const address: Address = [data.address, data.zip, data.city, data.address2];
+    const newClient = new Client(
+      data.firstName,
+      data.lastName,
+      data.email,
+      data.phoneNumber,
+      address
+    );
+    const newOrder = cart && new OrderInstance(newClient, cart, "pending");
+
     //POST CLIENT DATA WITH ORDER
-    window.localStorage.clear();
-    setResult(true);
+    fetch("http://localhost:5000/orderList", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+
+        setResult(true);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setResult(false);
+      });
     setFinalModal(true);
   };
 
@@ -137,7 +173,7 @@ export default function Form() {
           rules={{
             required: "This input is required.",
             pattern: {
-              value: /^[a-zA-Z0-9 ]*$/,
+              value: /^[a-zA-Z0-9 .]*$/,
               message: "This input is for address only.",
             },
             minLength: {
@@ -224,7 +260,7 @@ export default function Form() {
         <Button type="submit" text="Place order" />
       </div>
       {isFinalModalOpen && (
-        <Modal setModal={setFinalModal}>
+        <Modal setModal={setFinalModal} isSuccess={isSuccess}>
           <FormModal isSuccess={isSuccess} />
         </Modal>
       )}

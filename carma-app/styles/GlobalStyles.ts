@@ -80,7 +80,11 @@ a {
   align-items: center;
 
   .filters {
-    align-self: base-line;
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    align-self: baseline;
+    margin-left: 25%;
   }
   .menu {
     display: flex;

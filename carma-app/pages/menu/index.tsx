@@ -1,11 +1,19 @@
-import React, { useContext } from "react";
-import Link from "next/link";
-import { IMenuItem } from "../../model/MenuItem";
-import MenuItem from "../../components/MenuItem/MenuItem";
-import AddToBasketItem from "../../components/AddToBasketItem/AddToBasketItem";
-import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
+import React, { useContext, useEffect } from "react";
 
-function MenuPage({ menuItems }: any) {
+import { IMenuItem, IMenuItems } from "../../model/MenuItem";
+
+import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
+import Filter from "../../components/Dropdown/Filter";
+import { DataStoreContext } from "../../components/DataStoreContext";
+
+function MenuPage({ menuItems }: IMenuItems) {
+  const { filteredMenu, setMenu, setFilter } = useContext(DataStoreContext);
+
+  useEffect(() => {
+    setMenu(menuItems);
+    setFilter(menuItems);
+  }, []);
+
   return (
     <div className="menu-page">
       <h4>Order now!</h4>
@@ -16,21 +24,25 @@ function MenuPage({ menuItems }: any) {
         drumstick. Strip steak burgdoggen jowl capicola meatloaf beef ribs jerky
         corned beef fatback filet mignon. Drumstick alcatra pork tail pig.
       </div>
-      <div className="menu-with-filters">
-        <div className="filters">Here come filters</div>
+
+      <div className="filters">
+        <Filter type="filter" />
+        <Filter type="sort" />
       </div>
       <div className="menu">
-        {menuItems.map((menuItem: IMenuItem) => (
-          <MiniMenuItem
-            name={menuItem.name}
-            id={menuItem.id}
-            prices={menuItem.prices}
-            image={menuItem.image}
-            description={menuItem.description}
-            isSpicy={menuItem.isSpicy}
-            isVegan={menuItem.isVegan}
-          />
-        ))}
+        {filteredMenu &&
+          filteredMenu.map((menuItem: IMenuItem) => (
+            <MiniMenuItem
+              key={menuItem.id}
+              name={menuItem.name}
+              id={menuItem.id}
+              prices={menuItem.prices}
+              image={menuItem.image}
+              description={menuItem.description}
+              isSpicy={menuItem.isSpicy}
+              isVegan={menuItem.isVegan}
+            />
+          ))}
       </div>
     </div>
   );
@@ -38,7 +50,7 @@ function MenuPage({ menuItems }: any) {
 
 export async function getStaticProps() {
   const res = await fetch("http://localhost:5000/menu");
-  const menuItems = await res.json();
+  const menuItems = (await res.json()) as IMenuItem[];
   return {
     props: {
       menuItems,

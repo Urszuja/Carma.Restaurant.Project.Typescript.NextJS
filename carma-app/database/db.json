@@ -1,88 +1,261 @@
 {
-    "menu": [
+  "menu": [
+    {
+      "id": 1,
+      "name": "Margharita",
+      "prices": [
+        5,
+        10,
+        15
+      ],
+      "image": "/images/margharita.svg",
+      "description": "Pizza for poor people. If you're broke or the paycheck is near but not there yet, you may order this one to get a mediocre excuse for a pizza. Delish.",
+      "isVegan": true,
+      "isSpicy": false
+    },
+    {
+      "id": 2,
+      "name": "Salame",
+      "prices": [
+        7,
+        12,
+        19
+      ],
+      "image": "/images/salame.svg",
+      "description": "If you're a carnivore, you might consider this pizza. No vegan BS, just meat for reasonable price.",
+      "isVegan": false,
+      "isSpicy": true
+    },
+    {
+      "id": 3,
+      "name": "Funghi",
+      "prices": [
+        6,
+        11,
+        17
+      ],
+      "image": "/images/funghi.svg",
+      "description": "If you don't like any particular flavor and crave for pizza as dull as your life, it's an excellent choice. You will regret it, but at least you saved some money.",
+      "isVegan": true,
+      "isSpicy": false
+    },
+    {
+      "id": 4,
+      "name": "della Pologna",
+      "prices": [
+        3,
+        6,
+        9
+      ],
+      "image": "/images/dellaPologna.svg",
+      "description": "This is a pizza, that we recommend for our friends from Poland. Large amounts of onion will make you cry, recalling the homeland of Onion People",
+      "isVegan": false,
+      "isSpicy": false
+    },
+    {
+      "id": 5,
+      "name": "Turco",
+      "prices": [
+        10,
+        20,
+        30
+      ],
+      "image": "/images/turco.svg",
+      "description": "Looks like someone put cat food on it, but is actually quite tasty. Contains meat of unknown origin",
+      "isVegan": false,
+      "isSpicy": true
+    },
+    {
+      "id": 6,
+      "name": "Vegetariana",
+      "prices": [
+        6,
+        9,
+        12
+      ],
+      "image": "/images/vegetariana.svg",
+      "description": "We put it so far in our menu, 'cause we are not entirely proud of it. Our boss made us prepare a pizza for vegans and here it is. ",
+      "isVegan": true,
+      "isSpicy": false
+    },
+    {
+      "id": 7,
+      "name": "Broccoli",
+      "prices": [
+        9,
+        12,
+        15
+      ],
+      "image": "/images/broccoli.svg",
+      "description": "Another vegan option containing little magic trees. It is still an unsolved mystery, why would you choose this one, but this is a free country, I guess.",
+      "isVegan": true,
+      "isSpicy": false
+    },
+    {
+      "id": 8,
+      "name": "Spinachi",
+      "prices": [
+        20,
+        30,
+        40
+      ],
+      "image": "/images/spinachi.svg",
+      "description": "Only for masochists. We made it expensive, so you wouldn't pick it and had a nice day instead.",
+      "isVegan": true,
+      "isSpicy": false
+    },
+    {
+      "id": 9,
+      "name": "Strano",
+      "prices": [
+        3,
+        4,
+        5
+      ],
+      "image": "/images/strano.svg",
+      "description": "Pizza that our chef prepares out of trash and leftovers, so it's eco. Also cheap, because it's way past its expiration date",
+      "isVegan": false,
+      "isSpicy": true
+    }
+  ],
+  "orderList": [
+    {
+      "client": {
+        "firstName": "Krystyna",
+        "lastName": "Janda",
+        "email": "krystyna@janda.pl",
+        "phoneNumber": 1011700,
+        "address": [
+          "Jandy 21",
+          12345,
+          "Biala Podlaska",
+          37
+        ],
+        "id": "59a516a9-9461-45ed-9747-7822ad21fab6"
+      },
+      "orderItems": [
         {
-            "id": 1,
-            "name": "Margharita",
-            "prices": [5,10,15],
-            "image": "/images/margharita.svg",
-            "description": "Pizza for poor people. If you're broke or the paycheck is near but not there yet, you may order this one to get a mediocre excuse for a pizza. Delish.",
-            "isVegan": true,
-            "isSpicy": false
+          "name": "turco",
+          "size": "S",
+          "price": 20,
+          "quantity": 2,
+          "id": "ff5b686b-6cc1-47b4-87cc-71281a3a4df4"
         },
         {
-            "id": 2,
-            "name": "Salame",
-            "prices": [7,12,19],
-            "image": "/images/salame.svg",
-            "description": "If you're a carnivore, you might consider this pizza. No vegan BS, just meat for reasonable price.",
-            "isVegan": false,
-            "isSpicy": true
-        },
-        {
-            "id": 3,
-            "name": "Funghi",
-            "prices": [6,11,17],
-            "image": "/images/funghi.svg",
-            "description": "If you don't like any particular flavor and crave for pizza as dull as your life, it's an excellent choice. You will regret it, but at least you saved some money.",
-            "isVegan": true,
-            "isSpicy": false
-        },
-        {
-            "id": 4,
-            "name": "della Pologna",
-            "prices": [3,6,9],
-            "image": "/images/dellaPologna.svg",
-            "description": "This is a pizza, that we recommend for our friends from Poland. Large amounts of onion will make you cry, recalling the homeland of Onion People",
-            "isVegan": false,
-            "isSpicy": false
-        },
-        {
-            "id": 5,
-            "name": "Turco",
-            "prices": [10,20,30],
-            "image": "/images/turco.svg",
-            "description": "Looks like someone put cat food on it, but is actually quite tasty. Contains meat of unknown origin",
-            "isVegan": false,
-            "isSpicy": true
-        },
-        {
-            "id": 6,
-            "name": "Vegetariana",
-            "prices": [6,9,12],
-            "image": "/images/vegetariana.svg",
-            "description": "We put it so far in our menu, 'cause we are not entirely proud of it. Our boss made us prepare a pizza for vegans and here it is. ",
-            "isVegan": true,
-            "isSpicy": false
-        },
-        {
-            "id": 7,
-            "name": "Broccoli",
-            "prices": [9,12,15],
-            "image": "/images/broccoli.svg",
-            "description": "Another vegan option containing little magic trees. It is still an unsolved mystery, why would you choose this one, but this is a free country, I guess.",
-            "isVegan": true,
-            "isSpicy": false
-        },
-        {
-            "id": 8,
-            "name": "Spinachi",
-            "prices": [20,30,40],
-            "image": "/images/spinachi.svg",
-            "description": "Only for masochists. We made it expensive, so you wouldn't pick it and had a nice day instead.",
-            "isVegan": true,
-            "isSpicy": false
-        },
-        {
-            "id": 9,
-            "name": "Strano",
-            "prices": [3,4,5],
-            "image": "/images/strano.svg",
-            "description": "Pizza that our chef prepares out of trash and leftovers, so it's eco. Also cheap, because it's way past its expiration date",
-            "isVegan": false,
-            "isSpicy": true
+          "name": "della Pologna",
+          "size": "L",
+          "price": 27,
+          "quantity": 3,
+          "id": "0e5f4bdb-d665-44c4-9e05-50a76e93b2ee"
         }
-    ],
-    "order": [{
-        "name": "Ula"
-    }]
+      ],
+      "status": "delivered",
+      "id": "84ff0261-e36d-4ad5-899c-f110ae3d93df",
+      "totalPrice": 0,
+      "timeStamp": "2022-12-31"
+    },
+    {
+      "client": {
+        "firstName": "Krystyna",
+        "lastName": "Janda",
+        "email": "krystyna@janda.pl",
+        "phoneNumber": 1011700,
+        "address": [
+          "Jandy 21",
+          12345,
+          "Biala Podlaska",
+          37
+        ],
+        "id": "f515665a-7f74-4840-b508-4dfdsfsdf1b8e"
+      },
+      "orderItems": [
+        {
+          "name": "margharita",
+          "size": "S",
+          "price": 10,
+          "quantity": 2,
+          "id": "db05cdbc-0773-4d51-9321-2bf3fsdfsdfs938"
+        },
+        {
+          "name": "salame",
+          "size": "M",
+          "price": 15,
+          "quantity": 1,
+          "id": "dfc3f1dd-fc12-4e52-9c88-76dfsdfsd4f"
+        }
+      ],
+      "status": "delivered",
+      "id": "cf8af429-8deb-4164-b637-37d2d32cfsdfsd",
+      "totalPrice": 0,
+      "timeStamp": "2023-01-10"
+    },
+    {
+      "client": {
+        "firstName": "uiy",
+        "lastName": "ytru",
+        "email": "fukuf@ds.pl",
+        "address": [
+          "rterwf",
+          "12345",
+          "fwrtegege",
+          null
+        ],
+        "id": "221c3b6e-cb26-47a5-b89c-17a96882a25e"
+      },
+      "orderItems": [
+        {
+          "name": "margharita",
+          "size": "S",
+          "price": 10,
+          "quantity": 2,
+          "id": "a85e9e58-47dc-4f35-aadb-63b1c3ff5ee7"
+        },
+        {
+          "name": "salame",
+          "size": "M",
+          "price": 15,
+          "quantity": 1,
+          "id": "dbe0fb1c-eb03-44e3-8d0d-c2e0d8d0fb45"
+        }
+      ],
+      "status": "pending",
+      "id": "c3d2e395-6bea-465c-b9be-f7979499a75b",
+      "totalPrice": 0,
+      "timeStamp": "2023-01-12"
+    },
+    {
+      "client": {
+        "firstName": "dfaewf",
+        "lastName": "erger",
+        "email": "fs@fsd.pl",
+        "address": [
+          "fdvsd",
+          "12345",
+          "fsdfsd",
+          null
+        ],
+        "id": "146d9803-0e00-4b69-be76-2733e71d59f4"
+      },
+      "orderItems": [
+        {
+          "name": "margharita",
+          "size": "S",
+          "price": 10,
+          "quantity": 2,
+          "id": "a5f2b54c-7dda-4793-802a-c7aaa377d606"
+        },
+        {
+          "name": "salame",
+          "size": "M",
+          "price": 15,
+          "quantity": 1,
+          "id": "dc624c6b-c0d2-47c6-836c-4b2a1b191703"
+        }
+      ],
+      "status": "pending",
+      "id": "b9723faa-af49-41a3-a305-f8afa6156fb3",
+      "totalPrice": 0,
+      "timeStamp": "2023-01-12"
+    }
+  ]
 }
