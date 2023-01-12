@@ -1,11 +1,36 @@
-import React from "react";
-import { StyledModal } from "./Modal.styled";
+import React, { useContext } from "react";
 
-function Modal({ setModal, children }) {
+import { useRouter } from "next/router";
+
+import { StyledModal } from "./Modal.styled";
+import { DataStoreContext } from "../../DataStoreContext";
+
+interface IModal {
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isSuccess: boolean;
+  children: React.ReactNode;
+}
+
+function Modal({ setModal, isSuccess, children }: IModal) {
+  const router = useRouter();
+  const { setCart } = useContext(DataStoreContext);
+
+  const handleClick = () => {
+    setModal(false);
+
+    if (isSuccess) {
+      setCart([]);
+      //clean local storage
+      window.localStorage.clear();
+      // redirect
+
+      router.push("/order/list");
+    }
+  };
   return (
-    <StyledModal onClick={() => setModal(false)}>
+    <StyledModal onClick={handleClick}>
       <div className="content">
-        <button onClick={() => setModal(false)}>Close modal</button>
+        <button onClick={handleClick}>Close modal</button>
         {children}
       </div>
     </StyledModal>

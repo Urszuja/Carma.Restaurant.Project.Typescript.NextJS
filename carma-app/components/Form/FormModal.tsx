@@ -5,9 +5,7 @@ import { StyledFormModal } from "../styles/FormModal.styles";
 
 function FormModal({ isSuccess }: { isSuccess: boolean }) {
   const response = isSuccess ? ORDER_FINAL.SUCCESS : ORDER_FINAL.FAIL;
-  console.log(response);
   const style = isSuccess ? "success" : "danger";
-  console.log(style);
   return (
     <StyledFormModal isSuccess>
       <div>
