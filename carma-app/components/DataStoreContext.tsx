@@ -4,6 +4,9 @@ import { testOrder, testOrderItem, testOrderItem2 } from "../mockData";
 import OrderInstance from "../model/Order";
 import OrderItemInstance from "../model/OrderItem";
 
+import type Client from "../model/Client";
+import { IMenuItem } from "../model/MenuItem";
+
 interface DataStoreContextInterface {
   ordersDatabase: OrderInstance[] | null;
   setOrdersDatabase: React.Dispatch<
@@ -11,6 +14,10 @@ interface DataStoreContextInterface {
   >;
   cart: OrderItemInstance[] | null;
   setCart: React.Dispatch<React.SetStateAction<OrderItemInstance[] | null>>;
+  menu: IMenuItem[] | null;
+  setMenu: React.Dispatch<React.SetStateAction<IMenuItem[] | null>>;
+  filteredMenu: IMenuItem[] | null;
+  setFilter: React.Dispatch<React.SetStateAction<IMenuItem[] | null>>;
 }
 
 type DataStoreProviderProps = { children: React.ReactNode };
@@ -29,15 +36,30 @@ const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
     testOrderItem,
     testOrderItem2,
   ]);
+  const [menu, setMenu] = useState<IMenuItem[] | null>([]);
+  const [filteredMenu, setFilter] = useState<IMenuItem[] | null>([]);
 
   const storeDataWithMemo = useMemo(
     () => ({
       ordersDatabase,
       cart,
+      menu,
+      filteredMenu,
       setOrdersDatabase,
       setCart,
+      setMenu,
+      setFilter,
     }),
-    [ordersDatabase, cart, setOrdersDatabase, setCart]
+    [
+      ordersDatabase,
+      cart,
+      menu,
+      filteredMenu,
+      setOrdersDatabase,
+      setCart,
+      setMenu,
+      setFilter,
+    ]
   );
 
   return (
