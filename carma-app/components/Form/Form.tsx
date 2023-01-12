@@ -7,6 +7,7 @@ import Button from "../commons/button/Button";
 import Client, { Address } from "../../model/Client";
 import Order from "../Order/Order";
 import { DataStoreContext } from "../DataStoreContext";
+import { useRouter } from "next/router";
 
 interface IFormInputs {
   firstName: string;
@@ -31,6 +32,7 @@ export default function Form() {
   });
 
   const { cart, setCart } = useContext(DataStoreContext);
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     const address: Address = [data.address, data.zip, data.city, data.address2];
@@ -59,7 +61,10 @@ export default function Form() {
       .catch((error) => {
         console.error("Error:", error);
       });
+    //clean local storage
     window.localStorage.clear();
+    // redirect
+    router.push("/order/list");
   };
 
   return (

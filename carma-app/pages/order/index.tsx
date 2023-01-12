@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { DataStoreContext } from "../../components/DataStoreContext";
+import React from "react";
+
 import OrderItem from "../../components/OrderItem/OrderItem";
 import Order from "../../components/Order/Order";
 import { testOrder } from "../../mockData";
 import Button from "../../components/commons/button/Button";
+import { IMenuItem, IMenuItems } from "../../model/MenuItem";
 
-function CartPage({ menuItems }: any) {
-  const { clientsData } = useContext(DataStoreContext);
+function CartPage({ menuItems }: IMenuItems) {
   return (
     <div className="cart-page">
       <div className="cart-items">
@@ -31,7 +31,7 @@ function CartPage({ menuItems }: any) {
 
 export async function getStaticProps() {
   const res = await fetch("http://localhost:5000/menu");
-  const menuItems = await res.json();
+  const menuItems = (await res.json()) as IMenuItem[];
   return {
     props: {
       menuItems,
