@@ -258,9 +258,11 @@ export default function Form() {
         <Order />
         <Button type="submit" text="Place order" />
       </div>
-      <Modal onClose={() => setShowModal(false)} show={showModal}>
-        Hello from the modal!
-      </Modal>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)} show={showModal}>
+          Hello from the modal!
+        </Modal>
+      )}
     </StyledForm>
   );
 }

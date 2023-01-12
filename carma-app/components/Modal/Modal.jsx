@@ -6,8 +6,19 @@ import styled from "styled-components";
 const Modal = ({ show, onClose, children }) => {
   const [isBrowser, setIsBrowser] = useState(false);
 
+  const modalWrapperRef = React.useRef();
+
+  const backDropHandler = (e) => {
+    if (!modalWrapperRef?.current?.contains(e.target)) {
+      onClose();
+    }
+  };
+
   useEffect(() => {
     setIsBrowser(true);
+
+    window.addEventListener("click", backDropHandler);
+    return () => window.removeEventListener("click", backDropHandler);
   }, []);
 
   const handleCloseClick = (e) => {
@@ -17,12 +28,14 @@ const Modal = ({ show, onClose, children }) => {
 
   const modalContent = show ? (
     <StyledModalOverlay>
-      <StyledModal>
-        <StyledModalHeader>
-          <button onClick={handleCloseClick}>x</button>
-        </StyledModalHeader>
-        <StyledModalBody>{children}</StyledModalBody>
-      </StyledModal>
+      <StyledModalWrapper ref={modalWrapperRef}>
+        <StyledModal>
+          <StyledModalHeader>
+            <button onClick={handleCloseClick}>x</button>
+          </StyledModalHeader>
+          <StyledModalBody>{children}</StyledModalBody>
+        </StyledModal>
+      </StyledModalWrapper>
     </StyledModalOverlay>
   ) : null;
 
@@ -35,6 +48,10 @@ const Modal = ({ show, onClose, children }) => {
     return null;
   }
 };
+const StyledModalWrapper = styled.div`
+  width: 500px;
+  height: 600px;
+`;
 
 const StyledModalBody = styled.div`
   padding-top: 10px;

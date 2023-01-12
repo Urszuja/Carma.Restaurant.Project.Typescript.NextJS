@@ -256,6 +256,40 @@
       "id": "491cbb2c-aa38-4fea-b642-241405ed5f65",
       "totalPrice": 0,
       "timeStamp": "2023-01-12"
+    },
+    {
+      "client": {
+        "firstName": "rgedgfd",
+        "lastName": "gfdhd",
+        "email": "wrg@o2.pl",
+        "address": [
+          "dsfsf",
+          "12345",
+          "gsfdgswr",
+          null
+        ],
+        "id": "9150da51-91ff-4254-a942-921b1013a7e1"
+      },
+      "orderItems": [
+        {
+          "name": "margharita",
+          "size": "S",
+          "price": 10,
+          "quantity": 2,
+          "id": "e9a29f54-7a2e-453f-b960-3b3f6bac055c"
+        },
+        {
+          "name": "salame",
+          "size": "M",
+          "price": 15,
+          "quantity": 1,
+          "id": "bde7903b-7fb4-4957-897a-1da14f69b0d1"
+        }
+      ],
+      "status": "pending",
+      "id": "de99aa49-906e-4378-85c9-ef302ee73e0b",
+      "totalPrice": 0,
+      "timeStamp": "2023-01-12"
     }
   ]
 }
