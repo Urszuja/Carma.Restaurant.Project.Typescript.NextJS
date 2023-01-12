@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 
-import { IMenuItem } from "../../model/MenuItem";
+import { IMenuItem, IMenuItems } from "../../model/MenuItem";
 
 import MiniMenuItem from "../../components/MenuItem/MiniMenuItem";
 import Filter from "../../components/Dropdown/Filter";
 import { DataStoreContext } from "../../components/DataStoreContext";
 
-function MenuPage({ menuItems }: any) {
+function MenuPage({ menuItems }: IMenuItems) {
   const { filteredMenu, setMenu, setFilter } = useContext(DataStoreContext);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function MenuPage({ menuItems }: any) {
 
 export async function getStaticProps() {
   const res = await fetch("http://localhost:5000/menu");
-  const menuItems = await res.json();
+  const menuItems = (await res.json()) as IMenuItem[];
   return {
     props: {
       menuItems,

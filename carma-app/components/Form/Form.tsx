@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import StyledForm from "../styles/Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
-import Order from "../Order/Order";
+import OrderInstance from "../../model/Order";
 import Button from "../commons/button/Button";
+import Client, { Address } from "../../model/Client";
+import Order from "../Order/Order";
+import { DataStoreContext } from "../DataStoreContext";
+import { useRouter } from "next/router";
 
 interface IFormInputs {
   firstName: string;
+  lastName: string;
+  email: string;
   phoneNumber: number;
+  address: string;
+  zip: number;
+  city: string;
+  orderList: OrderInstance[];
+  address2?: number;
 }
 
 export default function Form() {
@@ -20,14 +31,40 @@ export default function Form() {
     criteriaMode: "all",
   });
 
-  const onSubmit: SubmitHandler<IFormInputs> = (data) => {
-    console.log(data);
-    alert(JSON.stringify(data));
-    //POST CLIENT DATA WITH ORDER
-    window.localStorage.clear();
+  const { cart, setCart } = useContext(DataStoreContext);
+  const router = useRouter();
 
-    console.log(typeof errors);
-    console.log(typeof register);
+  const onSubmit: SubmitHandler<IFormInputs> = (data) => {
+    const address: Address = [data.address, data.zip, data.city, data.address2];
+    const newClient = new Client(
+      data.firstName,
+      data.lastName,
+      data.email,
+      data.phoneNumber,
+      address
+    );
+    const newOrder = cart && new OrderInstance(newClient, cart, "pending");
+
+    //POST CLIENT DATA WITH ORDER
+    fetch("http://localhost:5000/orderList", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        setCart([]);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    //clean local storage
+    window.localStorage.clear();
+    // redirect
+    router.push("/order/list");
   };
 
   return (
@@ -134,7 +171,7 @@ export default function Form() {
           rules={{
             required: "This input is required.",
             pattern: {
-              value: /^[a-zA-Z0-9 ]*$/,
+              value: /^[a-zA-Z0-9 .]*$/,
               message: "This input is for address only.",
             },
             minLength: {

@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import { StyledOrder } from "../styles/Order.styled";
 import { DataStoreContext } from "../DataStoreContext";
-import { deliveryCost } from "../../mockData";
+import { standardDeliveryCost } from "../../mockData";
 
 function Order() {
   const { cart } = useContext(DataStoreContext);
-  const orders = cart?.orderItems;
-  const totalPrice = orders?.reduce(
-    (acc, order) => acc + order.price * order.quantity,
-    deliveryCost
-  );
+
+  const totalPrice =
+    cart &&
+    cart.reduce(
+      (acc, order) => acc + order.price * order.quantity,
+      standardDeliveryCost
+    );
 
   return (
     <StyledOrder>
@@ -26,23 +28,27 @@ function Order() {
         </div>
         <div className="order-items">
           <div className="column order-name">
-            {orders && orders.map((o) => <div>{o.name}</div>)}
+            {cart &&
+              cart.map((o) => <div key={`${o.id}-${o.name}`}>{o.name}</div>)}
           </div>
           <div className="column size-quantity">
-            {orders &&
-              orders.map((o) => (
-                <div>
+            {cart &&
+              cart.map((o) => (
+                <div key={`${o.id}-${o.size}`}>
                   {o.size} x {o.quantity}
                 </div>
               ))}
           </div>
           <div className="column price">
-            {orders && orders.map((o) => <div>{o.price * o.quantity}$</div>)}
+            {cart &&
+              cart.map((o) => (
+                <div key={`${o.id}-${o.price}`}>{o.price * o.quantity}$</div>
+              ))}
           </div>
         </div>
         <div className="delivery">
           <p>Delivery</p>
-          <p>{deliveryCost} $</p>
+          <p>{standardDeliveryCost} $</p>
         </div>
         <hr />
         <div className="total">
