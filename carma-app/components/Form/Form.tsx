@@ -7,9 +7,7 @@ import Button from "../commons/button/Button";
 import Client, { Address } from "../../model/Client";
 import Order from "../Order/Order";
 import { DataStoreContext } from "../DataStoreContext";
-
-import Modal from "../commons/Modal/Modal";
-import FormModal from "./FormModal";
+import Modal from "../Modal/Modal";
 
 interface IFormInputs {
   firstName: string;
@@ -24,7 +22,8 @@ interface IFormInputs {
 }
 
 export default function Form() {
-  const [isFinalModalOpen, setFinalModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const [isSuccess, setResult] = useState(false);
   const {
     register,
@@ -66,7 +65,7 @@ export default function Form() {
         console.error("Error:", error);
         setResult(false);
       });
-    setFinalModal(true);
+    setShowModal(true);
   };
 
   return (
@@ -259,11 +258,9 @@ export default function Form() {
         <Order />
         <Button type="submit" text="Place order" />
       </div>
-      {isFinalModalOpen && (
-        <Modal setModal={setFinalModal} isSuccess={isSuccess}>
-          <FormModal isSuccess={isSuccess} />
-        </Modal>
-      )}
+      <Modal onClose={() => setShowModal(false)} show={showModal}>
+        Hello from the modal!
+      </Modal>
     </StyledForm>
   );
 }
