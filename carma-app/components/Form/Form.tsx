@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import StyledForm from "../styles/Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../commons/input/FormInput";
@@ -7,7 +7,9 @@ import Button from "../commons/button/Button";
 import Client, { Address } from "../../model/Client";
 import Order from "../Order/Order";
 import { DataStoreContext } from "../DataStoreContext";
+import Modal from "../Modal/Modal";
 import { useRouter } from "next/router";
+import FormModal from "./FormModal";
 
 interface IFormInputs {
   firstName: string;
@@ -22,8 +24,10 @@ interface IFormInputs {
 }
 
 export default function Form() {
+  const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
+  const [isSuccess, setResult] = useState<boolean>(false);
   const {
-    register,
     formState: { errors },
     handleSubmit,
     control,
@@ -32,7 +36,6 @@ export default function Form() {
   });
 
   const { cart, setCart } = useContext(DataStoreContext);
-  const router = useRouter();
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
     const address: Address = [data.address, data.zip, data.city, data.address2];
@@ -56,15 +59,22 @@ export default function Form() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        setCart([]);
+
+        setResult(true);
       })
       .catch((error) => {
         console.error("Error:", error);
+        setResult(false);
       });
-    //clean local storage
-    window.localStorage.clear();
-    // redirect
-    router.push("/order/list");
+    setTimeout(() => setShowModal(true), 1000);
+  };
+
+  const onCloseModal = async () => {
+    if (isSuccess) {
+      await router.push("/order/list");
+      setCart([]);
+    }
+    setShowModal(false);
   };
 
   return (
@@ -257,6 +267,11 @@ export default function Form() {
         <Order />
         <Button type="submit" text="Place order" />
       </div>
+      {showModal && (
+        <Modal onClose={onCloseModal} show={showModal}>
+          <FormModal isSuccess={isSuccess} />
+        </Modal>
+      )}
     </StyledForm>
   );
 }

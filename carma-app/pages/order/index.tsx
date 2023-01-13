@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import OrderItem from "../../components/OrderItem/OrderItem";
 import Order from "../../components/Order/Order";
@@ -23,7 +24,9 @@ function CartPage({ menuItems }: IMenuItems) {
       </div>
       <div className="order-display">
         <Order />
-        <Button type="button" text="Confirm" />
+        <Link href="/order/final">
+          <Button type="button" text="Confirm" />
+        </Link>
       </div>
     </div>
   );

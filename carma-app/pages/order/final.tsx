@@ -4,8 +4,9 @@ import Form from "../../components/Form/Form";
 
 function PlaceOrderPage() {
   const { cart } = useContext(DataStoreContext);
+  
   return (
-    <div>
+    <div className="final-page">
       {cart && cart.length === 0 ? (
         <div>Here comes modal with redirect</div>
       ) : (

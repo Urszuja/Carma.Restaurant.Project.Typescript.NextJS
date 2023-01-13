@@ -36,7 +36,6 @@ function FormInput({ name, control, rules, errors, label }: IFormInput) {
         errors={errors}
         name={name}
         render={({ messages }) => {
-          console.log("messages", messages);
           return messages
             ? Object.entries(messages).map(([type, message]) => (
                 <p key={type}>{message}</p>
