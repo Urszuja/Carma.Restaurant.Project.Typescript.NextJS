@@ -66,7 +66,7 @@ export default function Form() {
         console.error("Error:", error);
         setResult(false);
       });
-    setShowModal(true);
+    setTimeout(() => setShowModal(true), 1000);
   };
 
   const onCloseModal = async () => {
@@ -268,7 +268,7 @@ export default function Form() {
         <Button type="submit" text="Place order" />
       </div>
       {showModal && (
-        <Modal onClose={onCloseModal} show={showModal} isSuccess={isSuccess}>
+        <Modal onClose={onCloseModal} show={showModal}>
           <FormModal isSuccess={isSuccess} />
         </Modal>
       )}
