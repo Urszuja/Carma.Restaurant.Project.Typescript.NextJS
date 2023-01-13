@@ -8,6 +8,7 @@ import Button from "../../components/commons/button/Button";
 import { IMenuItem, IMenuItems } from "../../model/MenuItem";
 
 function CartPage({ menuItems }: IMenuItems) {
+  const handleClick = () => {};
   return (
     <div className="cart-page">
       <div className="cart-items">
@@ -25,7 +26,7 @@ function CartPage({ menuItems }: IMenuItems) {
       <div className="order-display">
         <Order />
         <Link href="/order/final">
-          <Button type="button" text="Confirm" />
+          <Button type="button" text="Confirm" onClick={handleClick} />
         </Link>
       </div>
     </div>

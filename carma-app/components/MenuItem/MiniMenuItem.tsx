@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledMiniMenuItem } from "../styles/MiniMenuItem.styled";
-import Modal from "../commons/Modal/Modal";
 import MenuItem from "./MenuItem";
 
 import AddToBasketItem from "../AddToBasketItem/AddToBasketItem";
+import Modal from "../Modal/Modal";
 
 function MiniMenuItem({
   id,
@@ -16,9 +16,10 @@ function MiniMenuItem({
   isVegan,
   isSpicy,
 }: IMenuItem) {
-  const [isMenuDetailOpen, setMenuDetail] = useState(false);
+  const [isMenuDetailOpen, setMenuDetail] = useState(true);
   const [isOrderDetailOpen, setOrderDetail] = useState(false);
 
+  console.log(name, isMenuDetailOpen);
   return (
     <StyledMiniMenuItem>
       <div className="upper">
@@ -52,7 +53,7 @@ function MiniMenuItem({
           height={150}
         />
         <Image
-          onClick={() => setOrderDetail(true)}
+          onClick={() => console.log("add to cart")}
           src="/FontAwesomeIcons/cart-plus.svg"
           alt="add to order"
           width={30}
@@ -60,7 +61,7 @@ function MiniMenuItem({
         />
       </div>
       {isMenuDetailOpen && (
-        <Modal setModal={setMenuDetail}>
+        <Modal show={isMenuDetailOpen} onClose={() => setMenuDetail(false)}>
           <MenuItem
             name={name}
             id={id}
@@ -73,7 +74,7 @@ function MiniMenuItem({
         </Modal>
       )}
       {isOrderDetailOpen && (
-        <Modal setModal={setOrderDetail}>
+        <Modal show={isOrderDetailOpen} onClose={() => setOrderDetail(false)}>
           <AddToBasketItem
             name={name}
             id={id}
