@@ -9,6 +9,7 @@ import Order from "../Order/Order";
 import { DataStoreContext } from "../DataStoreContext";
 import Modal from "../Modal/Modal";
 import { useRouter } from "next/router";
+import FormModal from "./FormModal";
 
 interface IFormInputs {
   firstName: string;
@@ -25,9 +26,8 @@ interface IFormInputs {
 export default function Form() {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
-  const [isSuccess, setResult] = useState(false);
+  const [isSuccess, setResult] = useState<boolean>(false);
   const {
-    register,
     formState: { errors },
     handleSubmit,
     control,
@@ -69,12 +69,12 @@ export default function Form() {
     setShowModal(true);
   };
 
-  const onCloseModal = () => {
-    setShowModal(false);
+  const onCloseModal = async () => {
     if (isSuccess) {
-      router.push("/order/list");
+      await router.push("/order/list");
       setCart([]);
     }
+    setShowModal(false);
   };
 
   return (
@@ -268,8 +268,8 @@ export default function Form() {
         <Button type="submit" text="Place order" />
       </div>
       {showModal && (
-        <Modal onClose={onCloseModal} show={showModal}>
-          Hello from the modal!
+        <Modal onClose={onCloseModal} show={showModal} isSuccess={isSuccess}>
+          <FormModal isSuccess={isSuccess} />
         </Modal>
       )}
     </StyledForm>

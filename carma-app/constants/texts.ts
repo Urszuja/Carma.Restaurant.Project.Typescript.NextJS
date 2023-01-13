@@ -17,7 +17,7 @@ export const ORDER_FINAL = {
   SUCCESS: {
     TEXT1: "Congratz,",
     TEXT2: "your order has been placed successfully.",
-    TEXT3: "Your order will arrive within: ",
+    TEXT3: "Your order will arrive within 60 min. ",
     TEXT4: "Thanks for choosing ",
   },
 };

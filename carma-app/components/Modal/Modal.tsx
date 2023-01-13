@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import styled from "styled-components";
+import Image from "next/image";
+import {
+  StyledModalWrapper,
+  StyledModalBody,
+  StyledModalHeader,
+  StyledModal,
+  StyledModalOverlay,
+} from "./Modal.styled";
 
-const Modal = ({ show, onClose, children }) => {
+interface IModal {
+  show: boolean;
+  onClose: any;
+  children: any;
+}
+
+const Modal = ({ show, onClose, children }: IModal) => {
   const [isBrowser, setIsBrowser] = useState(false);
 
-  const modalWrapperRef = React.useRef();
+  const modalWrapperRef = React.useRef<any>();
 
-  const backDropHandler = (e) => {
+  const backDropHandler = (e: any) => {
     if (!modalWrapperRef?.current?.contains(e.target)) {
       onClose();
     }
@@ -20,7 +33,7 @@ const Modal = ({ show, onClose, children }) => {
     return () => window.removeEventListener("click", backDropHandler);
   }, []);
 
-  const handleCloseClick = (e) => {
+  const handleCloseClick = (e: any) => {
     e.preventDefault();
     onClose();
   };
@@ -30,7 +43,13 @@ const Modal = ({ show, onClose, children }) => {
       <StyledModalWrapper ref={modalWrapperRef}>
         <StyledModal>
           <StyledModalHeader>
-            <button onClick={handleCloseClick}>x</button>
+            <Image
+              onClick={handleCloseClick}
+              src="/FontAwesomeIcons/window-close.svg"
+              alt="close"
+              width={15}
+              height={15}
+            />
           </StyledModalHeader>
           <StyledModalBody>{children}</StyledModalBody>
         </StyledModal>
@@ -41,45 +60,11 @@ const Modal = ({ show, onClose, children }) => {
   if (isBrowser) {
     return ReactDOM.createPortal(
       modalContent,
-      document.getElementById("modal-root")
+      document.getElementById("modal-root")!
     );
   } else {
     return null;
   }
 };
-const StyledModalWrapper = styled.div`
-  width: 500px;
-  height: 600px;
-`;
-
-const StyledModalBody = styled.div`
-  padding-top: 10px;
-`;
-
-const StyledModalHeader = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  font-size: 25px;
-`;
-
-const StyledModal = styled.div`
-  background: white;
-  color: black;
-  width: 500px;
-  height: 600px;
-  border-radius: 15px;
-  padding: 15px;
-`;
-const StyledModalOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-`;
 
 export default Modal;
