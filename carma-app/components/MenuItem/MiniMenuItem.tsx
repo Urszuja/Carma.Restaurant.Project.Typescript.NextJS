@@ -16,10 +16,20 @@ function MiniMenuItem({
   isVegan,
   isSpicy,
 }: IMenuItem) {
-  const [isMenuDetailOpen, setMenuDetail] = useState(true);
+  const [isMenuDetailOpen, setMenuDetail] = useState(false);
   const [isOrderDetailOpen, setOrderDetail] = useState(false);
 
   console.log(name, isMenuDetailOpen);
+
+  const handleShowMenu = (e: any) => {
+    e.stopPropagation();
+    setMenuDetail(true);
+  };
+
+  const handleShowOrder = (e: any) => {
+    e.stopPropagation();
+    setOrderDetail(true);
+  };
   return (
     <StyledMiniMenuItem>
       <div className="upper">
@@ -46,14 +56,14 @@ function MiniMenuItem({
       </div>
       <div className="middle">
         <Image
-          onClick={() => setMenuDetail(true)}
+          onClick={handleShowMenu}
           src={image}
           alt={name}
           width={150}
           height={150}
         />
         <Image
-          onClick={() => console.log("add to cart")}
+          onClick={handleShowOrder}
           src="/FontAwesomeIcons/cart-plus.svg"
           alt="add to order"
           width={30}

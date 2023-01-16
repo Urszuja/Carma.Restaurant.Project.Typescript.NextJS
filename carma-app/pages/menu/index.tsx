@@ -32,18 +32,16 @@ function MenuPage({ menuItems }: IMenuItems) {
       <div className="menu">
         {filteredMenu &&
           filteredMenu.map((menuItem: IMenuItem) => (
-            <div>
-              <MiniMenuItem
-                key={menuItem.id}
-                name={menuItem.name}
-                id={menuItem.id}
-                prices={menuItem.prices}
-                image={menuItem.image}
-                description={menuItem.description}
-                isSpicy={menuItem.isSpicy}
-                isVegan={menuItem.isVegan}
-              />
-            </div>
+            <MiniMenuItem
+              key={menuItem.id}
+              name={menuItem.name}
+              id={menuItem.id}
+              prices={menuItem.prices}
+              image={menuItem.image}
+              description={menuItem.description}
+              isSpicy={menuItem.isSpicy}
+              isVegan={menuItem.isVegan}
+            />
           ))}
       </div>
     </div>
