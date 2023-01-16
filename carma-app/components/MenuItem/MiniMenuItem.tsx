@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledMiniMenuItem } from "../styles/MiniMenuItem.styled";
-import Modal from "../commons/Modal/Modal";
 import MenuItem from "./MenuItem";
 
 import AddToBasketItem from "../AddToBasketItem/AddToBasketItem";
+import Modal from "../Modal/Modal";
 
 function MiniMenuItem({
   id,
@@ -60,7 +60,7 @@ function MiniMenuItem({
         />
       </div>
       {isMenuDetailOpen && (
-        <Modal setModal={setMenuDetail}>
+        <Modal show={false} onClose={() => console.log("menu modal closed")}>
           <MenuItem
             name={name}
             id={id}
@@ -73,7 +73,7 @@ function MiniMenuItem({
         </Modal>
       )}
       {isOrderDetailOpen && (
-        <Modal setModal={setOrderDetail}>
+        <Modal show={false} onClose={() => console.log("order modal closed")}>
           <AddToBasketItem
             name={name}
             id={id}

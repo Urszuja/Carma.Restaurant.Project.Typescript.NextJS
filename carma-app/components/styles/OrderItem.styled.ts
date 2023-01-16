@@ -11,6 +11,10 @@ export const StyledOrderItem = styled.div`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
 
+  img {
+    cursor: pointer;
+  }
+
   h4 {
     margin: 0;
   }
