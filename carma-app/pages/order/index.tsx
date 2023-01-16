@@ -16,6 +16,7 @@ function CartPage({ menuItems }: IMenuItems) {
         {cart!.length > 0 &&
           cart!.map((item) => (
             <OrderItem
+              key={item.id}
               id={item.id}
               name={item.name}
               price={item.price}

@@ -15,9 +15,10 @@ function OrderItem({ id, name, size, price, quantity, menu }: IOrderItem) {
   const [pizzaAmount, setPizzaAmount] = useState(quantity);
 
   function handleRemove() {
-    console.log("nice try");
     if (pizza) {
-      setCart((c) => c!.splice(cart!.indexOf(pizza) - 1, 1));
+      alert(`Pizza ${name} of size ${size} removed`);
+
+      setCart((c) => c!.filter((p) => p.id !== id));
     }
   }
 
@@ -25,31 +26,23 @@ function OrderItem({ id, name, size, price, quantity, menu }: IOrderItem) {
     if (pizza!.quantity < 9) {
       setPizzaAmount((am) => am + 1);
       pizza!.increaseQuantity();
-      setCart([...cart!, pizza!]);
+      setCart([...cart!]);
+    } else {
+      alert(
+        "Maximum quantity of pizza in given size exceeded. Consider ordering larger pizzas."
+      );
     }
-    console.log("more");
   }
 
   function handleLess() {
     if (pizza!.quantity > 1) {
       setPizzaAmount((am) => am - 1);
       pizza!.decreaseQuantity();
+      setCart([...cart!]);
+    } else {
+      setCart((c) => c!.filter((p) => p.id !== id));
     }
-
-    console.log("less");
   }
-
-  function handleChange(e: any) {
-    e.preventDefault();
-
-    const inputNumber = Math.floor(parseInt(e.target.value));
-    if (inputNumber > 0) {
-      setPizzaAmount(inputNumber);
-      pizza!.changeQuantity(inputNumber);
-    }
-    console.log("changed to", inputNumber);
-  }
-
   return (
     <StyledOrderItem id={id}>
       <div className="upper">
@@ -70,14 +63,7 @@ function OrderItem({ id, name, size, price, quantity, menu }: IOrderItem) {
               width={20}
               height={20}
             />
-            <div className="number">
-              <input
-                id="number"
-                type="number"
-                value={pizza!.quantity}
-                onChange={handleChange}
-              />
-            </div>
+            <div className="number">{pizzaAmount}</div>
             <Image
               onClick={handleMore}
               src="/FontAwesomeIcons/plus-square.svg"
