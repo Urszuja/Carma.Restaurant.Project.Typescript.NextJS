@@ -22,4 +22,18 @@ export default class OrderItemInstance implements IOrderItem {
   ) {
     this.id = uuidv4();
   }
+
+  changeQuantity(num: number): void {
+    this.quantity = num;
+  }
+
+  increaseQuantity(): void {
+    this.quantity += 1;
+  }
+
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity -= 1;
+    }
+  }
 }
