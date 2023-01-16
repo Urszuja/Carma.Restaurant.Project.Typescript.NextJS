@@ -86,6 +86,7 @@ function MiniMenuItem({
       {isOrderDetailOpen && (
         <Modal show={isOrderDetailOpen} onClose={() => setOrderDetail(false)}>
           <AddToBasketItem
+            closeBasket={() => setOrderDetail(false)}
             name={name}
             id={id}
             prices={prices}

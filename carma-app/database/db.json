@@ -2,7 +2,7 @@
   "menu": [
     {
       "id": 1,
-      "name": "Margharita",
+      "name": "margharita",
       "prices": [
         5,
         10,
@@ -15,7 +15,7 @@
     },
     {
       "id": 2,
-      "name": "Salame",
+      "name": "salame",
       "prices": [
         7,
         12,
@@ -28,7 +28,7 @@
     },
     {
       "id": 3,
-      "name": "Funghi",
+      "name": "funghi",
       "prices": [
         6,
         11,
@@ -54,7 +54,7 @@
     },
     {
       "id": 5,
-      "name": "Turco",
+      "name": "turco",
       "prices": [
         10,
         20,
@@ -67,7 +67,7 @@
     },
     {
       "id": 6,
-      "name": "Vegetariana",
+      "name": "vegetariana",
       "prices": [
         6,
         9,
@@ -80,7 +80,7 @@
     },
     {
       "id": 7,
-      "name": "Broccoli",
+      "name": "broccoli",
       "prices": [
         9,
         12,
@@ -93,7 +93,7 @@
     },
     {
       "id": 8,
-      "name": "Spinachi",
+      "name": "spinachi",
       "prices": [
         20,
         30,
@@ -106,7 +106,7 @@
     },
     {
       "id": 9,
-      "name": "Strano",
+      "name": "strano",
       "prices": [
         3,
         4,

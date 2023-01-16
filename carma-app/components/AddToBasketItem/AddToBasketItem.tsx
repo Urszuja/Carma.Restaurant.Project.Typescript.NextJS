@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledAddToBasketItem } from "../styles/AddToBasketItem.styled";
 import PizzaSize from "../MenuItem/PizzaSize";
+import { DataStoreContext } from "../DataStoreContext";
+import OrderItemInstance, { Sizes } from "../../model/OrderItem";
 
 function MenuItem({
   id,
@@ -12,7 +14,41 @@ function MenuItem({
   description,
   isVegan,
   isSpicy,
-}: IMenuItem) {
+  closeBasket,
+}: any) {
+  const { cart, setCart } = useContext(DataStoreContext);
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState<Sizes>("S");
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity((q) => q - 1);
+    } else {
+      alert("Check your numbers, kiddo");
+    }
+  };
+
+  const handleIncrease = () => {
+    if (quantity < 9) {
+      setQuantity((q) => q + 1);
+    } else {
+      alert("No more pizza for you, fatso!");
+    }
+  };
+
+  const handleAdd = () => {
+    if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
+      cart
+        ?.find((p) => p.name === name.toLowerCase() && p.size === size)
+        ?.changeQuantity(quantity);
+    } else {
+      const price =
+        size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
+      const newPizza = new OrderItemInstance(name, size, price, quantity);
+      cart?.push(newPizza);
+    }
+    closeBasket();
+  };
+
   return (
     <StyledAddToBasketItem>
       <div className="upper">
@@ -35,12 +71,6 @@ function MenuItem({
             />
           )}
         </div>
-        <Image
-          src="/FontAwesomeIcons/window-close.svg"
-          alt="close"
-          width={15}
-          height={15}
-        />
       </div>
       <div className="middle">
         <Image src={image} alt={name} width={150} height={150} />
@@ -53,13 +83,15 @@ function MenuItem({
           <div className="lower">
             <div className="quantity">
               <Image
+                onClick={handleDecrease}
                 src="/FontAwesomeIcons/minus-square.svg"
                 alt="minus"
                 width={20}
                 height={20}
               />
-              <div className="number">0</div>
+              <div className="number">{quantity}</div>
               <Image
+                onClick={handleIncrease}
                 src="/FontAwesomeIcons/plus-square.svg"
                 alt="plus"
                 width={20}
@@ -67,6 +99,7 @@ function MenuItem({
               />
             </div>
             <Image
+              onClick={handleAdd}
               src="/FontAwesomeIcons/cart-plus.svg"
               alt="add to order"
               width={20}
