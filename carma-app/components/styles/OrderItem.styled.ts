@@ -11,6 +11,10 @@ export const StyledOrderItem = styled.div`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
 
+  img {
+    cursor: pointer;
+  }
+
   h4 {
     margin: 0;
   }
@@ -31,13 +35,24 @@ export const StyledOrderItem = styled.div`
         gap: 5px;
 
         .number {
-          width: 20px;
-          height: 20px;
-          border: 2px solid ${(props) => props.theme.text};
-          border-radius: 3px;
-          text-align: center;
-          line-height: 15px;
-          padding: auto auto;
+          /* Chrome, Safari, Edge, Opera */
+          input::-webkit-outer-spin-button,
+          input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+          /* Firefox */
+          input[type="number"] {
+            -moz-appearance: textfield;
+            width: 20px;
+            height: 20px;
+            border: 2px solid ${(props) => props.theme.text};
+            border-radius: 3px;
+            text-align: center;
+            line-height: 15px;
+            padding: auto auto;
+          }
         }
       }
     }
