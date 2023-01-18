@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledAddToBasketItem } from "../styles/AddToBasketItem.styled";
@@ -23,7 +23,7 @@ function MenuItem({
 }: any) {
   const { cart, setCart } = useContext(DataStoreContext);
   const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState<Sizes>("S");
+
   const handleDecrease = () => {
     if (quantity > 1) {
       setQuantity((q) => q - 1);
@@ -40,9 +40,10 @@ function MenuItem({
     }
   };
   const { register, handleSubmit } = useForm<IPizzaInput>();
-  const onSubmit: SubmitHandler<IPizzaInput> = (data) => console.log(data);
 
-  const handleAdd = () => {
+  const onSubmit: SubmitHandler<IPizzaInput> = (data) => {
+    const size = data.size;
+
     if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
       cart
         ?.find((p) => p.name === name.toLowerCase() && p.size === size)
@@ -83,9 +84,24 @@ function MenuItem({
         <Image src={image} alt={name} width={150} height={150} />
         <form className="order" onSubmit={handleSubmit(onSubmit)}>
           <fieldset className="sizes">
-            <PizzaSize hasCheckbox={true} size="small" price={prices[0]} />
-            <PizzaSize hasCheckbox={true} size="medium" price={prices[1]} />
-            <PizzaSize hasCheckbox={true} size="large" price={prices[2]} />
+            <PizzaSize
+              hasCheckbox={true}
+              size="small"
+              price={prices[0]}
+              register={register}
+            />
+            <PizzaSize
+              hasCheckbox={true}
+              size="medium"
+              price={prices[1]}
+              register={register}
+            />
+            <PizzaSize
+              hasCheckbox={true}
+              size="large"
+              price={prices[2]}
+              register={register}
+            />
           </fieldset>
           <div className="lower">
             <div className="quantity">
