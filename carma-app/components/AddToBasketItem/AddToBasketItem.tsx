@@ -5,6 +5,11 @@ import { StyledAddToBasketItem } from "../styles/AddToBasketItem.styled";
 import PizzaSize from "../MenuItem/PizzaSize";
 import { DataStoreContext } from "../DataStoreContext";
 import OrderItemInstance, { Sizes } from "../../model/OrderItem";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+export interface IPizzaInput {
+  size: Sizes;
+}
 
 function MenuItem({
   id,
@@ -34,6 +39,8 @@ function MenuItem({
       alert("No more pizza for you, fatso!");
     }
   };
+  const { register, handleSubmit } = useForm<IPizzaInput>();
+  const onSubmit: SubmitHandler<IPizzaInput> = (data) => console.log(data);
 
   const handleAdd = () => {
     if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
@@ -74,12 +81,12 @@ function MenuItem({
       </div>
       <div className="middle">
         <Image src={image} alt={name} width={150} height={150} />
-        <div className="order">
-          <ul className="sizes">
+        <form className="order" onSubmit={handleSubmit(onSubmit)}>
+          <fieldset className="sizes">
             <PizzaSize hasCheckbox={true} size="small" price={prices[0]} />
             <PizzaSize hasCheckbox={true} size="medium" price={prices[1]} />
             <PizzaSize hasCheckbox={true} size="large" price={prices[2]} />
-          </ul>
+          </fieldset>
           <div className="lower">
             <div className="quantity">
               <Image
@@ -98,15 +105,16 @@ function MenuItem({
                 height={20}
               />
             </div>
-            <Image
-              onClick={handleAdd}
-              src="/FontAwesomeIcons/cart-plus.svg"
-              alt="add to order"
-              width={20}
-              height={20}
-            />
+            <button type="submit">
+              <Image
+                src="/FontAwesomeIcons/cart-plus.svg"
+                alt="add to order"
+                width={20}
+                height={20}
+              />
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </StyledAddToBasketItem>
   );

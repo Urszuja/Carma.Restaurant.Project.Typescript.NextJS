@@ -8,7 +8,8 @@ import { DataStoreContext } from "../DataStoreContext";
 function OrderItem({ id, name, size, price, quantity, menu }: IOrderItem) {
   const altSrc = "/FontAwesomeIcons/pizza-slice.svg";
   const imageSrc =
-    menu?.find((item) => item.name.toLowerCase() === name)?.image ?? altSrc;
+    menu?.find((item) => item.name.toLowerCase() === name.toLowerCase())
+      ?.image ?? altSrc;
 
   const { cart, setCart } = useContext(DataStoreContext);
   const pizza = cart!.find((p) => p.id === id);

@@ -19,8 +19,6 @@ function MiniMenuItem({
   const [isMenuDetailOpen, setMenuDetail] = useState(false);
   const [isOrderDetailOpen, setOrderDetail] = useState(false);
 
-  console.log(name, isMenuDetailOpen);
-
   const handleShowMenu = (e: any) => {
     e.stopPropagation();
     setMenuDetail(true);
