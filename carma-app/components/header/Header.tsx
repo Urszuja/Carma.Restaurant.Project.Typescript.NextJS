@@ -5,9 +5,11 @@ import { StyledHeader } from "../styles/Header.styled";
 import { ThemeContext } from "styled-components";
 
 import { RESTAURANT_DETAILS } from "../../constants/texts";
+import { DataStoreContext } from "../DataStoreContext";
 
 function Header() {
   const theme = useContext(ThemeContext);
+  const { cart } = useContext(DataStoreContext);
   const restaurantName = RESTAURANT_DETAILS.NAME.toUpperCase();
   return (
     <StyledHeader>
@@ -30,8 +32,11 @@ function Header() {
         <div className="link">
           <Link href="/menu">Menu</Link>
         </div>
-        <div className="link">
+        <div className="link cart">
           <Link href="/order">Cart</Link>
+          <div className="orderItems">
+            {cart && cart.length > 0 && cart?.length}
+          </div>
         </div>
       </div>
     </StyledHeader>
