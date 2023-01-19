@@ -21,7 +21,8 @@ export const StyledModal = styled.div`
   background: white;
   color: black;
   width: 500px;
-  border-radius: 15px;
+  border-radius: 10px;
+  border: 2px solid ${(props) => props.theme.main};
   padding: 15px;
 `;
 export const StyledModalOverlay = styled.div`

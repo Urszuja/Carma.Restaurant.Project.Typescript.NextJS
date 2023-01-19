@@ -8,7 +8,6 @@ import { RESTAURANT_DETAILS } from "../../constants/texts";
 import { DataStoreContext } from "../DataStoreContext";
 
 function Header() {
-  const theme = useContext(ThemeContext);
   const { cart } = useContext(DataStoreContext);
   const restaurantName = RESTAURANT_DETAILS.NAME.toUpperCase();
   return (
