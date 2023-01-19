@@ -11,7 +11,7 @@ export interface IOrderItem {
   menu?: IMenuItem[];
 }
 
-export default class OrderItem implements IOrderItem {
+export default class OrderItemInstance implements IOrderItem {
   public id: string;
 
   constructor(
@@ -21,5 +21,19 @@ export default class OrderItem implements IOrderItem {
     public quantity: number
   ) {
     this.id = uuidv4();
+  }
+
+  changeQuantity(num: number): void {
+    this.quantity = num;
+  }
+
+  increaseQuantity(): void {
+    this.quantity += 1;
+  }
+
+  decreaseQuantity(): void {
+    if (this.quantity > 1) {
+      this.quantity -= 1;
+    }
   }
 }

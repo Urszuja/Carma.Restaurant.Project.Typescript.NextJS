@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyledOrderList } from "../styles/OrderList.styled";
-import { mockOrders } from "../../mockData";
+
+import { DataStoreContext } from "../DataStoreContext";
+
+import OrderInstance from "../../model/Order";
 
 function OrderList() {
+  const { ordersDatabase } = useContext(DataStoreContext);
+
+  const sortedDatabase: OrderInstance[] = JSON.parse(
+    JSON.stringify(ordersDatabase)
+  ).sort((order1: OrderInstance, order2: OrderInstance) =>
+    order2.status.localeCompare(order1.status)
+  );
   return (
     <StyledOrderList>
       <div className="header">
@@ -11,17 +21,17 @@ function OrderList() {
         <h4>Status</h4>
       </div>
       <div className="orders">
-        {mockOrders.map((order) => (
+        {sortedDatabase.map((order) => (
           <div key={order.id} className="row">
-            <div key={order.id}>{order.timeStamp}</div>
+            <div>{order.timeStamp}</div>
             <div className="order" key={order.id}>
               {order.orderItems.map((pizza) => (
-                <div id={pizza.id}>
+                <div key={pizza.id}>
                   {pizza.name} {pizza.size} x{pizza.quantity}
                 </div>
               ))}
             </div>
-            <div key={order.id}>{order.status}</div>
+            <div>{order.status}</div>
           </div>
         ))}
       </div>

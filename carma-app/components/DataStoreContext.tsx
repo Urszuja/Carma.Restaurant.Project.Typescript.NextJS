@@ -1,14 +1,23 @@
 import { createContext, useMemo, useState } from "react";
-import { mockClientsDataBase, testOrder } from "../mockData";
+import { testOrder, testOrderItem, testOrderItem2 } from "../mockData";
+
+import OrderInstance from "../model/Order";
+import OrderItemInstance from "../model/OrderItem";
 
 import type Client from "../model/Client";
-import type Order from "../model/Order";
+import { IMenuItem } from "../model/MenuItem";
 
 interface DataStoreContextInterface {
-  clientsData: Client[] | null;
-  setClientsData: React.Dispatch<React.SetStateAction<Client[] | null>>;
-  cart: Order | null;
-  setCart: React.Dispatch<React.SetStateAction<Order | null>>;
+  ordersDatabase: OrderInstance[] | null;
+  setOrdersDatabase: React.Dispatch<
+    React.SetStateAction<OrderInstance[] | null>
+  >;
+  cart: OrderItemInstance[] | null;
+  setCart: React.Dispatch<React.SetStateAction<OrderItemInstance[] | null>>;
+  menu: IMenuItem[] | null;
+  setMenu: React.Dispatch<React.SetStateAction<IMenuItem[] | null>>;
+  filteredMenu: IMenuItem[] | null;
+  setFilter: React.Dispatch<React.SetStateAction<IMenuItem[] | null>>;
 }
 
 type DataStoreProviderProps = { children: React.ReactNode };
@@ -20,19 +29,37 @@ export const DataStoreContext = createContext<DataStoreContextInterface>(
 DataStoreContext.displayName = "DataStoreContext";
 
 const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
-  const [clientsData, setClientsData] = useState<Client[] | null>(
-    mockClientsDataBase
+  const [ordersDatabase, setOrdersDatabase] = useState<OrderInstance[] | null>(
+    []
   );
-  const [cart, setCart] = useState<Order | null>(testOrder);
+  const [cart, setCart] = useState<OrderItemInstance[] | null>([
+    testOrderItem,
+    testOrderItem2,
+  ]);
+  const [menu, setMenu] = useState<IMenuItem[] | null>([]);
+  const [filteredMenu, setFilter] = useState<IMenuItem[] | null>([]);
 
   const storeDataWithMemo = useMemo(
     () => ({
-      clientsData,
+      ordersDatabase,
       cart,
-      setClientsData,
+      menu,
+      filteredMenu,
+      setOrdersDatabase,
       setCart,
+      setMenu,
+      setFilter,
     }),
-    [clientsData, cart, setClientsData, setCart]
+    [
+      ordersDatabase,
+      cart,
+      menu,
+      filteredMenu,
+      setOrdersDatabase,
+      setCart,
+      setMenu,
+      setFilter,
+    ]
   );
 
   return (

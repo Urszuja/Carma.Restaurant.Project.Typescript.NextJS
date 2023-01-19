@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledMiniMenuItem } from "../styles/MiniMenuItem.styled";
+import MenuItem from "./MenuItem";
+
+import AddToBasketItem from "../AddToBasketItem/AddToBasketItem";
+import Modal from "../Modal/Modal";
 
 function MiniMenuItem({
   id,
@@ -12,6 +16,9 @@ function MiniMenuItem({
   isVegan,
   isSpicy,
 }: IMenuItem) {
+  const [isMenuDetailOpen, setMenuDetail] = useState(false);
+  const [isOrderDetailOpen, setOrderDetail] = useState(false);
+
   return (
     <StyledMiniMenuItem>
       <div className="upper">
@@ -37,14 +44,47 @@ function MiniMenuItem({
         <p>{prices[0]} $</p>
       </div>
       <div className="middle">
-        <Image src={image} alt={name} width={150} height={150} />
         <Image
+          onClick={() => setMenuDetail(true)}
+          src={image}
+          alt={name}
+          width={150}
+          height={150}
+        />
+        <Image
+          onClick={() => setOrderDetail(true)}
           src="/FontAwesomeIcons/cart-plus.svg"
           alt="add to order"
           width={30}
           height={30}
         />
       </div>
+      {isMenuDetailOpen && (
+        <Modal show={false} onClose={() => console.log("menu modal closed")}>
+          <MenuItem
+            name={name}
+            id={id}
+            prices={prices}
+            image={image}
+            description={description}
+            isSpicy={isSpicy}
+            isVegan={isVegan}
+          />
+        </Modal>
+      )}
+      {isOrderDetailOpen && (
+        <Modal show={false} onClose={() => console.log("order modal closed")}>
+          <AddToBasketItem
+            name={name}
+            id={id}
+            prices={prices}
+            image={image}
+            description={description}
+            isSpicy={isSpicy}
+            isVegan={isVegan}
+          />
+        </Modal>
+      )}
     </StyledMiniMenuItem>
   );
 }
