@@ -63,9 +63,6 @@ a {
   align-items: center;
   color: white;
 
-  img {
-    filter: invert(100%);
-  }
   h4 {
     letter-spacing: 2px;
   } 

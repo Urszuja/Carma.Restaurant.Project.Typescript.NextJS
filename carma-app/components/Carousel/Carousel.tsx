@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledCarousel } from "../styles/Carousel.styled";
+import { StyledCarousel } from "./Carousel.styled";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,8 +12,9 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 import MiniMenuItem from "../MenuItem/MiniMenuItem";
+import { IMenuItem, IMenuItems } from "../../model/MenuItem";
 
-function Carousel({ menu }) {
+function Carousel({ menuItems }: IMenuItems) {
   return (
     <StyledCarousel>
       <Swiper
@@ -28,8 +29,8 @@ function Carousel({ menu }) {
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper">
-        {menu.map((menuItem) => (
-          <SwiperSlide>
+        {menuItems.map((menuItem: IMenuItem) => (
+          <SwiperSlide key={menuItem.id}>
             <MiniMenuItem
               name={menuItem.name}
               id={menuItem.id}
