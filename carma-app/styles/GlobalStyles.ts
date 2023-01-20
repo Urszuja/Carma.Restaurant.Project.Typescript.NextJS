@@ -90,13 +90,19 @@ a {
     display: flex;
     justify-content: flex-start;
     gap: 5px;
-    align-self: baseline;
-    margin-left: 25%;
+   
+    margin-right: 25%;
+
+    @media only screen and (max-width: 888px) {
+    margin: auto;
+  }
   }
   .menu {
     display: flex;
     flex-flow: wrap;
-    width: 50%; 
+    align-items: center;
+    justify-content: center;
+    width: 50%;
   }
 }
 
