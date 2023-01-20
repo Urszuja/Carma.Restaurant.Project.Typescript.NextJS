@@ -25,13 +25,34 @@ function Header() {
       <h1 id="restaurantName">{restaurantName}</h1>
       <div className="linkContainer">
         <div className="link">
-          <Link href="/order/list">Profile</Link>
+          <Link href="/order/list">
+            <Image
+              src="/FontAwesomeIcons/user.svg"
+              alt="user"
+              width={25}
+              height={25}
+            />
+          </Link>
         </div>
         <div className="link">
-          <Link href="/menu">Menu</Link>
+          <Link href="/menu">
+            <Image
+              src="/FontAwesomeIcons/menu.svg"
+              alt="menu"
+              width={25}
+              height={25}
+            />
+          </Link>
         </div>
         <div className="link">
-          <Link href="/order">Cart</Link>
+          <Link href="/order">
+            <Image
+              src="/FontAwesomeIcons/shopping-cart.svg"
+              alt="cart"
+              width={25}
+              height={25}
+            />
+          </Link>
         </div>
       </div>
     </StyledHeader>

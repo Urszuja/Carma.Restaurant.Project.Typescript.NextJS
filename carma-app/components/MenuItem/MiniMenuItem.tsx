@@ -52,6 +52,7 @@ function MiniMenuItem({
           height={150}
         />
         <Image
+          className="cart-image"
           onClick={() => setOrderDetail(true)}
           src="/FontAwesomeIcons/cart-plus.svg"
           alt="add to order"

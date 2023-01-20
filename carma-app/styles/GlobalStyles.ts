@@ -63,10 +63,19 @@ a {
   align-items: center;
   color: white;
 
-  h4 {
+  h3, h4 {
     letter-spacing: 2px;
-  } 
 
+    a {
+      text-decoration: underline;
+      
+    }
+  } 
+  
+
+  .cart-image {
+    display: none;
+  }
  
 }
 
