@@ -4,14 +4,10 @@ export const StyledMenuItem = styled.div`
   display: flex;
   flex-direction: column;
   width: 400px;
-  border: 2px solid ${(props) => props.theme.main};
-  border-radius: 5px;
-  padding: 10px 10px;
-
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
 
-  h4 {
+  h3 {
     margin: 0;
   }
 

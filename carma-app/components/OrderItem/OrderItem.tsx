@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 
 import Image from "next/image";
-import { StyledOrderItem } from "../styles/OrderItem.styled";
+import { StyledOrderItem } from "./OrderItem.styled";
 import { IOrderItem } from "../../model/OrderItem";
 import { DataStoreContext } from "../DataStoreContext";
 

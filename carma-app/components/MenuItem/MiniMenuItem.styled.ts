@@ -12,7 +12,7 @@ export const StyledMiniMenuItem = styled.div`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
 
-  h4 {
+  h3 {
     margin: 0;
   }
   .upper {

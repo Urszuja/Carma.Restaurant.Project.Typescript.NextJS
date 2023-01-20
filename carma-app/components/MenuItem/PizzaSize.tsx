@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { StyledPizzaSize } from "../styles/PizzaSize.styled";
-import { useForm, UseFormRegister } from "react-hook-form";
+import { StyledPizzaSize } from "./PizzaSize.styled";
+import { UseFormRegister } from "react-hook-form";
 import { IPizzaInput } from "../AddToBasketItem/AddToBasketItem";
 
 interface IPizzaSize {

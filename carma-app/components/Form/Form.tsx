@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import StyledForm from "../styles/Form.styled";
+import StyledForm from "./Form.styled";
 import { SubmitHandler, useForm } from "react-hook-form";
-import FormInput from "../commons/input/FormInput";
+import FormInput from "./FormInput";
 import OrderInstance from "../../model/Order";
-import Button from "../commons/button/Button";
+import Button from "../commons/Button/Button";
 import Client, { Address } from "../../model/Client";
 import Order from "../Order/Order";
 import { DataStoreContext } from "../DataStoreContext";
@@ -265,7 +265,11 @@ export default function Form() {
       </div>
       <div className="order">
         <Order />
-        <Button type="submit" text="Place order" />
+        <Button
+          type="submit"
+          text="Place order"
+          onClick={() => console.log("Order is being processed")}
+        />
       </div>
       {showModal && (
         <Modal onClose={onCloseModal} show={showModal}>

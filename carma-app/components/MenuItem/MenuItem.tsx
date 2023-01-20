@@ -1,7 +1,7 @@
 import React from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
-import { StyledMenuItem } from "../styles/MenuItem.styled";
+import { StyledMenuItem } from "./MenuItem.styled";
 import PizzaSize from "./PizzaSize";
 
 function MenuItem({
@@ -16,7 +16,7 @@ function MenuItem({
   return (
     <StyledMenuItem>
       <div className="name">
-        <h4>{name}</h4>
+        <h3>{name}</h3>
         {isVegan && (
           <Image
             src="/FontAwesomeIcons/seedling.svg"

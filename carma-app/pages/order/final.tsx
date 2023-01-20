@@ -4,7 +4,7 @@ import Form from "../../components/Form/Form";
 
 function PlaceOrderPage() {
   const { cart } = useContext(DataStoreContext);
-  
+
   return (
     <div className="final-page">
       {cart && cart.length === 0 ? (

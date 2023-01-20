@@ -7,7 +7,7 @@ export const StyledOrder = styled.div`
   background-color: ${(props) => props.theme.main};
   color: ${(props) => props.theme.text};
   min-width: 300px;
-  max-height: 400px;
+  max-height: 500px;
   padding: 5px;
 
   .title {

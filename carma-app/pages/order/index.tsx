@@ -4,7 +4,7 @@ import Link from "next/link";
 import OrderItem from "../../components/OrderItem/OrderItem";
 import Order from "../../components/Order/Order";
 
-import Button from "../../components/commons/button/Button";
+import Button from "../../components/commons/Button/Button";
 import { IMenuItem, IMenuItems } from "../../model/MenuItem";
 import { DataStoreContext } from "../../components/DataStoreContext";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
-import { StyledMiniMenuItem } from "../styles/MiniMenuItem.styled";
+import { StyledMiniMenuItem } from "./MiniMenuItem.styled";
 import MenuItem from "./MenuItem";
 
 import AddToBasketItem from "../AddToBasketItem/AddToBasketItem";
@@ -30,9 +30,36 @@ function MiniMenuItem({
   };
   return (
     <StyledMiniMenuItem>
+      {isMenuDetailOpen && (
+        <Modal show={isMenuDetailOpen} onClose={() => setMenuDetail(false)}>
+          <MenuItem
+            name={name}
+            id={id}
+            prices={prices}
+            image={image}
+            description={description}
+            isSpicy={isSpicy}
+            isVegan={isVegan}
+          />
+        </Modal>
+      )}
+      {isOrderDetailOpen && (
+        <Modal show={isOrderDetailOpen} onClose={() => setOrderDetail(false)}>
+          <AddToBasketItem
+            closeBasket={() => setOrderDetail(false)}
+            name={name}
+            id={id}
+            prices={prices}
+            image={image}
+            description={description}
+            isSpicy={isSpicy}
+            isVegan={isVegan}
+          />
+        </Modal>
+      )}
       <div className="upper">
         <div className="name">
-          <h4>{name}</h4>
+          <h3>{name}</h3>
           {isVegan && (
             <Image
               src="/FontAwesomeIcons/seedling.svg"
@@ -69,33 +96,6 @@ function MiniMenuItem({
           height={30}
         />
       </div>
-      {isMenuDetailOpen && (
-        <Modal show={isMenuDetailOpen} onClose={() => setMenuDetail(false)}>
-          <MenuItem
-            name={name}
-            id={id}
-            prices={prices}
-            image={image}
-            description={description}
-            isSpicy={isSpicy}
-            isVegan={isVegan}
-          />
-        </Modal>
-      )}
-      {isOrderDetailOpen && (
-        <Modal show={isOrderDetailOpen} onClose={() => setOrderDetail(false)}>
-          <AddToBasketItem
-            closeBasket={() => setOrderDetail(false)}
-            name={name}
-            id={id}
-            prices={prices}
-            image={image}
-            description={description}
-            isSpicy={isSpicy}
-            isVegan={isVegan}
-          />
-        </Modal>
-      )}
     </StyledMiniMenuItem>
   );
 }

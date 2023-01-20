@@ -3,9 +3,9 @@ import type { AppProps } from "next/app";
 import DataStoreProvider from "../components/DataStoreContext";
 import { theme } from "../styles/theme";
 import Head from "next/head";
-import Header from "../components/header/Header";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 import GlobalStyles from "../styles/GlobalStyles";
-import Footer from "../components/footer/Footer";
 
 // eslint-disable-next-line
 import "swiper/css/bundle";

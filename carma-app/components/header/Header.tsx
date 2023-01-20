@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { StyledHeader } from "../styles/Header.styled";
+import { StyledHeader } from "./Header.styled";
 import { ThemeContext } from "styled-components";
 
 import { RESTAURANT_DETAILS } from "../../constants/texts";

@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import { IMenuItem } from "../../model/MenuItem";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
-import { StyledAddToBasketItem } from "../styles/AddToBasketItem.styled";
+import { StyledAddToBasketItem } from "./AddToBasketItem.styled";
 import PizzaSize from "../MenuItem/PizzaSize";
 import { DataStoreContext } from "../DataStoreContext";
 import OrderItemInstance, { Sizes } from "../../model/OrderItem";
@@ -43,16 +42,19 @@ function MenuItem({
 
   const onSubmit: SubmitHandler<IPizzaInput> = (data) => {
     const size = data.size;
-
-    if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
-      cart
-        ?.find((p) => p.name === name.toLowerCase() && p.size === size)
-        ?.changeQuantity(quantity);
+    if (cart!.length < 10) {
+      if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
+        cart
+          ?.find((p) => p.name === name.toLowerCase() && p.size === size)
+          ?.changeQuantity(quantity);
+      } else {
+        const price =
+          size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
+        const newPizza = new OrderItemInstance(name, size, price, quantity);
+        setCart([...cart!, newPizza]);
+      }
     } else {
-      const price =
-        size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
-      const newPizza = new OrderItemInstance(name, size, price, quantity);
-      cart?.push(newPizza);
+      alert("Place new order to buy more pizza");
     }
     closeBasket();
   };
@@ -61,7 +63,7 @@ function MenuItem({
     <StyledAddToBasketItem>
       <div className="upper">
         <div className="name">
-          <h4>{name}</h4>
+          <h3>{name}</h3>
           {isVegan && (
             <Image
               src="/FontAwesomeIcons/seedling.svg"

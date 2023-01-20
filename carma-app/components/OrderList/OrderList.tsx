@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyledOrderList } from "../styles/OrderList.styled";
+import { StyledOrderList } from "./OrderList.styled";
 
 import { DataStoreContext } from "../DataStoreContext";
 

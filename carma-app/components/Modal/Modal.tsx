@@ -46,8 +46,8 @@ const Modal = ({ show, onClose, children }: IModal) => {
               onClick={handleCloseClick}
               src="/FontAwesomeIcons/window-close.svg"
               alt="close"
-              width={15}
-              height={15}
+              width={20}
+              height={20}
             />
           </StyledModalHeader>
           <StyledModalBody>{children}</StyledModalBody>
