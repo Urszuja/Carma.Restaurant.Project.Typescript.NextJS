@@ -135,7 +135,7 @@
       },
       "orderItems": [
         {
-          "name": "turco",
+          "name": "Turco",
           "size": "S",
           "price": 20,
           "quantity": 2,
@@ -170,14 +170,14 @@
       },
       "orderItems": [
         {
-          "name": "margharita",
+          "name": "Margharita",
           "size": "S",
           "price": 10,
           "quantity": 2,
           "id": "db05cdbc-0773-4d51-9321-2bf3fsdfsdfs938"
         },
         {
-          "name": "salame",
+          "name": "Salame",
           "size": "M",
           "price": 15,
           "quantity": 1,
