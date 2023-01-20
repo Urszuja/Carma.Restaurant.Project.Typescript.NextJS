@@ -1,8 +1,14 @@
-import React from "react";
-import { IMenuItem } from "../../model/MenuItem";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
-import { StyledAddToBasketItem } from "../styles/AddToBasketItem.styled";
+import { StyledAddToBasketItem } from "./AddToBasketItem.styled";
 import PizzaSize from "../MenuItem/PizzaSize";
+import { DataStoreContext } from "../DataStoreContext";
+import OrderItemInstance, { Sizes } from "../../model/OrderItem";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+export interface IPizzaInput {
+  size: Sizes;
+}
 
 function MenuItem({
   id,
@@ -12,12 +18,52 @@ function MenuItem({
   description,
   isVegan,
   isSpicy,
-}: IMenuItem) {
+  closeBasket,
+}: any) {
+  const { cart, setCart } = useContext(DataStoreContext);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity((q) => q - 1);
+    } else {
+      alert("Check your numbers, kiddo");
+    }
+  };
+
+  const handleIncrease = () => {
+    if (quantity < 9) {
+      setQuantity((q) => q + 1);
+    } else {
+      alert("No more pizza for you, fatso!");
+    }
+  };
+  const { register, handleSubmit } = useForm<IPizzaInput>();
+
+  const onSubmit: SubmitHandler<IPizzaInput> = (data) => {
+    const size = data.size;
+    if (cart!.length < 10) {
+      if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
+        cart
+          ?.find((p) => p.name === name.toLowerCase() && p.size === size)
+          ?.changeQuantity(quantity);
+      } else {
+        const price =
+          size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
+        const newPizza = new OrderItemInstance(name, size, price, quantity);
+        setCart([...cart!, newPizza]);
+      }
+    } else {
+      alert("Place new order to buy more pizza");
+    }
+    closeBasket();
+  };
+
   return (
     <StyledAddToBasketItem>
       <div className="upper">
         <div className="name">
-          <h4>{name}</h4>
+          <h3>{name}</h3>
           {isVegan && (
             <Image
               src="/FontAwesomeIcons/seedling.svg"
@@ -35,45 +81,58 @@ function MenuItem({
             />
           )}
         </div>
-        <Image
-          src="/FontAwesomeIcons/window-close.svg"
-          alt="close"
-          width={15}
-          height={15}
-        />
       </div>
       <div className="middle">
         <Image src={image} alt={name} width={150} height={150} />
-        <div className="order">
-          <ul className="sizes">
-            <PizzaSize hasCheckbox={true} size="small" price={prices[0]} />
-            <PizzaSize hasCheckbox={true} size="medium" price={prices[1]} />
-            <PizzaSize hasCheckbox={true} size="large" price={prices[2]} />
-          </ul>
+        <form className="order" onSubmit={handleSubmit(onSubmit)}>
+          <fieldset className="sizes">
+            <PizzaSize
+              hasCheckbox={true}
+              size="small"
+              price={prices[0]}
+              register={register}
+            />
+            <PizzaSize
+              hasCheckbox={true}
+              size="medium"
+              price={prices[1]}
+              register={register}
+            />
+            <PizzaSize
+              hasCheckbox={true}
+              size="large"
+              price={prices[2]}
+              register={register}
+            />
+          </fieldset>
           <div className="lower">
             <div className="quantity">
               <Image
+                onClick={handleDecrease}
                 src="/FontAwesomeIcons/minus-square.svg"
                 alt="minus"
                 width={20}
                 height={20}
               />
-              <div className="number">0</div>
+              <div className="number">{quantity}</div>
               <Image
+                onClick={handleIncrease}
                 src="/FontAwesomeIcons/plus-square.svg"
                 alt="plus"
                 width={20}
                 height={20}
               />
             </div>
-            <Image
-              src="/FontAwesomeIcons/cart-plus.svg"
-              alt="add to order"
-              width={20}
-              height={20}
-            />
+            <button type="submit">
+              <Image
+                src="/FontAwesomeIcons/cart-plus.svg"
+                alt="add to order"
+                width={40}
+                height={40}
+              />
+            </button>
           </div>
-        </div>
+        </form>
       </div>
     </StyledAddToBasketItem>
   );

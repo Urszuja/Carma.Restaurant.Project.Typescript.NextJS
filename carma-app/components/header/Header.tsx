@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { StyledHeader } from "../styles/Header.styled";
+import { StyledHeader } from "./Header.styled";
 import { ThemeContext } from "styled-components";
 
 import { RESTAURANT_DETAILS } from "../../constants/texts";
+import { DataStoreContext } from "../DataStoreContext";
 
 function Header() {
-  const theme = useContext(ThemeContext);
+  const { cart } = useContext(DataStoreContext);
   const restaurantName = RESTAURANT_DETAILS.NAME.toUpperCase();
   return (
     <StyledHeader>
@@ -44,7 +45,7 @@ function Header() {
             />
           </Link>
         </div>
-        <div className="link">
+        <div className="link cart">
           <Link href="/order">
             <Image
               src="/FontAwesomeIcons/shopping-cart.svg"
@@ -53,6 +54,7 @@ function Header() {
               height={25}
             />
           </Link>
+          {cart!.length > 0 && <div className="orderItems">{cart!.length}</div>}
         </div>
       </div>
     </StyledHeader>

@@ -3,15 +3,23 @@ import styled from "styled-components";
 export const StyledAddToBasketItem = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
-  border: 2px solid ${(props) => props.theme.main};
-  border-radius: 5px;
-  padding: 10px 10px;
+  width: 450px;
 
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
 
-  h4 {
+  fieldset {
+    border: none;
+  }
+
+  button {
+    padding: 0;
+    margin: 0;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+  }
+  h3 {
     margin: 0;
   }
   .upper {
@@ -57,6 +65,7 @@ export const StyledAddToBasketItem = styled.div`
             text-align: center;
             line-height: 15px;
             padding: auto auto;
+            padding-top: 1px;
           }
         }
       }

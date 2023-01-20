@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { RESTAURANT_DETAILS, DEVELOPER_INFO } from "../../constants/texts";
-import { StyledFooter } from "../styles/Footer.styled";
+import { StyledFooter } from "./Footer.styled";
 
 function Footer() {
   return (

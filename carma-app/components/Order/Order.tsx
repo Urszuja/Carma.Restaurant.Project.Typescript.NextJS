@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Image from "next/image";
-import { StyledOrder } from "../styles/Order.styled";
+import { StyledOrder } from "./Order.styled";
 import { DataStoreContext } from "../DataStoreContext";
 import { standardDeliveryCost } from "../../mockData";
 

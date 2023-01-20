@@ -24,7 +24,7 @@ export default class OrderItemInstance implements IOrderItem {
   }
 
   changeQuantity(num: number): void {
-    this.quantity = num;
+    this.quantity += num;
   }
 
   increaseQuantity(): void {

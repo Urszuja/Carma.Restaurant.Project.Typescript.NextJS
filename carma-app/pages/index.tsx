@@ -7,7 +7,7 @@ export default function Home({ menuItems }: IMenuItems) {
   return (
     <div className="home-page">
       <Image src="/LogoWithName.svg" alt="Carma Logo" width={120} height={60} />
-      <h4>In Carma we trust</h4>
+      <h2>In Carma we trust</h2>
       <div className="restaurant-description">
         Bacon ipsum dolor amet biltong ham drumstick kielbasa, meatloaf shoulder
         beef ground round ball tip picanha. Sausage bacon ground round jerky ham

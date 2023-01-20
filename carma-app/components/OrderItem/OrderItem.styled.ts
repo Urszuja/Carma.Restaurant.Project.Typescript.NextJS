@@ -42,6 +42,7 @@ export const StyledOrderItem = styled.div`
           text-align: center;
           line-height: 15px;
           padding: auto auto;
+          padding-top: 1px;
         }
       }
     }

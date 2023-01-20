@@ -20,14 +20,13 @@ const Modal = ({ show, onClose, children }: IModal) => {
 
   const modalWrapperRef = React.useRef<any>();
 
-  const backDropHandler = (e: any) => {
-    if (!modalWrapperRef?.current?.contains(e.target)) {
-      onClose();
-    }
-  };
-
   useEffect(() => {
     setIsBrowser(true);
+    const backDropHandler = (e: any) => {
+      if (!modalWrapperRef?.current?.contains(e.target)) {
+        onClose();
+      }
+    };
 
     window.addEventListener("click", backDropHandler);
     return () => window.removeEventListener("click", backDropHandler);
@@ -47,8 +46,8 @@ const Modal = ({ show, onClose, children }: IModal) => {
               onClick={handleCloseClick}
               src="/FontAwesomeIcons/window-close.svg"
               alt="close"
-              width={15}
-              height={15}
+              width={20}
+              height={20}
             />
           </StyledModalHeader>
           <StyledModalBody>{children}</StyledModalBody>

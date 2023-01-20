@@ -13,6 +13,26 @@ export const StyledHeader = styled.div`
   position: fixed;
   z-index: 2;
 
+  .cart {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    .orderItems {
+      background-color: ${(props) => props.theme.danger};
+      color: ${(props) => props.theme.background};
+      border-radius: 50%;
+      height: 15px;
+      width: 15px;
+      font-size: x-small;
+      padding-left: 0.5px;
+      text-align: center;
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+    }
+  }
+
   .linkContainer {
     display: flex;
     justify-content: space-around;

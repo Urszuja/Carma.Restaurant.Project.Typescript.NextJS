@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
-import StyledFormInput from "../../styles/FormInput.styled";
+import StyledFormInput from "./FormInput.styled";
 import { Controller } from "react-hook-form";
 
 export interface IFormInput {

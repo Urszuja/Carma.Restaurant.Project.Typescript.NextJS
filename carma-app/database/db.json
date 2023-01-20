@@ -41,7 +41,7 @@
     },
     {
       "id": 4,
-      "name": "della Pologna",
+      "name": "Della Pologna",
       "prices": [
         3,
         6,
@@ -89,7 +89,7 @@
       "image": "/images/broccoli.svg",
       "description": "Another vegan option containing little magic trees. It is still an unsolved mystery, why would you choose this one, but this is a free country, I guess.",
       "isVegan": true,
-      "isSpicy": false
+      "isSpicy": true
     },
     {
       "id": 8,
@@ -102,7 +102,7 @@
       "image": "/images/spinachi.svg",
       "description": "Only for masochists. We made it expensive, so you wouldn't pick it and had a nice day instead.",
       "isVegan": true,
-      "isSpicy": false
+      "isSpicy": true
     },
     {
       "id": 9,
