@@ -61,6 +61,7 @@ function MiniMenuItem({
           height={150}
         />
         <Image
+          className="cart-image"
           onClick={handleShowOrder}
           src="/FontAwesomeIcons/cart-plus.svg"
           alt="add to order"

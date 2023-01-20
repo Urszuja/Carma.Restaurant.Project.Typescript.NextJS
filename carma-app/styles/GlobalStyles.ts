@@ -63,13 +63,19 @@ a {
   align-items: center;
   color: white;
 
-  img {
-    filter: invert(100%);
-  }
-  h4 {
+  h3, h4 {
     letter-spacing: 2px;
-  } 
 
+    a {
+      text-decoration: underline;
+      
+    }
+  } 
+  
+
+  .cart-image {
+    display: none;
+  }
  
 }
 

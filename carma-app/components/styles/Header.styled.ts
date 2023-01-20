@@ -17,6 +17,7 @@ export const StyledHeader = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
+    position: relative;
     .orderItems {
       background-color: ${(props) => props.theme.danger};
       color: ${(props) => props.theme.background};
@@ -24,8 +25,11 @@ export const StyledHeader = styled.div`
       height: 15px;
       width: 15px;
       font-size: x-small;
-      padding-left: 1px;
+      padding-left: 0.5px;
       text-align: center;
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
     }
   }
 
