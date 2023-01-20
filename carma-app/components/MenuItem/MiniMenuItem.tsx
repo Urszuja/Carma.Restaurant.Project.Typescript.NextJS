@@ -61,7 +61,7 @@ function MiniMenuItem({
       )}
       <div className="upper">
         <div className="name">
-          <h3>{name}</h3>
+          <h4>{name}</h4>
           {isVegan && (
             <Image
               src="/FontAwesomeIcons/seedling.svg"

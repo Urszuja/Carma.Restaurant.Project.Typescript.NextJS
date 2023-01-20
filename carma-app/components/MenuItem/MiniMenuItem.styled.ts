@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledMiniMenuItem = styled.div`
   display: flex;
   flex-direction: column;
-  width: 210px;
+  min-width: 210px;
   border: 2px solid ${(props) => props.theme.main};
   border-radius: 5px;
   padding: 10px;
@@ -12,7 +12,7 @@ export const StyledMiniMenuItem = styled.div`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.text};
 
-  h3 {
+  h4 {
     margin: 0;
   }
   .upper {

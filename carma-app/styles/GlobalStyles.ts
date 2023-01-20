@@ -10,6 +10,7 @@ body {
 
   .content {
     padding-top: 90px;
+    min-height: calc(100vh - 150px);
   }
 }
 
