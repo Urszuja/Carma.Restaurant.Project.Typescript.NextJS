@@ -34,11 +34,19 @@ a {
   display: flex;
   justify-content: space-around;
 
+   @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
   .cart-items {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 10px; 
+      @media only screen and (max-width: 1000px) {
+   align-items: center
+  }
   }
 
   .order-display {
@@ -47,6 +55,7 @@ a {
     margin: 0 5%;
     flex-direction: column;
     justify-content: flex-start;
+    min-width: 350px;
     gap: 50px;
     align-items: center;
   }
