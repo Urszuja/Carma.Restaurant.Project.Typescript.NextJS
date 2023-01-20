@@ -7,32 +7,38 @@ import Order from "../../components/Order/Order";
 import Button from "../../components/commons/Button/Button";
 import { IMenuItem, IMenuItems } from "../../model/MenuItem";
 import { DataStoreContext } from "../../components/DataStoreContext";
+import EmptyBasket from "../../components/EmptyBasket/EmptyBasket";
 
 function CartPage({ menuItems }: IMenuItems) {
   const handleClick = () => {};
   const { cart } = useContext(DataStoreContext);
   return (
     <div className="cart-page">
-      <div className="cart-items">
-        {cart!.length > 0 &&
-          cart!.map((item) => (
-            <OrderItem
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              price={item.price}
-              size={item.size}
-              quantity={item.quantity}
-              menu={menuItems}
-            />
-          ))}
-      </div>
-      <div className="order-display">
-        <Order />
-        <Link href="/order/final">
-          <Button type="button" text="Confirm" onClick={handleClick} />
-        </Link>
-      </div>
+      {cart!.length > 0 ? (
+        <>
+          <div className="cart-items">
+            {cart!.map((item) => (
+              <OrderItem
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                price={item.price}
+                size={item.size}
+                quantity={item.quantity}
+                menu={menuItems}
+              />
+            ))}
+          </div>
+          <div className="order-display">
+            <Order />
+            <Link href="/order/final">
+              <Button type="button" text="Confirm" onClick={handleClick} />
+            </Link>
+          </div>
+        </>
+      ) : (
+        <EmptyBasket />
+      )}
     </div>
   );
 }
