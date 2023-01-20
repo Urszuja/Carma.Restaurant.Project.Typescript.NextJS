@@ -21,11 +21,13 @@ function MiniMenuItem({
 
   const handleShowMenu = (e: any) => {
     e.stopPropagation();
+    window.scrollTo(0, 0);
     setMenuDetail(true);
   };
 
   const handleShowOrder = (e: any) => {
     e.stopPropagation();
+    window.scrollTo(0, 0);
     setOrderDetail(true);
   };
   return (

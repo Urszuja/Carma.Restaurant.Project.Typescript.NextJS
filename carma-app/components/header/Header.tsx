@@ -54,9 +54,7 @@ function Header() {
               height={25}
             />
           </Link>
-          <div className="orderItems">
-            {cart && cart.length > 0 && cart?.length}
-          </div>
+          {cart!.length > 0 && <div className="orderItems">{cart!.length}</div>}
         </div>
       </div>
     </StyledHeader>

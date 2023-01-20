@@ -127,8 +127,8 @@ function MenuItem({
               <Image
                 src="/FontAwesomeIcons/cart-plus.svg"
                 alt="add to order"
-                width={20}
-                height={20}
+                width={40}
+                height={40}
               />
             </button>
           </div>

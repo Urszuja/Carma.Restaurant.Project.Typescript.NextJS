@@ -63,7 +63,7 @@ a {
   align-items: center;
   color: white;
 
-  h3, h4 {
+  h3, h2 {
     letter-spacing: 2px;
 
     a {
