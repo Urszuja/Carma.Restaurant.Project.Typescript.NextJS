@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import { StyledOrder } from "./Order.styled";
 import { DataStoreContext } from "../DataStoreContext";
-import { standardDeliveryCost } from "../../mockData";
+import { standardDeliveryCost } from "../../mocks/mockData";
 
 function Order() {
   const { cart } = useContext(DataStoreContext);

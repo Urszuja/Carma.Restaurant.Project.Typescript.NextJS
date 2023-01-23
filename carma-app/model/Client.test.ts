@@ -1,4 +1,4 @@
-import { testClient, testAddress, testOrder } from "../mockData";
+import { testClient, testAddress, testOrder } from "../mocks/mockData";
 
 describe("client tests", () => {
   test("new order created", () => {

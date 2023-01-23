@@ -6,7 +6,6 @@ import { IMenuItem, IMenuItems } from "../model/MenuItem";
 
 export default function Home({ menuItems }: IMenuItems) {
   const [displayNumber, setDisplayNumber] = useState<number>(1);
-
   //choose the screen size
   const handleResize = () => {
     if (window.innerWidth > 1200) {

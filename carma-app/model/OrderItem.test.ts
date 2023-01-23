@@ -1,4 +1,4 @@
-import { testOrderItem } from "../mockData";
+import { testOrderItem } from "../mocks/mockData";
 
 describe("order item tests", () => {
   test("new order item created", () => {

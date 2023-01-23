@@ -1,13 +1,11 @@
 import { createContext, useMemo, useState } from "react";
-import { testOrder, testOrderItem, testOrderItem2 } from "../mockData";
 
 import OrderInstance from "../model/Order";
 import OrderItemInstance from "../model/OrderItem";
 
-import type Client from "../model/Client";
 import { IMenuItem } from "../model/MenuItem";
 
-interface DataStoreContextInterface {
+export interface DataStoreContextInterface {
   ordersDatabase: OrderInstance[] | null;
   setOrdersDatabase: React.Dispatch<
     React.SetStateAction<OrderInstance[] | null>
@@ -20,7 +18,7 @@ interface DataStoreContextInterface {
   setFilter: React.Dispatch<React.SetStateAction<IMenuItem[] | null>>;
 }
 
-type DataStoreProviderProps = { children: React.ReactNode };
+export type DataStoreProviderProps = { children: React.ReactNode };
 
 export const DataStoreContext = createContext<DataStoreContextInterface>(
   {} as DataStoreContextInterface
