@@ -4,7 +4,7 @@ import { StyledDropdownItem } from "../DropdownItem.styled";
 
 export interface ISortDropdownItem {
   name: string;
-  handleClick: any;
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
   img: string;
   isActive: boolean;
 }

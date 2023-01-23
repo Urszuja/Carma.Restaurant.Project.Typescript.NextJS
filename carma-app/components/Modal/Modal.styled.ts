@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledModalWrapper = styled.div`
   width: 500px;
+  z-index: 2;
   position: absolute;
   top: 200px;
 `;

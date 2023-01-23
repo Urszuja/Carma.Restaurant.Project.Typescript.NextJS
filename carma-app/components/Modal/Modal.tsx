@@ -12,7 +12,7 @@ import {
 interface IModal {
   show: boolean;
   onClose: any;
-  children: any;
+  children: React.ReactNode;
 }
 
 const Modal = ({ show, onClose, children }: IModal) => {

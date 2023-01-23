@@ -19,13 +19,13 @@ function MiniMenuItem({
   const [isMenuDetailOpen, setMenuDetail] = useState(false);
   const [isOrderDetailOpen, setOrderDetail] = useState(false);
 
-  const handleShowMenu = (e: any) => {
+  const handleShowMenu = (e: React.MouseEvent<HTMLImageElement>) => {
     e.stopPropagation();
     window.scrollTo(0, 0);
     setMenuDetail(true);
   };
 
-  const handleShowOrder = (e: any) => {
+  const handleShowOrder = (e: React.MouseEvent<HTMLImageElement>) => {
     e.stopPropagation();
     window.scrollTo(0, 0);
     setOrderDetail(true);

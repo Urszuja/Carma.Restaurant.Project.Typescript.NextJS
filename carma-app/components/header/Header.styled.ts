@@ -11,7 +11,7 @@ export const StyledHeader = styled.div`
   height: 90px;
   top: 0;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
 
   @media only screen and (max-width: 600px) {
     .restaurant-name {

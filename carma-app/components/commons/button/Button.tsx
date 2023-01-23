@@ -3,7 +3,7 @@ import { StyledButton } from "./Button.styled";
 interface Button {
   type: "reset" | "submit" | "button";
   text: string;
-  onClick: any;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 function Button({ type, text, onClick }: Button) {
