@@ -32,10 +32,7 @@ const DataStoreProvider = ({ children }: DataStoreProviderProps) => {
   const [ordersDatabase, setOrdersDatabase] = useState<OrderInstance[] | null>(
     []
   );
-  const [cart, setCart] = useState<OrderItemInstance[] | null>([
-    testOrderItem,
-    testOrderItem2,
-  ]);
+  const [cart, setCart] = useState<OrderItemInstance[] | null>([]);
   const [menu, setMenu] = useState<IMenuItem[] | null>([]);
   const [filteredMenu, setFilter] = useState<IMenuItem[] | null>([]);
 

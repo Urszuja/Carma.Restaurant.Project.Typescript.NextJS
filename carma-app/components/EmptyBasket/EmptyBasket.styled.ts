@@ -7,6 +7,10 @@ export const StyledEmptyBasket = styled.div`
   margin: 0;
   padding: 0;
 
+  h3 {
+    letter-spacing: 2px;
+  }
+
   a {
     text-decoration: underline;
     font-size: medium;
