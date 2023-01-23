@@ -3,10 +3,10 @@ import Image from "next/image";
 import { StyledPizzaSize } from "./PizzaSize.styled";
 import { UseFormRegister } from "react-hook-form";
 import { IPizzaInput } from "../AddToBasketItem/AddToBasketItem";
-
+import { SizesDesc } from "../../constants/sizes";
 interface IPizzaSize {
   hasCheckbox: boolean;
-  size: "small" | "medium" | "large";
+  size: SizesDesc;
   price: number;
   register?: UseFormRegister<IPizzaInput>;
 }

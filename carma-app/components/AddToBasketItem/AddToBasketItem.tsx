@@ -6,6 +6,7 @@ import { DataStoreContext } from "../DataStoreContext";
 import OrderItemInstance, { Sizes } from "../../model/OrderItem";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IMenuItem } from "../../model/MenuItem";
+import { SIZES } from "../../constants/sizes";
 
 export interface IPizzaInput {
   size: Sizes;
@@ -91,24 +92,14 @@ function AddToBasketItem({
         <Image src={image} alt={name} width={150} height={150} />
         <form className="order" onSubmit={handleSubmit(onSubmit)}>
           <fieldset className="sizes">
-            <PizzaSize
-              hasCheckbox={true}
-              size="small"
-              price={prices[0]}
-              register={register}
-            />
-            <PizzaSize
-              hasCheckbox={true}
-              size="medium"
-              price={prices[1]}
-              register={register}
-            />
-            <PizzaSize
-              hasCheckbox={true}
-              size="large"
-              price={prices[2]}
-              register={register}
-            />
+            {SIZES.map((size, index: number) => (
+              <PizzaSize
+                hasCheckbox={true}
+                size={size}
+                price={prices[index]}
+                register={register}
+              />
+            ))}
           </fieldset>
           <div className="lower">
             <div className="quantity">
