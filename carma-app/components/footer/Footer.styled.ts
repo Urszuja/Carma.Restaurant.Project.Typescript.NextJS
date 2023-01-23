@@ -7,9 +7,14 @@ export const StyledFooter = styled.div`
   align-items: stretch;
   padding: 10px 10px;
   color: ${(props) => props.theme.text};
-  width: 100%;
   height: 150px;
   bottom: 0;
+
+  @media only screen and (max-width: 600px) {
+    .trip-advisor {
+      display: none;
+    }
+  }
   p,
   h4 {
     margin: 0;

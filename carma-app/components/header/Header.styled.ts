@@ -13,12 +13,18 @@ export const StyledHeader = styled.div`
   position: fixed;
   z-index: 2;
 
+  @media only screen and (max-width: 600px) {
+    .restaurant-name {
+      display: none;
+    }
+  }
+
   .cart {
     display: flex;
     align-items: center;
     gap: 5px;
     position: relative;
-    .orderItems {
+    .order-items {
       background-color: ${(props) => props.theme.danger};
       color: ${(props) => props.theme.background};
       border-radius: 50%;
@@ -33,14 +39,14 @@ export const StyledHeader = styled.div`
     }
   }
 
-  .linkContainer {
+  .link-container {
     display: flex;
     justify-content: space-around;
     padding: 20px 20px;
     gap: 10px;
     width: 200px;
   }
-  #restaurantName {
+  .restaurant-name {
     letter-spacing: 5px;
   }
   .link,

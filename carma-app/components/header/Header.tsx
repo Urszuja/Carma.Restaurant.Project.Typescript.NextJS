@@ -23,8 +23,8 @@ function Header() {
         </Link>
       </div>
 
-      <h1 id="restaurantName">{restaurantName}</h1>
-      <div className="linkContainer">
+      <h1 className="restaurant-name">{restaurantName}</h1>
+      <div className="link-container">
         <div className="link">
           <Link href="/order/list">
             <Image
@@ -54,7 +54,9 @@ function Header() {
               height={25}
             />
           </Link>
-          {cart!.length > 0 && <div className="orderItems">{cart!.length}</div>}
+          {cart!.length > 0 && (
+            <div className="order-items">{cart!.length}</div>
+          )}
         </div>
       </div>
     </StyledHeader>

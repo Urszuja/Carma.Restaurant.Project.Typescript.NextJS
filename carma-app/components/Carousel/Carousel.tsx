@@ -14,11 +14,16 @@ import { Pagination, Navigation } from "swiper";
 import MiniMenuItem from "../MenuItem/MiniMenuItem";
 import { IMenuItem, IMenuItems } from "../../model/MenuItem";
 
-function Carousel({ menuItems }: IMenuItems) {
+interface ICarousel {
+  menuItems: IMenuItem[];
+  displayNumber: number;
+}
+
+function Carousel({ menuItems, displayNumber }: ICarousel) {
   return (
     <StyledCarousel>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={displayNumber}
         spaceBetween={15}
         slidesPerGroup={3}
         loop={true}
