@@ -1,9 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import { IMenuItem, IMenuItems } from "../model/MenuItem";
 
 export default function Home({ menuItems }: IMenuItems) {
+  const [displayNumber, setDisplayNumber] = useState<number>(1);
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth > 1200) {
+      setDisplayNumber(5);
+    } else if (window.innerWidth > 700) {
+      setDisplayNumber(3);
+    } else {
+      setDisplayNumber(1);
+    }
+  };
+
+  // create an event listener
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
+
+  useEffect(() => handleResize(), []);
+
   return (
     <div className="home-page">
       <Image src="/LogoWithName.svg" alt="Carma Logo" width={120} height={60} />
@@ -19,7 +40,7 @@ export default function Home({ menuItems }: IMenuItems) {
         Check our
         <Link href="/menu"> menu</Link>
       </h3>
-      <Carousel menuItems={menuItems} />
+      <Carousel menuItems={menuItems} displayNumber={displayNumber} />
     </div>
   );
 }
