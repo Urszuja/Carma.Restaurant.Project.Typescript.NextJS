@@ -5,12 +5,17 @@ import PizzaSize from "../MenuItem/PizzaSize";
 import { DataStoreContext } from "../DataStoreContext";
 import OrderItemInstance, { Sizes } from "../../model/OrderItem";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { IMenuItem } from "../../model/MenuItem";
 
 export interface IPizzaInput {
   size: Sizes;
 }
 
-function MenuItem({
+export interface IAddToBasket extends IMenuItem {
+  closeBasket: any;
+}
+
+function AddToBasketItem({
   id,
   name,
   prices,
@@ -19,7 +24,7 @@ function MenuItem({
   isVegan,
   isSpicy,
   closeBasket,
-}: any) {
+}: IAddToBasket) {
   const { cart, setCart } = useContext(DataStoreContext);
   const [quantity, setQuantity] = useState(1);
 
@@ -138,4 +143,4 @@ function MenuItem({
   );
 }
 
-export default MenuItem;
+export default AddToBasketItem;
