@@ -8,6 +8,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { IMenuItem } from "../../model/MenuItem";
 import { SIZES } from "../../constants/sizes";
 
+import { v4 } from "uuid";
+
 export interface IPizzaInput {
   size: Sizes;
 }
@@ -58,6 +60,7 @@ function AddToBasketItem({
           size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
         const newPizza = new OrderItemInstance(name, size, price, quantity);
         setCart([...cart!, newPizza]);
+        console.log(v4());
       }
     } else {
       alert("Place new order to buy more pizza");
