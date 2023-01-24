@@ -1,14 +1,16 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Button from "./Button";
 
 describe("testing button functionality", () => {
-  const handleClick = jest.fn();
-  test("button has name", () => {
+  test("button shows text and can be clicked", () => {
+    const handleClick = jest.fn();
     render(<Button type="button" text="Confirm" onClick={handleClick} />);
 
-    const label = screen.getByText(/confirm/i);
+    const button = screen.getByText(/confirm/i);
+    fireEvent.click(button);
 
-    expect(label).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+    expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
