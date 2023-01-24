@@ -38,7 +38,9 @@ function FormInput({ name, control, rules, errors, label }: IFormInput) {
         render={({ messages }) => {
           return messages
             ? Object.entries(messages).map(([type, message]) => (
-                <p key={type}>{message}</p>
+                <p role="alert" key={type}>
+                  {message}
+                </p>
               ))
             : null;
         }}
