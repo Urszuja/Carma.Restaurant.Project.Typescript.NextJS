@@ -94,6 +94,7 @@ function AddToBasketItem({
           <fieldset className="sizes">
             {SIZES.map((size, index: number) => (
               <PizzaSize
+                key={index}
                 hasCheckbox={true}
                 size={size}
                 price={prices[index]}

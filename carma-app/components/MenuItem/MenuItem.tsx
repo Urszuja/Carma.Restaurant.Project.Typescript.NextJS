@@ -39,7 +39,12 @@ function MenuItem({
         <Image src={image} alt={name} width={100} height={100} />
         <ul className="sizes">
           {SIZES.map((size, index) => (
-            <PizzaSize hasCheckbox={false} size={size} price={prices[index]} />
+            <PizzaSize
+              key={index}
+              hasCheckbox={false}
+              size={size}
+              price={prices[index]}
+            />
           ))}
         </ul>
       </div>
