@@ -1,4 +1,10 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import "@testing-library/jest-dom";
 import AddToBasketItem from "./AddToBasketItem";
 import { testMenuItem } from "../../mocks/mockData";
@@ -22,6 +28,8 @@ jest.mock("../../model/OrderItem", () => {
     ...jest.requireActual("../../model/OrderItem"),
   };
 });
+
+jest.spyOn(window, "alert").mockImplementation(() => {});
 
 describe("test adding to basket", () => {
   const addToBasket = jest.fn();
@@ -61,12 +69,36 @@ describe("test adding to basket", () => {
       '[alt="plus"]'
     )! as HTMLImageElement;
 
-    act(() => increaseButton.click());
+    fireEvent.click(increaseButton);
 
     const quantityDiv = document.querySelector(".number")! as HTMLDivElement;
     const quantityNum = parseInt(quantityDiv.innerHTML);
     expect(increaseButton).toBeInTheDocument();
     expect(quantityNum).toBe(2);
+  });
+
+  test("increase amount above limit", () => {
+    render(
+      <AddToBasketItem
+        name={testMenuItem.name}
+        id={testMenuItem.id}
+        prices={testMenuItem.prices}
+        image={testMenuItem.image}
+        description={testMenuItem.description}
+        isSpicy={testMenuItem.isSpicy}
+        isVegan={testMenuItem.isVegan}
+        closeBasket={addToBasket}
+      />
+    );
+
+    const increaseButton = document.querySelector(
+      '[alt="plus"]'
+    )! as HTMLImageElement;
+    for (let i = 0; i < 9; i++) {
+      fireEvent.click(increaseButton);
+    }
+
+    expect(window.alert).toBeCalledTimes(1);
   });
 
   test("decrease amount", () => {
@@ -90,17 +122,40 @@ describe("test adding to basket", () => {
       '[alt="plus"]'
     )! as HTMLImageElement;
 
-    act(() => {
-      increaseButton.click();
-      increaseButton.click();
-      decreaseButton.click();
-    });
+    fireEvent.click(increaseButton);
+    fireEvent.click(increaseButton);
+    fireEvent.click(decreaseButton);
+
     const quantityDiv = document.querySelector(".number")! as HTMLDivElement;
     const quantityNum = parseInt(quantityDiv.innerHTML);
 
     expect(decreaseButton).toBeInTheDocument();
     expect(quantityNum).toBe(2);
   });
+
+  test("decrease amount under limit", () => {
+    render(
+      <AddToBasketItem
+        name={testMenuItem.name}
+        id={testMenuItem.id}
+        prices={testMenuItem.prices}
+        image={testMenuItem.image}
+        description={testMenuItem.description}
+        isSpicy={testMenuItem.isSpicy}
+        isVegan={testMenuItem.isVegan}
+        closeBasket={addToBasket}
+      />
+    );
+
+    const decreaseButton = document.querySelector(
+      '[alt="minus"]'
+    )! as HTMLImageElement;
+
+    fireEvent.click(decreaseButton);
+
+    expect(window.alert).toBeCalledTimes(1);
+  });
+
   const mockedSetState = jest.fn();
 
   test("adding new pizza (different type and size) to basket", async () => {
