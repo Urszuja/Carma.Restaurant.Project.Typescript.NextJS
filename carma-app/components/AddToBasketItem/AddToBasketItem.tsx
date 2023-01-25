@@ -3,12 +3,13 @@ import Image from "next/image";
 import { StyledAddToBasketItem } from "./AddToBasketItem.styled";
 import PizzaSize from "../MenuItem/PizzaSize";
 import { DataStoreContext } from "../DataStoreContext";
-import OrderItemInstance, { Sizes } from "../../model/OrderItem";
+import OrderItemInstance, {
+  increaseQuantity,
+  Sizes,
+} from "../../model/OrderItem";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IMenuItem } from "../../model/MenuItem";
 import { SIZES } from "../../constants/sizes";
-
-import { v4 } from "uuid";
 
 export interface IPizzaInput {
   size: Sizes;
@@ -46,21 +47,30 @@ function AddToBasketItem({
       alert("No more pizza for you, fatso!");
     }
   };
+
   const { register, handleSubmit } = useForm<IPizzaInput>();
 
   const onSubmit: SubmitHandler<IPizzaInput> = (data) => {
+    console.log("submit worked");
     const size = data.size;
+    if (!size) {
+      alert("Pick pizza size");
+      console.log("no size");
+      return;
+    }
     if (cart!.length < 10) {
-      if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
-        cart
-          ?.find((p) => p.name === name.toLowerCase() && p.size === size)
-          ?.changeQuantity(quantity);
+      console.log("cart searched");
+      const foundItem = cart?.find(
+        (p) => p.name.toLowerCase() === name.toLowerCase() && p.size === size
+      );
+      if (foundItem) {
+        increaseQuantity(foundItem, quantity);
+        console.log("found item quantity changed");
       } else {
         const price =
           size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
         const newPizza = new OrderItemInstance(name, size, price, quantity);
         setCart([...cart!, newPizza]);
-        console.log(v4());
       }
     } else {
       alert("Place new order to buy more pizza");

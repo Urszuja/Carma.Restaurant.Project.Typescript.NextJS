@@ -9,11 +9,18 @@ import {
 import createMockStore from "../../mocks/MockStore";
 
 //import * as uuid from "uuid";
-import OrderItemInstance from "../../model/OrderItem";
+import * as OrderItem from "../../model/OrderItem";
 
 jest.mock("uuid", () => {
   const originalModule = jest.requireActual("uuid");
   return { ...originalModule, v4: () => "123456789" };
+});
+
+jest.mock("../../model/OrderItem", () => {
+  return {
+    __esModule: true, //    <----- this __esModule: true is important
+    ...jest.requireActual("../../model/OrderItem"),
+  };
 });
 
 describe("test adding to basket", () => {
@@ -94,11 +101,10 @@ describe("test adding to basket", () => {
     expect(decreaseButton).toBeInTheDocument();
     expect(quantityNum).toBe(2);
   });
+  const mockedSetState = jest.fn();
 
   test("adding new pizza (different type and size) to basket", async () => {
     const store = createMockStore() as DataStoreContextInterface;
-    const mockedSetState = jest.fn();
-
     render(
       <DataStoreContext.Provider value={{ ...store, setCart: mockedSetState }}>
         <AddToBasketItem
@@ -127,31 +133,31 @@ describe("test adding to basket", () => {
           price: 10,
           quantity: 2,
           size: "S",
-        } as OrderItemInstance,
+        } as OrderItem.default,
         {
           id: "123456789",
           name: "Salame",
           price: 15,
           quantity: 1,
           size: "M",
-        } as OrderItemInstance,
+        } as OrderItem.default,
         {
           id: "123456789",
           name: "Margharita",
           price: 10,
           quantity: 1,
           size: "M",
-        } as OrderItemInstance,
+        } as OrderItem.default,
       ]);
     });
   });
 
   test("adding one more pizza of same size and type to basket", async () => {
     const store = createMockStore() as DataStoreContextInterface;
-    const mockedSetState = jest.fn();
+    const mockIncreaseQuantity = jest.spyOn(OrderItem, "increaseQuantity");
 
     render(
-      <DataStoreContext.Provider value={{ ...store, setCart: mockedSetState }}>
+      <DataStoreContext.Provider value={{ ...store }}>
         <AddToBasketItem
           name={testMenuItem.name}
           id={testMenuItem.id}
@@ -168,27 +174,21 @@ describe("test adding to basket", () => {
       "input#small"
     )! as HTMLInputElement;
     const submitButton = document.querySelector("button")!;
-    act(() => {
-      pizzaSmall.click();
-      submitButton.click();
-    });
+
+    pizzaSmall.click();
+    submitButton.click();
+
     await waitFor(() => {
-      expect(mockedSetState).toHaveBeenCalledWith([
+      expect(mockIncreaseQuantity).toHaveBeenCalledWith(
         {
           id: "123456789",
           name: "Margharita",
           price: 10,
           quantity: 3,
           size: "S",
-        } as OrderItemInstance,
-        {
-          id: "123456789",
-          name: "Salame",
-          price: 15,
-          quantity: 1,
-          size: "M",
-        } as OrderItemInstance,
-      ]);
+        },
+        1
+      );
     });
   });
 });
