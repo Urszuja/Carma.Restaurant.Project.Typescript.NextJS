@@ -27,4 +27,22 @@ describe("testing form functionality", () => {
 
     expect(await screen.findAllByRole("alert")).toHaveLength(7);
   });
+
+  it("should accept e-mail, when input is valid", async () => {
+    render(
+      <DataStoreContext.Provider value={{ ...store, setCart: mockedSetState }}>
+        <Form />
+      </DataStoreContext.Provider>
+    );
+    const emailInput = await screen.findByRole("email");
+    await fireEvent.input(emailInput, {
+      target: {
+        value: "test@gmail.com",
+      },
+    });
+
+    fireEvent.submit(screen.getByRole("button"));
+
+    expect(await screen.findAllByRole("alert")).toHaveLength(6);
+  });
 });

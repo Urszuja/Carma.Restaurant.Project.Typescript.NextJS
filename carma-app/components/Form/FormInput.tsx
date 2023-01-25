@@ -18,13 +18,14 @@ function FormInput({ name, control, rules, errors, label }: IFormInput) {
     <StyledFormInput>
       {/* first name input */}
 
-      <label>Your {label}</label>
+      <label htmlFor={name}>Your {label}</label>
       <Controller
         control={control}
         name={name}
         rules={rules ?? {}}
         render={({ field }) => (
           <input
+            role={name}
             value={field.value}
             onChange={field.onChange}
             onBlur={field.onBlur}
