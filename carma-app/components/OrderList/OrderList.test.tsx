@@ -17,8 +17,7 @@ describe("testing order list functionality ", () => {
       </DataStoreContext.Provider>
     );
 
-    const date = screen.getByText(/date/i);
-
-    expect(date).toBeInTheDocument();
+    const margharita = document.querySelectorAll(".order")[0];
+    expect(margharita).toHaveTextContent(/Margharita/i);
   });
 });
