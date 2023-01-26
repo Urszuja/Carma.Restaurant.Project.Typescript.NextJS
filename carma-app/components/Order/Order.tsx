@@ -29,7 +29,11 @@ function Order() {
         <div className="order-items">
           <div className="column order-name">
             {cart &&
-              cart.map((o) => <div key={`${o.id}-${o.name}`}>{o.name}</div>)}
+              cart.map((o) => (
+                <div key={`${o.id}-${o.name}`} role="name-display">
+                  {o.name}
+                </div>
+              ))}
           </div>
           <div className="column size-quantity">
             {cart &&

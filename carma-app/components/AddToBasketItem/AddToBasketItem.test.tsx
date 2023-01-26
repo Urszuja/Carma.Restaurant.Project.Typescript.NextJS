@@ -1,10 +1,4 @@
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import AddToBasketItem from "./AddToBasketItem";
 import { testMenuItem } from "../../mocks/mockData";
@@ -33,6 +27,8 @@ jest.spyOn(window, "alert").mockImplementation(() => {});
 
 describe("test adding to basket", () => {
   const addToBasket = jest.fn();
+
+  afterEach(jest.resetAllMocks);
   test("add to basket renders properly", () => {
     render(
       <AddToBasketItem

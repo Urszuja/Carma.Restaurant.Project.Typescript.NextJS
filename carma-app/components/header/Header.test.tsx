@@ -7,7 +7,7 @@ import {
 } from "../DataStoreContext";
 import createMockStore from "../../mocks/MockStore";
 describe("testing header functionality ", () => {
-  const mockStore = createMockStore();
+  const mockStore = createMockStore() as DataStoreContextInterface;
   test("header is rendering correctly", () => {
     render(
       <DataStoreContext.Provider value={mockStore}>

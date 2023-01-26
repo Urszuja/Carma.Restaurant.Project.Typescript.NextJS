@@ -26,9 +26,10 @@ export const StyledFilter = styled.div`
       color: black;
       margin: 0;
 
-      p {
+      h4 {
         margin: 0;
         padding: 0;
+        font-weight: 300;
       }
     }
   }

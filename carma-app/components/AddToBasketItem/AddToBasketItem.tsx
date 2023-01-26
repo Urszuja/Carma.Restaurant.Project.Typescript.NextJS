@@ -37,6 +37,7 @@ function AddToBasketItem({
       setQuantity((q) => q - 1);
     } else {
       alert("Check your numbers, kiddo");
+      console.log("to little");
     }
   };
 
@@ -51,21 +52,18 @@ function AddToBasketItem({
   const { register, handleSubmit } = useForm<IPizzaInput>();
 
   const onSubmit: SubmitHandler<IPizzaInput> = (data) => {
-    console.log("submit worked");
     const size = data.size;
     if (!size) {
       alert("Pick pizza size");
-      console.log("no size");
+      console.log("size alert");
       return;
     }
     if (cart!.length < 10) {
-      console.log("cart searched");
       const foundItem = cart?.find(
         (p) => p.name.toLowerCase() === name.toLowerCase() && p.size === size
       );
       if (foundItem) {
         increaseQuantity(foundItem, quantity);
-        console.log("found item quantity changed");
       } else {
         const price =
           size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
@@ -74,6 +72,7 @@ function AddToBasketItem({
       }
     } else {
       alert("Place new order to buy more pizza");
+      console.log("place alert");
     }
     closeBasket();
   };

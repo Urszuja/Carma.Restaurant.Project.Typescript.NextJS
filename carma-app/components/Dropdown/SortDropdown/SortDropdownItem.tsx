@@ -20,7 +20,7 @@ function SortDropdownItem({
   return (
     <StyledDropdownItem isActive={isActive}>
       <div onClick={handleClick} className="label">
-        <label>{name}</label>
+        <h4 role="option">{name}</h4>
         <Image
           src={isActive ? yellowImg : img}
           alt={name}
