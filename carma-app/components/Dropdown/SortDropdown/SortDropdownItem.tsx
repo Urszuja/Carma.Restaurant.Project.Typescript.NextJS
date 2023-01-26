@@ -15,7 +15,6 @@ function SortDropdownItem({
   isActive,
 }: ISortDropdownItem) {
   const yellowImg = img.slice(0, -4) + "-yellow.svg";
-  console.log(yellowImg);
 
   return (
     <StyledDropdownItem isActive={isActive}>

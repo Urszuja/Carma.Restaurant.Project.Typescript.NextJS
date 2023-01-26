@@ -58,8 +58,6 @@ export default function Form() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
-
         setIsSuccess(true);
       })
       .catch((error) => {
@@ -265,11 +263,7 @@ export default function Form() {
       </div>
       <div className="order">
         <Order />
-        <Button
-          type="submit"
-          text="Place order"
-          onClick={() => console.log("Order is being processed")}
-        />
+        <Button type="submit" text="Place order" />
       </div>
       {showModal && (
         <Modal onClose={onCloseModal} show={showModal}>

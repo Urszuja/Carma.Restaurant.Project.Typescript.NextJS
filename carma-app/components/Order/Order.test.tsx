@@ -21,8 +21,6 @@ describe("test Order functionality", () => {
 
     const margharita = screen.getAllByRole("name-display")[0];
 
-    console.log(margharita);
-
     expect(margharita).toHaveTextContent(/Margharita/i);
   });
 });

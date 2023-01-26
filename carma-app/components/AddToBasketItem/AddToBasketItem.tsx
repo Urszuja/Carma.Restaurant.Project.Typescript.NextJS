@@ -37,7 +37,6 @@ function AddToBasketItem({
       setQuantity((q) => q - 1);
     } else {
       alert("Check your numbers, kiddo");
-      console.log("to little");
     }
   };
 
@@ -55,7 +54,6 @@ function AddToBasketItem({
     const size = data.size;
     if (!size) {
       alert("Pick pizza size");
-      console.log("size alert");
       return;
     }
     if (cart!.length < 10) {
@@ -72,7 +70,6 @@ function AddToBasketItem({
       }
     } else {
       alert("Place new order to buy more pizza");
-      console.log("place alert");
     }
     closeBasket();
   };
