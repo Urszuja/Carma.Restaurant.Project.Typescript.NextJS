@@ -181,7 +181,7 @@ export default function Form() {
           rules={{
             required: "This input is required.",
             pattern: {
-              value: /^[a-zA-Z0-9 .]*$/,
+              value: /^[a-zA-Z0-9 .\/]*$/,
               message: "This input is for address only.",
             },
             minLength: {
