@@ -1,9 +1,12 @@
-{  "presets": [    "next/babel" ],  
+{  
+"presets": [    "next/babel" ],  
 "env": {    
-    "test": {      
+    "test": {       
         "presets": [        
-            "next/babel"    
+                    "next/babel"    
                     ]    
             }  
-        }
-    }
+        },
+"plugins": [["styled-components", { "ssr": true, "displayName": true, "namespace": "carma-app" }, "macros"]]
+    
+}
