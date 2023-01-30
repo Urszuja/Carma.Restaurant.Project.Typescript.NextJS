@@ -71,7 +71,6 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
 
   h3, h2 {
     letter-spacing: 2px;
