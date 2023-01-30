@@ -3,14 +3,23 @@ import Image from "next/image";
 import { StyledAddToBasketItem } from "./AddToBasketItem.styled";
 import PizzaSize from "../MenuItem/PizzaSize";
 import { DataStoreContext } from "../DataStoreContext";
-import OrderItemInstance, { Sizes } from "../../model/OrderItem";
+import OrderItemInstance, {
+  increaseQuantity,
+  Sizes,
+} from "../../model/OrderItem";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { IMenuItem } from "../../model/MenuItem";
+import { SIZES } from "../../constants/sizes";
 
 export interface IPizzaInput {
   size: Sizes;
 }
 
-function MenuItem({
+export interface IAddToBasket extends IMenuItem {
+  closeBasket: () => React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function AddToBasketItem({
   id,
   name,
   prices,
@@ -19,7 +28,7 @@ function MenuItem({
   isVegan,
   isSpicy,
   closeBasket,
-}: any) {
+}: IAddToBasket) {
   const { cart, setCart } = useContext(DataStoreContext);
   const [quantity, setQuantity] = useState(1);
 
@@ -38,15 +47,21 @@ function MenuItem({
       alert("No more pizza for you, fatso!");
     }
   };
+
   const { register, handleSubmit } = useForm<IPizzaInput>();
 
   const onSubmit: SubmitHandler<IPizzaInput> = (data) => {
     const size = data.size;
+    if (!size) {
+      alert("Pick pizza size");
+      return;
+    }
     if (cart!.length < 10) {
-      if (cart?.find((p) => p.name === name.toLowerCase() && p.size === size)) {
-        cart
-          ?.find((p) => p.name === name.toLowerCase() && p.size === size)
-          ?.changeQuantity(quantity);
+      const foundItem = cart?.find(
+        (p) => p.name.toLowerCase() === name.toLowerCase() && p.size === size
+      );
+      if (foundItem) {
+        increaseQuantity(foundItem, quantity);
       } else {
         const price =
           size === "S" ? prices[0] : size === "M" ? prices[1] : prices[2];
@@ -86,24 +101,15 @@ function MenuItem({
         <Image src={image} alt={name} width={150} height={150} />
         <form className="order" onSubmit={handleSubmit(onSubmit)}>
           <fieldset className="sizes">
-            <PizzaSize
-              hasCheckbox={true}
-              size="small"
-              price={prices[0]}
-              register={register}
-            />
-            <PizzaSize
-              hasCheckbox={true}
-              size="medium"
-              price={prices[1]}
-              register={register}
-            />
-            <PizzaSize
-              hasCheckbox={true}
-              size="large"
-              price={prices[2]}
-              register={register}
-            />
+            {SIZES.map((size, index: number) => (
+              <PizzaSize
+                key={index}
+                hasCheckbox={true}
+                size={size}
+                price={prices[index]}
+                register={register}
+              />
+            ))}
           </fieldset>
           <div className="lower">
             <div className="quantity">
@@ -138,4 +144,4 @@ function MenuItem({
   );
 }
 
-export default MenuItem;
+export default AddToBasketItem;

@@ -11,10 +11,6 @@ interface IOrder {
   totalPrice: number;
   status: Status;
   timeStamp: string;
-
-  addOrderItem: (orderItem: OrderItem) => void;
-
-  removeOrderItem: (id: string) => void;
 }
 
 export default class OrderInstance implements IOrder {
@@ -29,17 +25,5 @@ export default class OrderInstance implements IOrder {
     this.id = uuidv4();
     this.totalPrice = 0;
     this.timeStamp = new Date().toJSON().slice(0, 10);
-  }
-
-  addOrderItem(orderItem: OrderItem): void {
-    this.orderItems.map((item) =>
-      item.name === orderItem.name && item.size === orderItem.size
-        ? (item.quantity += 1)
-        : this.orderItems.push(item)
-    );
-  }
-
-  removeOrderItem(id: string): void {
-    this.orderItems.filter((item) => item.id === id);
   }
 }

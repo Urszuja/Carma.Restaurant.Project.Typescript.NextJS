@@ -3,6 +3,7 @@ import { IMenuItem } from "../../model/MenuItem";
 import Image from "next/image";
 import { StyledMenuItem } from "./MenuItem.styled";
 import PizzaSize from "./PizzaSize";
+import { SIZES } from "../../constants/sizes";
 
 function MenuItem({
   id,
@@ -37,9 +38,14 @@ function MenuItem({
       <div className="middle">
         <Image src={image} alt={name} width={100} height={100} />
         <ul className="sizes">
-          <PizzaSize hasCheckbox={false} size="small" price={prices[0]} />
-          <PizzaSize hasCheckbox={false} size="medium" price={prices[1]} />
-          <PizzaSize hasCheckbox={false} size="large" price={prices[2]} />
+          {SIZES.map((size, index) => (
+            <PizzaSize
+              key={index}
+              hasCheckbox={false}
+              size={size}
+              price={prices[index]}
+            />
+          ))}
         </ul>
       </div>
       <div className="description">

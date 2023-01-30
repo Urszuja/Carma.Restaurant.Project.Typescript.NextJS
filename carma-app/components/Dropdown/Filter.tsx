@@ -22,7 +22,7 @@ function Filter({ type }: IFilter) {
               width={15}
               height={15}
             />
-            <p>{type}</p>
+            <h4>{type}</h4>
           </div>
           <Image
             onClick={toggleDropdown}

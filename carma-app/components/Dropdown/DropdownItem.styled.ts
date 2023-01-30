@@ -20,8 +20,9 @@ export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
   gap: 5px;
   width: 120px;
 
-  label {
+  h4 {
     width: 50px;
+    font-weight: 300;
   }
   .label {
     display: flex;

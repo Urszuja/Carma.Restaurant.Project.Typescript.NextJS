@@ -1,12 +1,13 @@
 import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import StyledFormInput from "./FormInput.styled";
-import { Controller } from "react-hook-form";
+import { Control, Controller, FieldErrors } from "react-hook-form";
+import { IFormInputs } from "./Form";
 
 export interface IFormInput {
   name: string;
-  control: any;
-  errors: any;
+  control: Control<any, object>;
+  errors: FieldErrors<IFormInputs>;
   label: string;
   rules?: {};
 }
@@ -18,14 +19,15 @@ function FormInput({ name, control, rules, errors, label }: IFormInput) {
     <StyledFormInput>
       {/* first name input */}
 
-      <label>Your {label}</label>
+      <label htmlFor={name}>Your {label}</label>
       <Controller
         control={control}
         name={name}
         rules={rules ?? {}}
         render={({ field }) => (
           <input
-            value={field.value}
+            role={name}
+            value={field.value ?? ""}
             onChange={field.onChange}
             onBlur={field.onBlur}
           />
@@ -38,7 +40,9 @@ function FormInput({ name, control, rules, errors, label }: IFormInput) {
         render={({ messages }) => {
           return messages
             ? Object.entries(messages).map(([type, message]) => (
-                <p key={type}>{message}</p>
+                <p role="alert" key={type}>
+                  {message}
+                </p>
               ))
             : null;
         }}

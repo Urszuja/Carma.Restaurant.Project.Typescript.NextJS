@@ -4,7 +4,7 @@ import { StyledDropdownItem } from "../DropdownItem.styled";
 
 export interface IFilterDropdownItem {
   name: string;
-  handleClick: any;
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
   img: string;
   isActive: boolean;
 }
@@ -19,7 +19,7 @@ function FilterDropdownItem({
     <StyledDropdownItem isActive={isActive}>
       <input type="checkbox" onClick={handleClick} />
       <div className="label">
-        <label>{name}</label>
+        <h4 role="option">{name}</h4>
         <Image
           src={isActive ? yellowImg : img}
           alt={name}

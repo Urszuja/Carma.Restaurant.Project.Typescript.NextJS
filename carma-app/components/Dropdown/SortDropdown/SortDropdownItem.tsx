@@ -4,7 +4,7 @@ import { StyledDropdownItem } from "../DropdownItem.styled";
 
 export interface ISortDropdownItem {
   name: string;
-  handleClick: any;
+  handleClick: React.MouseEventHandler<HTMLDivElement>;
   img: string;
   isActive: boolean;
 }
@@ -15,12 +15,11 @@ function SortDropdownItem({
   isActive,
 }: ISortDropdownItem) {
   const yellowImg = img.slice(0, -4) + "-yellow.svg";
-  console.log(yellowImg);
 
   return (
     <StyledDropdownItem isActive={isActive}>
       <div onClick={handleClick} className="label">
-        <label>{name}</label>
+        <h4 role="option">{name}</h4>
         <Image
           src={isActive ? yellowImg : img}
           alt={name}

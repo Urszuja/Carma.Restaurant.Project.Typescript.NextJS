@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import { StyledOrder } from "./Order.styled";
 import { DataStoreContext } from "../DataStoreContext";
-import { standardDeliveryCost } from "../../mockData";
+import { standardDeliveryCost } from "../../mocks/mockData";
 
 function Order() {
   const { cart } = useContext(DataStoreContext);
@@ -29,7 +29,11 @@ function Order() {
         <div className="order-items">
           <div className="column order-name">
             {cart &&
-              cart.map((o) => <div key={`${o.id}-${o.name}`}>{o.name}</div>)}
+              cart.map((o) => (
+                <div key={`${o.id}-${o.name}`} role="name-display">
+                  {o.name}
+                </div>
+              ))}
           </div>
           <div className="column size-quantity">
             {cart &&

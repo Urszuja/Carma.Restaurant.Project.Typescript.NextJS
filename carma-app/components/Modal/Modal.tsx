@@ -11,8 +11,8 @@ import {
 
 interface IModal {
   show: boolean;
-  onClose: any;
-  children: any;
+  onClose: () => void;
+  children: React.ReactNode;
 }
 
 const Modal = ({ show, onClose, children }: IModal) => {
@@ -32,7 +32,7 @@ const Modal = ({ show, onClose, children }: IModal) => {
     return () => window.removeEventListener("click", backDropHandler);
   }, []);
 
-  const handleCloseClick = (e: any) => {
+  const handleCloseClick = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     onClose();
   };

@@ -3,12 +3,12 @@ import Image from "next/image";
 import { StyledPizzaSize } from "./PizzaSize.styled";
 import { UseFormRegister } from "react-hook-form";
 import { IPizzaInput } from "../AddToBasketItem/AddToBasketItem";
-
+import { SizesDesc } from "../../constants/sizes";
 interface IPizzaSize {
   hasCheckbox: boolean;
-  size: "small" | "medium" | "large";
+  size: SizesDesc;
   price: number;
-  register: UseFormRegister<IPizzaInput>;
+  register?: UseFormRegister<IPizzaInput>;
 }
 function PizzaSize({ hasCheckbox, size, price, register }: IPizzaSize) {
   const iconSize = size === "small" ? 15 : size === "medium" ? 17 : 20;
@@ -18,7 +18,7 @@ function PizzaSize({ hasCheckbox, size, price, register }: IPizzaSize) {
   return (
     <StyledPizzaSize>
       <div className="size">
-        {hasCheckbox && (
+        {hasCheckbox && register && (
           <input type="radio" id={size} value={val} {...register("size")} />
         )}
         <Image

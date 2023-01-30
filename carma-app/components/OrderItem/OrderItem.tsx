@@ -26,7 +26,7 @@ function OrderItem({ id, name, size, price, quantity, menu }: IOrderItem) {
   function handleMore() {
     if (pizza!.quantity < 9) {
       setPizzaAmount((am) => am + 1);
-      pizza!.increaseQuantity();
+      pizza!.quantity += 1;
       setCart([...cart!]);
     } else {
       alert(
@@ -38,7 +38,7 @@ function OrderItem({ id, name, size, price, quantity, menu }: IOrderItem) {
   function handleLess() {
     if (pizza!.quantity > 1) {
       setPizzaAmount((am) => am - 1);
-      pizza!.decreaseQuantity();
+      pizza!.quantity -= 1;
       setCart([...cart!]);
     } else {
       setCart((c) => c!.filter((p) => p.id !== id));

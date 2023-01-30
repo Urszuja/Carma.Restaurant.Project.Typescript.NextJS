@@ -11,7 +11,7 @@ import Modal from "../Modal/Modal";
 import { useRouter } from "next/router";
 import FormModal from "./FormModal";
 
-interface IFormInputs {
+export interface IFormInputs {
   firstName: string;
   lastName: string;
   email: string;
@@ -24,9 +24,9 @@ interface IFormInputs {
 }
 
 export default function Form() {
-  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
-  const [isSuccess, setResult] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const {
     formState: { errors },
     handleSubmit,
@@ -50,7 +50,7 @@ export default function Form() {
 
     //POST CLIENT DATA WITH ORDER
     fetch("http://localhost:5000/orderList", {
-      method: "POST", // or 'PUT'
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -58,13 +58,11 @@ export default function Form() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
-
-        setResult(true);
+        setIsSuccess(true);
       })
       .catch((error) => {
         console.error("Error:", error);
-        setResult(false);
+        setIsSuccess(false);
       });
     setTimeout(() => setShowModal(true), 1000);
   };
@@ -181,7 +179,7 @@ export default function Form() {
           rules={{
             required: "This input is required.",
             pattern: {
-              value: /^[a-zA-Z0-9 .]*$/,
+              value: /^[a-zA-Z0-9 .\/]*$/,
               message: "This input is for address only.",
             },
             minLength: {
@@ -265,11 +263,7 @@ export default function Form() {
       </div>
       <div className="order">
         <Order />
-        <Button
-          type="submit"
-          text="Place order"
-          onClick={() => console.log("Order is being processed")}
-        />
+        <Button type="submit" text="Place order" />
       </div>
       {showModal && (
         <Modal onClose={onCloseModal} show={showModal}>
