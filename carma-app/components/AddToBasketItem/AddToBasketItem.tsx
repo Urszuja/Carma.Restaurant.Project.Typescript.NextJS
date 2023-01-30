@@ -16,7 +16,7 @@ export interface IPizzaInput {
 }
 
 export interface IAddToBasket extends IMenuItem {
-  closeBasket: any;
+  closeBasket: () => React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function AddToBasketItem({

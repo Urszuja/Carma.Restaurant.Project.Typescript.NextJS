@@ -11,7 +11,7 @@ import Modal from "../Modal/Modal";
 import { useRouter } from "next/router";
 import FormModal from "./FormModal";
 
-interface IFormInputs {
+export interface IFormInputs {
   firstName: string;
   lastName: string;
   email: string;

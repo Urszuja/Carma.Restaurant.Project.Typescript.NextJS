@@ -1,12 +1,13 @@
 import React from "react";
 import { ErrorMessage } from "@hookform/error-message";
 import StyledFormInput from "./FormInput.styled";
-import { Controller } from "react-hook-form";
+import { Control, Controller, FieldErrors } from "react-hook-form";
+import { IFormInputs } from "./Form";
 
 export interface IFormInput {
   name: string;
-  control: any;
-  errors: any;
+  control: Control<any, object>;
+  errors: FieldErrors<IFormInputs>;
   label: string;
   rules?: {};
 }
