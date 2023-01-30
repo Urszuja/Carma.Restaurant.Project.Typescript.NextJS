@@ -9,8 +9,6 @@ export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
   background: ${(p) => p.theme.background};
   color: ${(p) => (p.isActive ? p.theme.main : p.theme.text)};
   text-decoration: ${(p) => p.isActive && "underline"};
-  box-shadow: inset 0 0 0 2px
-    ${(p) => (p.isActive ? p.theme.main : p.theme.background)};
   font-weight: ${(p) => p.isActive && "bold"};
   height: 2em;
   padding: 0.5em;
@@ -18,7 +16,7 @@ export const StyledDropdownItem = styled.div<IStyledDropdownItem>`
   justify-content: flex-start;
   align-items: center;
   gap: 5px;
-  width: 120px;
+  width: 118px;
 
   h4 {
     width: 50px;
