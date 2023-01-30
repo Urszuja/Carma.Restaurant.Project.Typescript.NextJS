@@ -1,8 +1,11 @@
 {
+  "homepage": "https://Urszuja.github.com/Carma.Restaurant.Project.Typescript.NextJS",
   "name": "carma-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predeploy": "next build",
+    "deploy": "gh-pages -d build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -47,6 +50,7 @@
     "@types/uuid": "^9.0.0",
     "babel-jest": "^27.3.1",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "gh-pages": "^5.0.0",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
     "jest-styled-components": "^7.1.1"
